@@ -111,7 +111,7 @@ export default function Footer() {
             </span>
             <span className="material-symbols-outlined text-primary text-sm">favorite</span>
             <span className="font-mono text-[10px] text-outline uppercase tracking-widest">
-              in Dubai
+              by DevNox Lab
             </span>
           </div>
         </div>
