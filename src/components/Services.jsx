@@ -1,103 +1,56 @@
-const serviceCards = [
-  {
-    id: "front-ppf",
-    num: "01",
-    category: "PROTECTION",
-    title: "Full Front PPF",
-    description: "Bumper, Hood, Fenders, Mirrors",
-    tags: ["SELF-HEALING", "INVISIBLE"],
-    icon: "layers",
-    image:
-      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80",
-  },
-  {
-    id: "full-ppf",
-    num: "02",
-    category: "PROTECTION",
-    title: "Full Body PPF",
-    description: "Complete exterior coverage",
-    tags: ["SELF-HEALING", "10 YR WARRANTY"],
-    icon: "layers",
-    image:
-      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80",
-  },
-  {
-    id: "ceramic",
-    num: "03",
-    category: "CERAMIC",
-    title: "Ceramic Coating",
-    description: "Paint, Wheels, Glass",
-    tags: ["9H HARDNESS", "HYDROPHOBIC"],
-    icon: "water_drop",
-    image:
-      "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80",
-  },
-  {
-    id: "wrap",
-    num: "04",
-    category: "WRAPPING",
-    title: "Full Car Wrap",
-    description: "Matte, Satin, Gloss or Texture",
-    tags: ["CUSTOM COLORS", "REVERSIBLE"],
-    icon: "palette",
-    image:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
-  },
-  {
-    id: "tint",
-    num: "05",
-    category: "TINTING",
-    title: "Window Tinting",
-    description: "Full vehicle, ceramic grade",
-    tags: ["UV BLOCK", "HEAT REJECT"],
-    icon: "wb_sunny",
-    image:
-      "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80",
-  },
-  {
-    id: "polish",
-    num: "06",
-    category: "DETAILING",
-    title: "Paint Correction",
-    description: "2-stage machine polish & decontamination",
-    tags: ["SWIRL FREE", "HIGH GLOSS"],
-    icon: "auto_fix_high",
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-  },
-];
+import { useState } from "react";
+import services from "../data/services";
+import ServiceModal from "./ServiceModal";
 
-function ServiceCard({ num, category, title, description, tags, image }) {
+// ── Per-service hero images (visual-only, not stored in data layer) ───────────
+const CARD_IMAGE = {
+  "front-ppf":
+    "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80",
+  "full-ppf":
+    "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80",
+  ceramic:
+    "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80",
+  wrap: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
+  tint: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80",
+  polish:
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+};
+
+// ── Service card ─────────────────────────────────────────────────────────────
+function ServiceCard({ service, onViewDetails }) {
+  const image = CARD_IMAGE[service.id] || CARD_IMAGE["front-ppf"];
+
   return (
-    <article className="group relative overflow-hidden rounded-xl cursor-pointer aspect-[1/1] select-none">
-      {/* ── Image: grayscale → colour on hover ── */}
+    <article className="group relative overflow-hidden rounded-xl aspect-[1/1] select-none">
+      {/* ── Background image: grayscale → colour on hover ── */}
       <img
         src={image}
-        alt={title}
+        alt={service.name}
         loading="lazy"
+        draggable={false}
         className="absolute inset-0 w-full h-full object-cover
                    grayscale transition duration-700 ease-in-out
                    group-hover:grayscale-0 group-hover:scale-105"
       />
 
-      {/* Permanent dark vignette so text is always readable */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none" />
+      {/* Permanent dark gradient so bottom text is always legible */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/35 to-black/10 pointer-events-none" />
 
-      {/* Gold left-border accent — visible on hover */}
+      {/* Gold left-border accent — slides in on hover */}
       <div
         className="absolute left-0 top-8 bottom-8 w-0.5 bg-primary
                    scale-y-0 group-hover:scale-y-100
                    transition-transform duration-500 ease-in-out origin-bottom"
       />
 
-      {/* Top tag strip — visible on hover */}
+      {/* Tag strip — fades in from top on hover */}
       <div
         className="absolute top-0 left-0 right-0 p-4 flex flex-wrap gap-1.5
                    opacity-0 group-hover:opacity-100
                    -translate-y-2 group-hover:translate-y-0
                    transition-all duration-500 ease-in-out"
       >
-        {tags.map((tag) => (
+        {service.tags.map((tag) => (
           <span
             key={tag}
             className="font-mono text-[9px] text-primary border border-primary/50
@@ -108,33 +61,66 @@ function ServiceCard({ num, category, title, description, tags, image }) {
         ))}
       </div>
 
-      {/* Bottom content — always visible */}
+      {/* Bottom content — always present, extras reveal on hover */}
       <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+        {/* Category / number label */}
         <p className="font-mono text-[10px] text-primary uppercase tracking-[0.25em] mb-2">
-          {num}&nbsp;/&nbsp;{category}
+          {service.category}
         </p>
+
+        {/* Service name */}
         <h3
           className="font-headline font-semibold text-xl md:text-2xl text-white uppercase
                      tracking-wide leading-tight transition-colors duration-300
                      group-hover:text-primary"
         >
-          {title}
+          {service.name}
         </h3>
 
-        {/* Description slides in on hover */}
+        {/* Tagline — slides up on hover */}
         <p
           className="font-body text-xs text-white/60 mt-1 leading-relaxed
-                     max-h-0 overflow-hidden group-hover:max-h-12
+                     max-h-0 overflow-hidden group-hover:max-h-10
                      transition-all duration-500 ease-in-out"
         >
-          {description}
+          {service.tagline}
         </p>
+
+        {/* "View Details" pill — fades in on hover */}
+        <div
+          className="mt-3
+                     opacity-0 group-hover:opacity-100
+                     translate-y-1 group-hover:translate-y-0
+                     transition-all duration-300 ease-out"
+        >
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onViewDetails(service);
+            }}
+            className="
+              font-mono text-[11px] uppercase tracking-wider
+              px-4 py-1.5 rounded-full
+              border border-outline-variant text-on-surface-variant
+              hover:border-primary hover:text-primary
+              transition-all duration-200
+              focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none
+              glow-effect-hover
+            "
+          >
+            View Details
+          </button>
+        </div>
       </div>
     </article>
   );
 }
 
+// ── Section ───────────────────────────────────────────────────────────────────
 export default function Services() {
+  const [selectedService, setSelectedService] = useState(null);
+
   return (
     <section
       id="services"
@@ -177,11 +163,22 @@ export default function Services() {
 
         {/* ── Cards grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {serviceCards.map((card) => (
-            <ServiceCard key={card.id} {...card} />
+          {services.map((service) => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              onViewDetails={setSelectedService}
+            />
           ))}
         </div>
       </div>
+
+      {/* ── Service detail modal ── */}
+      <ServiceModal
+        service={selectedService}
+        isOpen={!!selectedService}
+        onClose={() => setSelectedService(null)}
+      />
     </section>
   );
 }

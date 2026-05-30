@@ -1,11 +1,11 @@
 import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Services from "./components/Services";
-import PackageBuilder from "./components/PackageBuilder";
-import Experience from "./components/Experience";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
+import Home from "./pages/Home";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 export default function App() {
   useEffect(() => {
@@ -13,16 +13,22 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-obsidian-deep text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary">
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <PackageBuilder />
-        <Experience />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="bg-obsidian-deep text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary">
+        <ScrollToTop />
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/terms-and-conditions"
+              element={<TermsAndConditions />}
+            />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
