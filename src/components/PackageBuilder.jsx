@@ -84,6 +84,8 @@ export default function PackageBuilder() {
       </div>
 
       {/* Mobile fixed bottom estimate bar */}
+      {
+        total > 0 && (
       <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-surface-container-low border-t border-border-highlight px-margin-mobile py-3">
         <div className="flex items-center justify-between gap-4 max-w-container-max mx-auto">
           <div>
@@ -104,6 +106,8 @@ export default function PackageBuilder() {
           </button>
         </div>
       </div>
+        )
+      }
     </section>
   )
 }
