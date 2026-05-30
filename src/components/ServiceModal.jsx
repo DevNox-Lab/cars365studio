@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 
-const WHATSAPP_NUMBER = '971500000000'
+const WHATSAPP_NUMBER = '971544541345'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Before / After Slider

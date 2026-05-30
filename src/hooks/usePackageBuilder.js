@@ -3,7 +3,7 @@ import vehicles from '../data/vehicles'
 import services from '../data/services'
 
 // ─── WhatsApp number — easy to find and replace ───────────────────────────────
-export const WHATSAPP_NUMBER = '9710544541345'
+export const WHATSAPP_NUMBER = '971544541345'
 
 export default function usePackageBuilder() {
   const [selectedVehicleId, setSelectedVehicleId] = useState('coupe')
