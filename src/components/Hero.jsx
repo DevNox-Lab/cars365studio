@@ -2,7 +2,7 @@ const TICKER_TEXT =
   "PPF \u2022 CERAMIC COATING \u2022 WRAPPING \u2022 POLISHING \u2022 WINDOW TINTING \u2022 ";
 
 export default function Hero() {
-  const tickerContent = TICKER_TEXT.repeat(8);
+  const tickerContent = TICKER_TEXT.repeat(4);
 
   return (
     <section
