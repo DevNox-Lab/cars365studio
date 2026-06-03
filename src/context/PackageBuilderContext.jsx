@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useMemo } from 'react';
+import { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import vehicles from '../data/vehicles';
 import services from '../data/services';
 
@@ -7,25 +7,54 @@ const PackageBuilderContext = createContext();
 export const WHATSAPP_NUMBER = '971544541345';
 
 export function PackageBuilderProvider({ children }) {
-  const [selectedVehicleId, setSelectedVehicleId] = useState('coupe');
-  const [selectedServiceIds, setSelectedServiceIds] = useState(new Set());
-  const [isPackageBuilderOpen, setIsPackageBuilderOpen] = useState(false);
+  // Initialize from localStorage
+  const [selectedVehicleId, setSelectedVehicleId] = useState(() => {
+    return localStorage.getItem('selectedVehicleId') || 'coupe';
+  });
+
+  const [selectedServiceIds, setSelectedServiceIds] = useState(() => {
+    const saved = localStorage.getItem('selectedServiceIds');
+    return saved ? new Set(JSON.parse(saved)) : new Set();
+  });
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   // New form fields
-  const [formData, setFormData] = useState({
-    visitDate: '',
-    visitTime: '',
-    model: '',
-    carType: '',
-    year: '',
-    color: '#000000',
-    city: 'Dubai',
-    plateType: 'Private',
-    plateLetter: '',
-    plateNumber: '',
-    userName: '',
-    userNumber: '',
+  const [formData, setFormData] = useState(() => {
+    const saved = localStorage.getItem('formData');
+    return saved
+      ? JSON.parse(saved)
+      : {
+          visitDate: '',
+          visitTime: '',
+          model: '',
+          carType: '',
+          year: '',
+          color: '#000000',
+          city: 'Dubai',
+          plateType: 'Private',
+          plateLetter: '',
+          plateNumber: '',
+          userName: '',
+          userNumber: '',
+        };
   });
+
+  // Persist to localStorage
+  useEffect(() => {
+    localStorage.setItem('selectedVehicleId', selectedVehicleId);
+  }, [selectedVehicleId]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'selectedServiceIds',
+      JSON.stringify(Array.from(selectedServiceIds))
+    );
+  }, [selectedServiceIds]);
+
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formData));
+  }, [formData]);
 
   const updateFormData = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -75,14 +104,25 @@ export function PackageBuilderProvider({ children }) {
       next.add(id);
       return next;
     });
-    setIsPackageBuilderOpen(true);
+    // Now just open the cart drawer instead of the builder popup
+    setIsCartOpen(true);
+  }
+
+  function removeService(id) {
+    setSelectedServiceIds((prev) => {
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
   }
 
   function getWhatsAppUrl(overrideName, overridePhone) {
     const vehicleLabel = currentVehicle.label;
 
     const serviceLines = selectedServicesWithPrices
-      .map((s) => `- ${s.name}: AED ${s.calculatedPrice.toLocaleString('en-AE')}`)
+      .map(
+        (s) => `- ${s.name}: AED ${s.calculatedPrice.toLocaleString('en-AE')}`
+      )
       .join('\n');
 
     const name = overrideName || formData.userName;
@@ -130,9 +170,10 @@ export function PackageBuilderProvider({ children }) {
     selectVehicle,
     toggleService,
     addService,
+    removeService,
     getWhatsAppUrl,
-    isPackageBuilderOpen,
-    setIsPackageBuilderOpen,
+    isCartOpen,
+    setIsCartOpen,
     formData,
     updateFormData,
   };
@@ -147,7 +188,9 @@ export function PackageBuilderProvider({ children }) {
 export function usePackageBuilderContext() {
   const context = useContext(PackageBuilderContext);
   if (!context) {
-    throw new Error('usePackageBuilderContext must be used within a PackageBuilderProvider');
+    throw new Error(
+      'usePackageBuilderContext must be used within a PackageBuilderProvider'
+    );
   }
   return context;
 }

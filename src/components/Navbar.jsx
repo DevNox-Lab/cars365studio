@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { usePackageBuilderContext } from '../context/PackageBuilderContext';
 
 // Hash links always use the absolute /#hash form so they work from any page.
 // On the home page this is just a same-document hash change (no reload);
@@ -15,6 +16,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const isHome = pathname === "/";
+  const { setIsCartOpen, selectedServiceIds } = usePackageBuilderContext();
 
   useEffect(() => {
     // Close mobile menu and reset scroll state on route change
@@ -79,28 +81,64 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Desktop CTA */}
-        <a
-          href={getHref('#contact')}
-          className="hidden md:inline-flex items-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full hover:bg-primary-fixed transition-colors duration-200"
-        >
-          <span className="material-symbols-outlined text-base">
-            calendar_month
-          </span>
-          BOOK SESSION
-        </a>
+        {/* Desktop Actions */}
+        <div className="hidden md:flex items-center gap-4">
+          {/* Cart Icon */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="relative flex items-center justify-center w-10 h-10 rounded-full bg-surface-container border border-border-highlight text-on-surface-variant hover:text-primary hover:border-primary transition-all duration-200 group"
+            aria-label="View cart"
+          >
+            <span className="material-symbols-outlined text-xl">
+              shopping_cart
+            </span>
+            {selectedServiceIds.size > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[9px] font-bold text-on-primary">
+                {selectedServiceIds.size}
+              </span>
+            )}
+          </button>
+
+          {/* Booking CTA */}
+          <a
+            href={getHref('#contact')}
+            className="inline-flex items-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full hover:bg-primary-fixed transition-colors duration-200"
+          >
+            <span className="material-symbols-outlined text-base">
+              calendar_month
+            </span>
+            BOOK SESSION
+          </a>
+        </div>
 
         {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex items-center justify-center w-10 h-10 rounded text-on-surface hover:text-primary transition-colors duration-200"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-        >
-          <span className="material-symbols-outlined text-2xl">
-            {menuOpen ? 'close' : 'menu'}
-          </span>
-        </button>
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="relative flex items-center justify-center w-10 h-10 rounded-full bg-surface-container border border-border-highlight text-on-surface-variant"
+            aria-label="View cart"
+          >
+            <span className="material-symbols-outlined text-xl">
+              shopping_cart
+            </span>
+            {selectedServiceIds.size > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[9px] font-bold text-on-primary">
+                {selectedServiceIds.size}
+              </span>
+            )}
+          </button>
+
+          <button
+            className="flex items-center justify-center w-10 h-10 rounded text-on-surface hover:text-primary transition-colors duration-200"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            <span className="material-symbols-outlined text-2xl">
+              {menuOpen ? 'close' : 'menu'}
+            </span>
+          </button>
+        </div>
       </nav>
 
       {/* Mobile dropdown */}

@@ -40,6 +40,33 @@ export default function BookingDetailsForm() {
         </div>
       </div>
 
+      {/* ── Customer Information ── */}
+      <div>
+        <h3 className={sectionTitleClass}>Your Details</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className={labelClass}>Full Name</label>
+            <input
+              type="text"
+              placeholder="Your name"
+              value={formData.userName}
+              onChange={(e) => updateFormData('userName', e.target.value)}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className={labelClass}>Phone Number</label>
+            <input
+              type="tel"
+              placeholder="+971 -- --- ----"
+              value={formData.userNumber}
+              onChange={(e) => updateFormData('userNumber', e.target.value)}
+              className={inputClass}
+            />
+          </div>
+        </div>
+      </div>
+
       {/* ── Vehicle Information ── */}
       <div>
         <h3 className={sectionTitleClass}>Vehicle Information</h3>
@@ -83,7 +110,9 @@ export default function BookingDetailsForm() {
                 onChange={(e) => updateFormData('color', e.target.value)}
                 className="w-12 h-12 rounded-lg cursor-pointer bg-surface-container border border-border-highlight p-1"
               />
-              <span className="font-mono text-xs text-on-surface-variant uppercase">{formData.color}</span>
+              <span className="font-mono text-xs text-on-surface-variant uppercase">
+                {formData.color}
+              </span>
             </div>
           </div>
         </div>
@@ -128,7 +157,9 @@ export default function BookingDetailsForm() {
               placeholder="e.g. A"
               maxLength={2}
               value={formData.plateLetter}
-              onChange={(e) => updateFormData('plateLetter', e.target.value.toUpperCase())}
+              onChange={(e) =>
+                updateFormData('plateLetter', e.target.value.toUpperCase())
+              }
               className={inputClass}
             />
           </div>
@@ -139,33 +170,6 @@ export default function BookingDetailsForm() {
               placeholder="e.g. 12345"
               value={formData.plateNumber}
               onChange={(e) => updateFormData('plateNumber', e.target.value)}
-              className={inputClass}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* ── Customer Information ── */}
-      <div>
-        <h3 className={sectionTitleClass}>Your Details</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className={labelClass}>Full Name</label>
-            <input
-              type="text"
-              placeholder="Your name"
-              value={formData.userName}
-              onChange={(e) => updateFormData('userName', e.target.value)}
-              className={inputClass}
-            />
-          </div>
-          <div>
-            <label className={labelClass}>Phone Number</label>
-            <input
-              type="tel"
-              placeholder="+971 -- --- ----"
-              value={formData.userNumber}
-              onChange={(e) => updateFormData('userNumber', e.target.value)}
               className={inputClass}
             />
           </div>

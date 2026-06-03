@@ -8,7 +8,7 @@ function formatAED(amount) {
   return `AED ${Math.round(amount).toLocaleString('en-AE')}`;
 }
 
-export default function PackageBuilder({ isModal = false }) {
+export default function PackageBuilder() {
   const {
     selectedVehicleId,
     selectedServiceIds,
@@ -30,9 +30,9 @@ export default function PackageBuilder({ isModal = false }) {
   }
 
   return (
-    <div
-      id={!isModal ? 'package-builder' : undefined}
-      className={`relative bg-surface overflow-hidden ${isModal ? 'py-10 px-6' : 'py-section-gap px-margin-mobile md:px-margin-desktop'}`}
+    <section
+      id="package-builder"
+      className="relative bg-surface py-section-gap px-margin-mobile md:px-margin-desktop overflow-hidden"
     >
       {/* Decorative gold gradient — top right */}
       <div
@@ -110,6 +110,6 @@ export default function PackageBuilder({ isModal = false }) {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }

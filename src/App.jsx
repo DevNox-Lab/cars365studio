@@ -5,10 +5,11 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import ServicesPage from './pages/ServicesPage';
+import BuildPackagePage from './pages/BuildPackagePage';
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { PackageBuilderProvider } from './context/PackageBuilderContext';
-import PackageBuilderModal from './components/PackageBuilderModal';
+import CartDrawer from './components/CartDrawer';
 
 export default function App() {
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<ServicesPage />} />
+              <Route path="/build-package" element={<BuildPackagePage />} />
               <Route
                 path="/terms-and-conditions"
                 element={<TermsAndConditions />}
@@ -33,7 +35,7 @@ export default function App() {
             </Routes>
           </main>
           <Footer />
-          <PackageBuilderModal />
+          <CartDrawer />
         </div>
       </PackageBuilderProvider>
     </BrowserRouter>
