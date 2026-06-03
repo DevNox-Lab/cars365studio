@@ -129,8 +129,22 @@ function ServiceCard({ service, onViewDetails }) {
 // ── Section ───────────────────────────────────────────────────────────────────
 export default function Services({ limit }) {
   const [selectedService, setSelectedService] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeTag, setActiveTag] = useState("All");
 
-  const displayedServices = limit ? services.slice(0, limit) : services;
+  // Extract unique tags
+  const allTags = ["All", ...Array.from(new Set(services.flatMap((s) => s.tags)))];
+
+  const filteredServices = services.filter((service) => {
+    const matchesSearch =
+      service.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      service.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      service.tagline.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesTag = activeTag === "All" || service.tags.includes(activeTag);
+    return matchesSearch && matchesTag;
+  });
+
+  const displayedServices = limit ? filteredServices.slice(0, limit) : filteredServices;
 
   return (
     <section
@@ -174,15 +188,74 @@ export default function Services({ limit }) {
           )}
         </div>
 
+        {/* ── Search & Filter ── */}
+        {!limit && (
+          <div className="mb-12">
+            {/* Search Bar */}
+            <div className="relative max-w-xl mb-8 group">
+              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">
+                search
+              </span>
+              <input
+                type="text"
+                placeholder="Search our arsenal..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-surface-container border border-border-highlight rounded-full py-4 pl-12 pr-6 font-body text-sm text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
+              />
+            </div>
+
+            {/* Tags Scrollable/Wrap */}
+            <div className="flex flex-wrap gap-2 md:gap-3">
+              {allTags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => setActiveTag(tag)}
+                  className={`
+                    font-mono text-[10px] md:text-xs uppercase tracking-widest px-4 md:px-6 py-2 md:py-2.5 rounded-full border transition-all duration-200
+                    ${
+                      activeTag === tag
+                        ? "bg-primary text-on-primary border-primary shadow-[0_0_15px_rgba(233,193,118,0.3)]"
+                        : "bg-transparent text-on-surface-variant border-outline-variant hover:border-primary hover:text-primary"
+                    }
+                  `}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* ── Cards grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {displayedServices.map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              onViewDetails={setSelectedService}
-            />
-          ))}
+          {displayedServices.length > 0 ? (
+            displayedServices.map((service) => (
+              <ServiceCard
+                key={service.id}
+                service={service}
+                onViewDetails={setSelectedService}
+              />
+            ))
+          ) : (
+            <div className="col-span-full py-20 text-center">
+              <span className="material-symbols-outlined text-outline text-6xl mb-4">
+                inventory_2
+              </span>
+              <p className="font-headline text-xl text-on-surface-variant uppercase tracking-widest">
+                No services match your search
+              </p>
+              <button
+                onClick={() => {
+                  setSearchQuery("");
+                  setActiveTag("All");
+                }}
+                className="mt-4 font-mono text-xs text-primary uppercase tracking-widest border-b border-primary/40 pb-0.5 hover:border-primary transition-colors"
+              >
+                Clear all filters
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
