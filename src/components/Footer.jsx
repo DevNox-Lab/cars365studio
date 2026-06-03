@@ -25,7 +25,7 @@ export default function Footer() {
   return (
     <footer className="bg-obsidian-deep border-t border-border-highlight">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* ── Brand column — spans 2 on large ── */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             {/* Logo */}
@@ -48,9 +48,9 @@ export default function Footer() {
             {/* Social icons */}
             <div className="flex items-center gap-4">
               {[
-                { icon: "photo_camera", label: "Instagram" },
-                { icon: "chat", label: "WhatsApp" },
-                { icon: "play_circle", label: "YouTube" },
+                { icon: 'photo_camera', label: 'Instagram' },
+                { icon: 'chat', label: 'WhatsApp' },
+                { icon: 'play_circle', label: 'YouTube' },
               ].map(({ icon, label }) => (
                 <a
                   key={label}
@@ -109,25 +109,25 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
+          </div>
 
-            {/* Legal sub-section */}
-            <div>
-              <p className="font-mono text-xs text-primary uppercase tracking-widest mb-6">
-                Legal
-              </p>
-              <ul className="flex flex-col gap-3">
-                {legalLinks.map(({ label, to }) => (
-                  <li key={label}>
-                    <Link
-                      to={to}
-                      className="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-200"
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Legal sub-section */}
+          <div>
+            <p className="font-mono text-xs text-primary uppercase tracking-widest mb-6">
+              Legal
+            </p>
+            <ul className="flex flex-col gap-3">
+              {legalLinks.map(({ label, to }) => (
+                <li key={label}>
+                  <Link
+                    to={to}
+                    className="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-200"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
