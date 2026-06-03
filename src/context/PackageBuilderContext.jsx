@@ -11,6 +11,26 @@ export function PackageBuilderProvider({ children }) {
   const [selectedServiceIds, setSelectedServiceIds] = useState(new Set());
   const [isPackageBuilderOpen, setIsPackageBuilderOpen] = useState(false);
 
+  // New form fields
+  const [formData, setFormData] = useState({
+    visitDate: '',
+    visitTime: '',
+    model: '',
+    carType: '',
+    year: '',
+    color: '#000000',
+    city: 'Dubai',
+    plateType: 'Private',
+    plateLetter: '',
+    plateNumber: '',
+    userName: '',
+    userNumber: '',
+  });
+
+  const updateFormData = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
   const currentVehicle = useMemo(
     () => vehicles.find((v) => v.id === selectedVehicleId) || vehicles[0],
     [selectedVehicleId]
@@ -28,7 +48,8 @@ export function PackageBuilderProvider({ children }) {
   }, [selectedServiceIds, currentMultiplier]);
 
   const total = useMemo(
-    () => selectedServicesWithPrices.reduce((sum, s) => sum + s.calculatedPrice, 0),
+    () =>
+      selectedServicesWithPrices.reduce((sum, s) => sum + s.calculatedPrice, 0),
     [selectedServicesWithPrices]
   );
 
@@ -57,19 +78,43 @@ export function PackageBuilderProvider({ children }) {
     setIsPackageBuilderOpen(true);
   }
 
-  function getWhatsAppUrl(name, phone) {
+  function getWhatsAppUrl(overrideName, overridePhone) {
     const vehicleLabel = currentVehicle.label;
 
     const serviceLines = selectedServicesWithPrices
       .map((s) => `- ${s.name}: AED ${s.calculatedPrice.toLocaleString('en-AE')}`)
       .join('\n');
 
+    const name = overrideName || formData.userName;
+    const phone = overridePhone || formData.userNumber;
+
     const message = [
-      `Hello Cars365 Studio! I'd like to book the following services for my ${vehicleLabel}:`,
+      `*NEW BOOKING FROM CARS365 STUDIO*`,
+      `--------------------------------`,
+      `*Services for ${vehicleLabel}:*`,
       serviceLines || '- (No services selected)',
       ``,
-      `Total Estimate: AED ${total.toLocaleString('en-AE')}`,
-      `Name: ${name || 'N/A'} | Phone: ${phone || 'N/A'}`,
+      `*Total Estimate:* AED ${total.toLocaleString('en-AE')}`,
+      `--------------------------------`,
+      `*Visit Details:*`,
+      `- Date: ${formData.visitDate || 'N/A'}`,
+      `- Time: ${formData.visitTime || 'N/A'}`,
+      ``,
+      `*Vehicle Info:*`,
+      `- Model: ${formData.model || 'N/A'}`,
+      `- Type: ${formData.carType || 'N/A'}`,
+      `- Year: ${formData.year || 'N/A'}`,
+      `- Color: ${formData.color || 'N/A'}`,
+      ``,
+      `*Plate Info:*`,
+      `- City: ${formData.city || 'N/A'}`,
+      `- Type: ${formData.plateType || 'N/A'}`,
+      `- Letter: ${formData.plateLetter || 'N/A'}`,
+      `- Number: ${formData.plateNumber || 'N/A'}`,
+      ``,
+      `*Customer Info:*`,
+      `- Name: ${name || 'N/A'}`,
+      `- Phone: ${phone || 'N/A'}`,
     ].join('\n');
 
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -88,6 +133,8 @@ export function PackageBuilderProvider({ children }) {
     getWhatsAppUrl,
     isPackageBuilderOpen,
     setIsPackageBuilderOpen,
+    formData,
+    updateFormData,
   };
 
   return (

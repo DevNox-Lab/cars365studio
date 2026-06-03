@@ -20,7 +20,7 @@ export default function Contact() {
     e.preventDefault()
     const url = getWhatsAppUrl(form.name, form.phone)
     // Append vehicle details and date to the URL message
-    const extra = `\nVehicle: ${form.vehicleDetails || 'N/A'}\nPreferred Date: ${form.preferredDate || 'N/A'}`
+    const extra = `\n\n*Additional Inquiry Info:*\n- Vehicle: ${form.vehicleDetails || 'N/A'}\n- Preferred Date: ${form.preferredDate || 'N/A'}`
     const finalUrl = url.replace(
       /&text=(.*)$/,
       (_, encoded) => `&text=${encodeURIComponent(decodeURIComponent(encoded) + extra)}`

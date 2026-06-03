@@ -2,6 +2,7 @@ import { usePackageBuilderContext } from '../context/PackageBuilderContext';
 import VehicleSelector from './VehicleSelector';
 import ServiceSelector from './ServiceSelector';
 import EstimateSidebar from './EstimateSidebar';
+import BookingDetailsForm from './BookingDetailsForm';
 
 function formatAED(amount) {
   return `AED ${Math.round(amount).toLocaleString('en-AE')}`;
@@ -24,7 +25,7 @@ export default function PackageBuilder({ isModal = false }) {
       alert('Please select at least one service to continue.');
       return;
     }
-    const url = getWhatsAppUrl('', '');
+    const url = getWhatsAppUrl();
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 
@@ -65,6 +66,9 @@ export default function PackageBuilder({ isModal = false }) {
               selectedVehicleId={selectedVehicleId}
               onSelectVehicle={selectVehicle}
             />
+
+            <BookingDetailsForm />
+
             <ServiceSelector
               selectedServiceIds={selectedServiceIds}
               currentMultiplier={currentMultiplier}
