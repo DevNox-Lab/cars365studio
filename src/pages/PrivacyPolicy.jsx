@@ -1,271 +1,271 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-const EFFECTIVE_DATE = "1 January 2025";
+const EFFECTIVE_DATE = '1 January 2025';
 
 // ── Section data ──────────────────────────────────────────────────────────────
 const sections = [
   {
-    num: "01",
-    title: "Introduction",
+    num: '01',
+    title: 'Introduction',
     content: [
       {
-        type: "p",
+        type: 'p',
         text: 'CARS365 STUDIO ("we", "us", "our") is committed to safeguarding the privacy and personal data of our customers, website visitors, and enquirers. This Privacy Policy explains how we collect, use, store, share, and protect your personal information when you interact with our services, visit our website, or communicate with us.',
       },
       {
-        type: "p",
-        text: "This policy is designed to comply with UAE Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data (PDPL) and, where applicable, the European Union General Data Protection Regulation (GDPR). By engaging with our services, you acknowledge that you have read and understood this policy.",
+        type: 'p',
+        text: 'This policy is designed to comply with UAE Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data (PDPL) and, where applicable, the European Union General Data Protection Regulation (GDPR). By engaging with our services, you acknowledge that you have read and understood this policy.',
       },
     ],
   },
   {
-    num: "02",
-    title: "Information We Collect",
+    num: '02',
+    title: 'Information We Collect',
     content: [
       {
-        type: "p",
-        text: "We may collect the following categories of personal information:",
+        type: 'p',
+        text: 'We may collect the following categories of personal information:',
       },
       {
-        type: "list",
+        type: 'list',
         items: [
-          "Identity Information: Full name, Emirates ID number (required for insurance documentation purposes only).",
-          "Contact Information: Mobile phone number, WhatsApp number, email address.",
-          "Vehicle Information: Make, model, year, colour, registration plate, VIN/chassis number, service history.",
-          "Transaction Data: Booking records, invoices, payment history, deposit receipts, and service completion records.",
-          "Communication Records: WhatsApp messages, emails, call logs, and in-person consultation notes.",
-          "Media: Photographs and video footage of your vehicle taken during our inspection, service process, and quality checks.",
-          "Pickup & Drop-off Information: (If you request our optional pick and drop service) your pickup address, delivery address, preferred time windows, and any special access instructions to facilitate vehicle transportation.",
-          "Technical Data: IP address, browser type, device information, and page interaction data when you visit our website.",
+          'Identity Information: Full name, Emirates ID number (required for insurance documentation purposes only).',
+          'Contact Information: Mobile phone number, WhatsApp number, email address.',
+          'Vehicle Information: Make, model, year, colour, registration plate, VIN/chassis number, service history.',
+          'Transaction Data: Booking records, invoices, payment history, deposit receipts, and service completion records.',
+          'Communication Records: WhatsApp messages, emails, call logs, and in-person consultation notes.',
+          'Media: Photographs and video footage of your vehicle taken during our inspection, service process, and quality checks.',
+          'Pickup & Drop-off Information: (If you request our optional pick and drop service) your pickup address, delivery address, preferred time windows, and any special access instructions to facilitate vehicle transportation.',
+          'Technical Data: IP address, browser type, device information, and page interaction data when you visit our website.',
         ],
       },
     ],
   },
   {
-    num: "03",
-    title: "How We Collect Your Information",
+    num: '03',
+    title: 'How We Collect Your Information',
     content: [
       {
-        type: "p",
-        text: "We collect personal information through the following channels:",
+        type: 'p',
+        text: 'We collect personal information through the following channels:',
       },
       {
-        type: "list",
+        type: 'list',
         items: [
-          "Directly from you via our website contact and booking forms.",
-          "Via WhatsApp conversations, telephone calls, or SMS messages.",
-          "In person at our studio during vehicle drop-off, inspection, and service consultations.",
-          "Automatically through website analytics tools and browser cookies when you visit our website.",
-          "From trusted third-party referral partners, with your prior consent.",
+          'Directly from you via our website contact and booking forms.',
+          'Via WhatsApp conversations, telephone calls, or SMS messages.',
+          'In person at our studio during vehicle drop-off, inspection, and service consultations.',
+          'Automatically through website analytics tools and browser cookies when you visit our website.',
+          'From trusted third-party referral partners, with your prior consent.',
         ],
       },
     ],
   },
   {
-    num: "04",
-    title: "How We Use Your Information",
+    num: '04',
+    title: 'How We Use Your Information',
     content: [
       {
-        type: "p",
-        text: "We use your personal data for the following purposes, relying on the legal bases of contractual necessity, legitimate interests, legal obligation, or your explicit consent as applicable:",
+        type: 'p',
+        text: 'We use your personal data for the following purposes, relying on the legal bases of contractual necessity, legitimate interests, legal obligation, or your explicit consent as applicable:',
       },
       {
-        type: "list",
+        type: 'list',
         items: [
-          "Booking Management: To schedule, confirm, and manage your service appointments.",
-          "Service Delivery: To provide the requested automotive protection and detailing services effectively.",
-          "Pick and Drop Coordination: To arrange vehicle pickup from your specified location and delivery back after service completion, including coordinating with drivers and providing real-time updates.",
-          "Communication: To send appointment reminders, service completion notifications, quotes, and follow-up care instructions.",
-          "Payment Processing: To raise invoices, process payments, and maintain financial records as required by UAE law.",
-          "Quality Assurance: To review service outcomes, handle complaints, and continuously improve our standards.",
-          "Warranty Administration: To register your warranty and process any warranty claims.",
-          "Marketing (with consent only): To send promotional communications about new services, seasonal offers, and studio news. You may withdraw consent at any time.",
-          "Legal Compliance: To meet our obligations under UAE commercial, tax, and regulatory laws.",
-          "Safety & Security: To maintain the security of our premises and the integrity of our operations.",
+          'Booking Management: To schedule, confirm, and manage your service appointments.',
+          'Service Delivery: To provide the requested automotive protection and detailing services effectively.',
+          'Pick and Drop Coordination: To arrange vehicle pickup from your specified location and delivery back after service completion, including coordinating with drivers and providing real-time updates.',
+          'Communication: To send appointment reminders, service completion notifications, quotes, and follow-up care instructions.',
+          'Payment Processing: To raise invoices, process payments, and maintain financial records as required by UAE law.',
+          'Quality Assurance: To review service outcomes, handle complaints, and continuously improve our standards.',
+          'Warranty Administration: To register your warranty and process any warranty claims.',
+          'Marketing (with consent only): To send promotional communications about new services, seasonal offers, and studio news. You may withdraw consent at any time.',
+          'Legal Compliance: To meet our obligations under UAE commercial, tax, and regulatory laws.',
+          'Safety & Security: To maintain the security of our premises and the integrity of our operations.',
         ],
       },
     ],
   },
   {
-    num: "05",
-    title: "WhatsApp & Direct Communications",
+    num: '05',
+    title: 'WhatsApp & Direct Communications',
     content: [
       {
-        type: "p",
-        text: "WhatsApp is our primary channel for booking communications and customer service. By providing your WhatsApp number, you consent to receiving the following types of messages from CARS365 STUDIO:",
+        type: 'p',
+        text: 'WhatsApp is our primary channel for booking communications and customer service. By providing your WhatsApp number, you consent to receiving the following types of messages from CARS365 STUDIO:',
       },
       {
-        type: "list",
+        type: 'list',
         items: [
-          "Booking confirmations and appointment reminders.",
-          "Service progress updates and completion notifications.",
-          "Quotes, invoices, and warranty documentation.",
-          "Post-service care instructions and maintenance tips.",
+          'Booking confirmations and appointment reminders.',
+          'Service progress updates and completion notifications.',
+          'Quotes, invoices, and warranty documentation.',
+          'Post-service care instructions and maintenance tips.',
         ],
       },
       {
-        type: "p",
+        type: 'p',
         text: 'Marketing messages (promotional offers, new service announcements) will only be sent with your explicit consent. You may opt out of marketing communications at any time by replying "STOP" to any marketing message, without affecting the delivery of transactional messages related to your booking.',
       },
       {
-        type: "p",
+        type: 'p',
         text: "Please note that WhatsApp communications are subject to WhatsApp's own Privacy Policy. We recommend reviewing WhatsApp's terms at www.whatsapp.com/legal/privacy-policy.",
       },
     ],
   },
   {
-    num: "06",
-    title: "Sharing Your Information",
+    num: '06',
+    title: 'Sharing Your Information',
     content: [
       {
-        type: "p",
-        text: "We do not sell, rent, or trade your personal information to third parties for their own marketing purposes. We may share your data in the following limited circumstances:",
+        type: 'p',
+        text: 'We do not sell, rent, or trade your personal information to third parties for their own marketing purposes. We may share your data in the following limited circumstances:',
       },
       {
-        type: "list",
+        type: 'list',
         items: [
-          "Service Providers: With vetted third-party vendors who assist us in delivering our services (e.g. payment processors, cloud storage providers), under strict data processing agreements.",
-          "Warranty Providers: With manufacturers and warranty administrators for the registration and processing of product warranties on your behalf.",
-          "Insurance Partners: With our insurance provider, solely for the purposes of managing liability claims.",
-          "Legal Authorities: With UAE government agencies, courts, or law enforcement where we are legally required or authorised to do so.",
-          "Business Transfers: In the event of a merger, acquisition, or sale of our business, your data may be transferred to the successor entity, with appropriate safeguards in place.",
+          'Service Providers: With vetted third-party vendors who assist us in delivering our services (e.g. payment processors, cloud storage providers), under strict data processing agreements.',
+          'Warranty Providers: With manufacturers and warranty administrators for the registration and processing of product warranties on your behalf.',
+          'Insurance Partners: With our insurance provider, solely for the purposes of managing liability claims.',
+          'Legal Authorities: With UAE government agencies, courts, or law enforcement where we are legally required or authorised to do so.',
+          'Business Transfers: In the event of a merger, acquisition, or sale of our business, your data may be transferred to the successor entity, with appropriate safeguards in place.',
         ],
       },
       {
-        type: "p",
-        text: "All third parties with whom we share data are contractually obligated to maintain confidentiality and to use your information only for the stated purpose.",
+        type: 'p',
+        text: 'All third parties with whom we share data are contractually obligated to maintain confidentiality and to use your information only for the stated purpose.',
       },
     ],
   },
   {
-    num: "07",
-    title: "Data Retention",
+    num: '07',
+    title: 'Data Retention',
     content: [
       {
-        type: "p",
-        text: "We retain your personal data only for as long as necessary to fulfil the purposes for which it was collected, subject to the following minimum retention periods required by UAE law:",
+        type: 'p',
+        text: 'We retain your personal data only for as long as necessary to fulfil the purposes for which it was collected, subject to the following minimum retention periods required by UAE law:',
       },
       {
-        type: "list",
+        type: 'list',
         items: [
-          "Customer Records & Service History: 7 years from the date of last service (UAE Commercial Transactions Law requirement).",
-          "Financial Records & VAT Invoices: 5 years from the end of the tax period (UAE Federal Tax Authority requirement).",
-          "Warranty Documentation: For the full duration of the warranty period plus 2 additional years.",
-          "Marketing Preferences & Consent Records: Until you withdraw your consent.",
-          "Website Analytics Data: 26 months from the date of collection.",
-          "CCTV / Security Footage from Premises: 90 days, after which recordings are permanently deleted.",
+          'Customer Records & Service History: 7 years from the date of last service (UAE Commercial Transactions Law requirement).',
+          'Financial Records & VAT Invoices: 5 years from the end of the tax period (UAE Federal Tax Authority requirement).',
+          'Warranty Documentation: For the full duration of the warranty period plus 2 additional years.',
+          'Marketing Preferences & Consent Records: Until you withdraw your consent.',
+          'Website Analytics Data: 26 months from the date of collection.',
+          'CCTV / Security Footage from Premises: 90 days, after which recordings are permanently deleted.',
         ],
       },
       {
-        type: "p",
-        text: "Upon expiry of the applicable retention period, your personal data will be securely deleted, destroyed, or anonymised in a manner that prevents recovery or reconstruction.",
+        type: 'p',
+        text: 'Upon expiry of the applicable retention period, your personal data will be securely deleted, destroyed, or anonymised in a manner that prevents recovery or reconstruction.',
       },
     ],
   },
   {
-    num: "08",
-    title: "Data Security",
+    num: '08',
+    title: 'Data Security',
     content: [
       {
-        type: "p",
-        text: "We take the security of your personal data seriously and implement appropriate technical and organisational measures to protect it from unauthorised access, disclosure, alteration, or destruction. Our security measures include:",
+        type: 'p',
+        text: 'We take the security of your personal data seriously and implement appropriate technical and organisational measures to protect it from unauthorised access, disclosure, alteration, or destruction. Our security measures include:',
       },
       {
-        type: "list",
+        type: 'list',
         items: [
-          "Encryption of customer records stored in our CRM and cloud systems.",
-          "Password protection and multi-factor authentication for all systems containing personal data.",
-          "Access controls ensuring that only authorised personnel can access your information on a need-to-know basis.",
-          "Regular security reviews and staff training on data protection best practices.",
-          "Secure disposal of physical documents containing personal information (cross-shredding).",
-          "SSL/TLS encryption for all data transmitted via our website.",
+          'Encryption of customer records stored in our CRM and cloud systems.',
+          'Password protection and multi-factor authentication for all systems containing personal data.',
+          'Access controls ensuring that only authorised personnel can access your information on a need-to-know basis.',
+          'Regular security reviews and staff training on data protection best practices.',
+          'Secure disposal of physical documents containing personal information (cross-shredding).',
+          'SSL/TLS encryption for all data transmitted via our website.',
         ],
       },
       {
-        type: "p",
-        text: "While we take every reasonable precaution, no data transmission over the internet is completely secure. If you have reason to believe that your personal data has been compromised, please contact us immediately at privacy@cars365studio.ae.",
+        type: 'p',
+        text: 'While we take every reasonable precaution, no data transmission over the internet is completely secure. If you have reason to believe that your personal data has been compromised, please contact us immediately at cars365studio@gamil.com.',
       },
     ],
   },
   {
-    num: "09",
-    title: "Your Rights",
+    num: '09',
+    title: 'Your Rights',
     content: [
       {
-        type: "p",
-        text: "Under UAE data protection law and, where applicable, the GDPR, you have the following rights regarding your personal data:",
+        type: 'p',
+        text: 'Under UAE data protection law and, where applicable, the GDPR, you have the following rights regarding your personal data:',
       },
       {
-        type: "list",
+        type: 'list',
         items: [
-          "Right of Access: Request a copy of the personal data we hold about you.",
-          "Right of Correction: Request that we correct any inaccurate or incomplete personal data.",
-          "Right of Deletion: Request that we delete your personal data, subject to our legal retention obligations.",
-          "Right to Restrict Processing: Request that we limit how we use your data in certain circumstances.",
-          "Right to Object: Object to the processing of your data for marketing purposes at any time.",
-          "Right to Data Portability: Receive your data in a structured, commonly used, machine-readable format.",
-          "Right to Withdraw Consent: Where processing is based on your consent, withdraw that consent at any time without affecting the lawfulness of prior processing.",
+          'Right of Access: Request a copy of the personal data we hold about you.',
+          'Right of Correction: Request that we correct any inaccurate or incomplete personal data.',
+          'Right of Deletion: Request that we delete your personal data, subject to our legal retention obligations.',
+          'Right to Restrict Processing: Request that we limit how we use your data in certain circumstances.',
+          'Right to Object: Object to the processing of your data for marketing purposes at any time.',
+          'Right to Data Portability: Receive your data in a structured, commonly used, machine-readable format.',
+          'Right to Withdraw Consent: Where processing is based on your consent, withdraw that consent at any time without affecting the lawfulness of prior processing.',
         ],
       },
       {
-        type: "p",
-        text: "To exercise any of these rights, please submit a written request to privacy@cars365studio.ae, including your full name, contact number, and a description of your request. We will acknowledge your request within 5 business days and respond in full within 30 calendar days.",
+        type: 'p',
+        text: 'To exercise any of these rights, please submit a written request to cars365studio@gamil.com, including your full name, contact number, and a description of your request. We will acknowledge your request within 5 business days and respond in full within 30 calendar days.',
       },
     ],
   },
   {
-    num: "10",
-    title: "Cookies & Website Analytics",
+    num: '10',
+    title: 'Cookies & Website Analytics',
     content: [
       {
-        type: "p",
-        text: "Our website may use cookies and similar tracking technologies to enhance your browsing experience, remember your preferences, and collect anonymised analytics data about how visitors interact with our site. Types of cookies we may use:",
+        type: 'p',
+        text: 'Our website may use cookies and similar tracking technologies to enhance your browsing experience, remember your preferences, and collect anonymised analytics data about how visitors interact with our site. Types of cookies we may use:',
       },
       {
-        type: "list",
+        type: 'list',
         items: [
-          "Essential Cookies: Required for the website to function correctly. These cannot be disabled.",
-          "Analytics Cookies: Used to understand visitor behaviour and improve our website (e.g. page views, session duration).",
-          "Preference Cookies: Used to remember your settings and personalise your experience.",
+          'Essential Cookies: Required for the website to function correctly. These cannot be disabled.',
+          'Analytics Cookies: Used to understand visitor behaviour and improve our website (e.g. page views, session duration).',
+          'Preference Cookies: Used to remember your settings and personalise your experience.',
         ],
       },
       {
-        type: "p",
-        text: "You can manage cookie preferences through your browser settings. Most browsers allow you to refuse cookies or to delete existing cookies. Please note that disabling certain cookies may affect the functionality of our website.",
+        type: 'p',
+        text: 'You can manage cookie preferences through your browser settings. Most browsers allow you to refuse cookies or to delete existing cookies. Please note that disabling certain cookies may affect the functionality of our website.',
       },
     ],
   },
   {
-    num: "11",
+    num: '11',
     title: "Children's Privacy",
     content: [
       {
-        type: "p",
-        text: "Our services are intended for individuals aged 18 and above. We do not knowingly collect, use, or store personal information from individuals under the age of 18. If you are a parent or guardian and believe your child has provided us with personal information without your consent, please contact us immediately at privacy@cars365studio.ae, and we will take prompt steps to delete that information.",
+        type: 'p',
+        text: 'Our services are intended for individuals aged 18 and above. We do not knowingly collect, use, or store personal information from individuals under the age of 18. If you are a parent or guardian and believe your child has provided us with personal information without your consent, please contact us immediately at cars365studio@gamil.com, and we will take prompt steps to delete that information.',
       },
     ],
   },
   {
-    num: "12",
-    title: "Changes to This Privacy Policy",
+    num: '12',
+    title: 'Changes to This Privacy Policy',
     content: [
       {
-        type: "p",
+        type: 'p',
         text: 'We may update this Privacy Policy from time to time to reflect changes in our business practices, legal requirements, or technology. When we make material changes, we will post the updated policy on our website with a revised "Effective Date" at the top of the page.',
       },
       {
-        type: "p",
-        text: "For significant changes that affect how we use your personal data, we will endeavour to notify existing customers via WhatsApp or email prior to the change taking effect. Your continued use of our services after any changes constitutes your acceptance of the updated Privacy Policy.",
+        type: 'p',
+        text: 'For significant changes that affect how we use your personal data, we will endeavour to notify existing customers via WhatsApp or email prior to the change taking effect. Your continued use of our services after any changes constitutes your acceptance of the updated Privacy Policy.',
       },
     ],
   },
   {
-    num: "13",
-    title: "Contact Our Privacy Officer",
+    num: '13',
+    title: 'Contact Our Privacy Officer',
     content: [
       {
-        type: "p",
-        text: "For any privacy-related enquiries, data subject requests, or complaints, please contact our designated Privacy Officer. We are committed to resolving privacy concerns promptly and transparently.",
+        type: 'p',
+        text: 'For any privacy-related enquiries, data subject requests, or complaints, please contact our designated Privacy Officer. We are committed to resolving privacy concerns promptly and transparently.',
       },
     ],
   },
@@ -286,7 +286,7 @@ function SectionBlock({ num, title, content }) {
 
       <div className="pl-8 flex flex-col gap-4">
         {content.map((block, i) => {
-          if (block.type === "p") {
+          if (block.type === 'p') {
             return (
               <p
                 key={i}
@@ -296,7 +296,7 @@ function SectionBlock({ num, title, content }) {
               </p>
             );
           }
-          if (block.type === "list") {
+          if (block.type === 'list') {
             return (
               <ul key={i} className="flex flex-col gap-2.5">
                 {block.items.map((item, j) => (
@@ -333,7 +333,7 @@ export default function PrivacyPolicy() {
         className="relative pt-24 pb-16 px-margin-mobile md:px-margin-desktop overflow-hidden"
         style={{
           background:
-            "linear-gradient(135deg, #0d0e10 0%, #121315 60%, rgba(233,193,118,0.04) 100%)",
+            'linear-gradient(135deg, #0d0e10 0%, #121315 60%, rgba(233,193,118,0.04) 100%)',
         }}
       >
         {/* Decorative gold line */}
@@ -363,7 +363,7 @@ export default function PrivacyPolicy() {
           </p>
           <h1
             className="font-headline font-bold text-on-surface uppercase leading-none mb-6"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
           >
             Privacy
             <br />
@@ -432,14 +432,14 @@ export default function PrivacyPolicy() {
                 <div className="flex flex-col gap-2">
                   {[
                     {
-                      icon: "location_on",
-                      text: "Unit 12, Al Quoz Industrial Area 3, Dubai, UAE",
+                      icon: 'location_on',
+                      text: 'Unit 12, Al Quoz Industrial Area 4, Dubai, UAE',
                     },
-                    { icon: "mail", text: "privacy@cars365studio.ae" },
-                    { icon: "phone", text: "+971 50 000 0000" },
+                    { icon: 'mail', text: 'cars365studio@gamil.com' },
+                    { icon: 'phone', text: '+971 54 454 1345' },
                     {
-                      icon: "schedule",
-                      text: "Response within 5 business days",
+                      icon: 'schedule',
+                      text: 'Response within 5 business days',
                     },
                   ].map(({ icon, text }) => (
                     <div key={text} className="flex items-center gap-3">
@@ -463,10 +463,10 @@ export default function PrivacyPolicy() {
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
-                { icon: "visibility", label: "Access" },
-                { icon: "edit", label: "Correct" },
-                { icon: "delete", label: "Delete" },
-                { icon: "block", label: "Object" },
+                { icon: 'visibility', label: 'Access' },
+                { icon: 'edit', label: 'Correct' },
+                { icon: 'delete', label: 'Delete' },
+                { icon: 'block', label: 'Object' },
               ].map(({ icon, label }) => (
                 <div
                   key={label}

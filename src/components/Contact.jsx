@@ -55,8 +55,9 @@ export default function Contact() {
                 CARS365 STUDIO
               </p>
               <p className="font-body text-on-surface-variant text-base leading-relaxed max-w-sm">
-                Dubai&apos;s leading premium car protection studio. From invisible PPF to full
-                custom wraps — we protect and transform every vehicle with obsessive precision.
+                Dubai&apos;s leading premium car protection studio. From
+                invisible PPF to full custom wraps — we protect and transform
+                every vehicle with obsessive precision.
               </p>
             </div>
 
@@ -70,7 +71,7 @@ export default function Contact() {
                   Location
                 </p>
                 <p className="font-body text-on-surface text-sm leading-relaxed">
-                  Unit 12, Al Quoz Industrial Area 3<br />
+                  Unit 12, Al Quoz Industrial Area 4<br />
                   Dubai, United Arab Emirates
                 </p>
               </div>
@@ -86,7 +87,8 @@ export default function Contact() {
                   Studio Hours
                 </p>
                 <p className="font-body text-on-surface text-sm leading-relaxed">
-                  Mon – Sat: 8:00 AM – 8:00 PM<br />
+                  Mon – Sat: 8:00 AM – 8:00 PM
+                  <br />
                   Sunday: 10:00 AM – 6:00 PM
                 </p>
               </div>
@@ -102,10 +104,10 @@ export default function Contact() {
                   Call / WhatsApp
                 </p>
                 <a
-                  href="tel:+971500000000"
+                  href="tel:+971544541345"
                   className="font-body text-on-surface text-sm hover:text-primary transition-colors duration-200"
                 >
-                  +971 50 000 0000
+                  +971 54 454 1345
                 </a>
               </div>
             </div>
@@ -113,7 +115,9 @@ export default function Contact() {
             {/* Decorative divider */}
             <div className="flex items-center gap-4">
               <div className="h-px flex-1 bg-border-highlight" />
-              <span className="material-symbols-outlined text-primary text-base">star</span>
+              <span className="material-symbols-outlined text-primary text-base">
+                star
+              </span>
               <div className="h-px flex-1 bg-border-highlight" />
             </div>
 
@@ -217,8 +221,8 @@ export default function Contact() {
 
               {/* Note */}
               <p className="font-mono text-[10px] text-outline leading-relaxed">
-                Submitting will open WhatsApp with your details pre-filled. Our team will
-                confirm your appointment within 2 hours.
+                Submitting will open WhatsApp with your details pre-filled. Our
+                team will confirm your appointment within 2 hours.
               </p>
 
               {/* Submit */}
@@ -226,7 +230,9 @@ export default function Contact() {
                 type="submit"
                 className="flex items-center justify-center gap-2 border-2 border-primary text-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-full hover:bg-primary hover:text-on-primary active:scale-95 transition-all duration-200 mt-2"
               >
-                <span className="material-symbols-outlined text-base">send</span>
+                <span className="material-symbols-outlined text-base">
+                  send
+                </span>
                 REQUEST CALLBACK
               </button>
             </form>
@@ -234,5 +240,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

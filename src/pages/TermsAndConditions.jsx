@@ -293,7 +293,6 @@ function SectionBlock({ num, title, content }) {
 export default function TermsAndConditions() {
   return (
     <div className="bg-obsidian-deep min-h-screen">
-
       {/* ── Hero banner ── */}
       <div
         className="relative pt-24 pb-16 px-margin-mobile md:px-margin-desktop overflow-hidden"
@@ -315,7 +314,9 @@ export default function TermsAndConditions() {
               <span className="material-symbols-outlined text-sm">home</span>
               Home
             </Link>
-            <span className="material-symbols-outlined text-outline text-sm">chevron_right</span>
+            <span className="material-symbols-outlined text-outline text-sm">
+              chevron_right
+            </span>
             <span className="font-mono text-xs text-primary uppercase tracking-widest">
               Terms & Conditions
             </span>
@@ -325,21 +326,29 @@ export default function TermsAndConditions() {
           <p className="font-mono text-xs text-primary uppercase tracking-[0.3em] mb-4">
             Legal Document
           </p>
-          <h1 className="font-headline font-bold text-on-surface uppercase leading-none mb-6"
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
-            Terms &amp;<br />Conditions
+          <h1
+            className="font-headline font-bold text-on-surface uppercase leading-none mb-6"
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
+          >
+            Terms &amp;
+            <br />
+            Conditions
           </h1>
 
           {/* Meta row */}
           <div className="flex flex-wrap items-center gap-6">
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-base">calendar_today</span>
+              <span className="material-symbols-outlined text-primary text-base">
+                calendar_today
+              </span>
               <span className="font-mono text-xs text-on-surface-variant uppercase tracking-widest">
                 Effective: {EFFECTIVE_DATE}
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-base">location_on</span>
+              <span className="material-symbols-outlined text-primary text-base">
+                location_on
+              </span>
               <span className="font-mono text-xs text-on-surface-variant uppercase tracking-widest">
                 Dubai, United Arab Emirates
               </span>
@@ -351,16 +360,16 @@ export default function TermsAndConditions() {
       {/* ── Content ── */}
       <div className="px-margin-mobile md:px-margin-desktop py-12">
         <div className="max-w-3xl mx-auto">
-
           {/* Intro callout */}
           <div className="rounded-xl border border-primary/30 bg-primary/5 p-5 mb-10 flex items-start gap-4">
             <span className="material-symbols-outlined text-primary text-2xl shrink-0 mt-0.5">
               info
             </span>
             <p className="font-body text-sm text-on-surface-variant leading-relaxed">
-              Please read these Terms carefully before booking any service. By proceeding
-              with a booking, you confirm that you are at least 18 years of age and legally
-              authorised to enter into this agreement on behalf of the vehicle owner.
+              Please read these Terms carefully before booking any service. By
+              proceeding with a booking, you confirm that you are at least 18
+              years of age and legally authorised to enter into this agreement
+              on behalf of the vehicle owner.
             </p>
           </div>
 
@@ -380,18 +389,25 @@ export default function TermsAndConditions() {
                   Questions About These Terms?
                 </h3>
                 <p className="font-body text-sm text-on-surface-variant leading-relaxed mb-4">
-                  If you have any questions or concerns regarding these Terms and Conditions,
-                  please contact our team directly:
+                  If you have any questions or concerns regarding these Terms
+                  and Conditions, please contact our team directly:
                 </p>
                 <div className="flex flex-col gap-2">
                   {[
-                    { icon: 'location_on', text: 'Unit 12, Al Quoz Industrial Area 3, Dubai, UAE' },
-                    { icon: 'mail', text: 'legal@cars365studio.ae' },
-                    { icon: 'phone', text: '+971 50 000 0000' },
+                    {
+                      icon: 'location_on',
+                      text: 'Unit 12, Al Quoz Industrial Area 4, Dubai, UAE',
+                    },
+                    { icon: 'mail', text: 'cars365studio@gamil.com' },
+                    { icon: 'phone', text: '+971 54 454 1345' },
                   ].map(({ icon, text }) => (
                     <div key={text} className="flex items-center gap-3">
-                      <span className="material-symbols-outlined text-primary text-base">{icon}</span>
-                      <span className="font-body text-sm text-on-surface-variant">{text}</span>
+                      <span className="material-symbols-outlined text-primary text-base">
+                        {icon}
+                      </span>
+                      <span className="font-body text-sm text-on-surface-variant">
+                        {text}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -405,7 +421,9 @@ export default function TermsAndConditions() {
               to="/"
               className="inline-flex items-center gap-2 font-mono text-xs text-on-surface-variant uppercase tracking-widest hover:text-primary transition-colors duration-200"
             >
-              <span className="material-symbols-outlined text-base">arrow_back</span>
+              <span className="material-symbols-outlined text-base">
+                arrow_back
+              </span>
               Back to Home
             </Link>
             <Link
@@ -413,11 +431,13 @@ export default function TermsAndConditions() {
               className="inline-flex items-center gap-2 font-mono text-xs text-primary uppercase tracking-widest hover:text-primary-fixed transition-colors duration-200"
             >
               Privacy Policy
-              <span className="material-symbols-outlined text-base">arrow_forward</span>
+              <span className="material-symbols-outlined text-base">
+                arrow_forward
+              </span>
             </Link>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
