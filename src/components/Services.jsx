@@ -15,6 +15,14 @@ const CARD_IMAGE = {
   tint: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80",
   polish:
     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+  "interior-detailing": "https://images.unsplash.com/photo-1599256621730-535171e28e50?w=800&q=80",
+  "seat-upholstery": "https://images.unsplash.com/photo-1517524008410-b443369611f1?w=800&q=80",
+  "bodykit-full": "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?w=800&q=80",
+  "carbon-hood": "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&q=80",
+  "ecu-remap": "https://images.unsplash.com/photo-1552338804-c5fea6b6f8b1?w=800&q=80",
+  "exhaust-catback": "https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=800&q=80",
+  "ambient-lighting": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80",
+  "custom-rims": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80",
 };
 
 // ── Service card ─────────────────────────────────────────────────────────────
