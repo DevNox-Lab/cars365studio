@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
-import PackageBuilder from '../components/PackageBuilder';
 import Experience from '../components/Experience';
 import Contact from '../components/Contact';
 
@@ -26,8 +25,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Services />
-      <PackageBuilder />
+      <Services limit={6} />
       <Experience />
       <Contact />
     </>

@@ -5,9 +5,9 @@ import { Link, useLocation } from "react-router-dom";
 // On the home page this is just a same-document hash change (no reload);
 // from a sub-page React Router navigates to / and the browser jumps to the anchor.
 const navLinks = [
-  { label: "Services", hash: "#services" },
-  { label: "Experience", hash: "#experience" },
-  { label: "Contact", hash: "#contact" },
+  { label: 'Services', to: '/services' },
+  { label: 'Experience', hash: '#experience' },
+  { label: 'Contact', hash: '#contact' },
 ];
 
 export default function Navbar() {
@@ -35,8 +35,8 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled || !isHome
-          ? "bg-surface-glass backdrop-blur-md border-b border-border-highlight"
-          : "bg-transparent"
+          ? 'bg-surface-glass backdrop-blur-md border-b border-border-highlight'
+          : 'bg-transparent'
       }`}
     >
       <nav className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between h-16">
@@ -58,20 +58,30 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.label}>
-              <a
-                href={getHref(link.hash)}
-                onClick={() => setMenuOpen(false)}
-                className="font-mono text-xs uppercase tracking-widest transition-colors duration-200 pb-1 text-on-surface-variant hover:text-primary"
-              >
-                {link.label}
-              </a>
+              {link.to ? (
+                <Link
+                  to={link.to}
+                  onClick={() => setMenuOpen(false)}
+                  className="font-mono text-xs uppercase tracking-widest transition-colors duration-200 pb-1 text-on-surface-variant hover:text-primary"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  href={getHref(link.hash)}
+                  onClick={() => setMenuOpen(false)}
+                  className="font-mono text-xs uppercase tracking-widest transition-colors duration-200 pb-1 text-on-surface-variant hover:text-primary"
+                >
+                  {link.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>
 
         {/* Desktop CTA */}
         <a
-          href={getHref("#contact")}
+          href={getHref('#contact')}
           className="hidden md:inline-flex items-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full hover:bg-primary-fixed transition-colors duration-200"
         >
           <span className="material-symbols-outlined text-base">
@@ -84,11 +94,11 @@ export default function Navbar() {
         <button
           className="md:hidden flex items-center justify-center w-10 h-10 rounded text-on-surface hover:text-primary transition-colors duration-200"
           onClick={() => setMenuOpen((v) => !v)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
         >
           <span className="material-symbols-outlined text-2xl">
-            {menuOpen ? "close" : "menu"}
+            {menuOpen ? 'close' : 'menu'}
           </span>
         </button>
       </nav>
@@ -96,31 +106,44 @@ export default function Navbar() {
       {/* Mobile dropdown */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="bg-surface-glass backdrop-blur-md border-b border-border-highlight px-margin-mobile py-4 flex flex-col gap-1">
+        <ul className="px-margin-mobile py-6 flex flex-col gap-4 bg-surface-container border-t border-border-highlight shadow-xl">
           {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={getHref(link.hash)}
-              onClick={() => setMenuOpen(false)}
-              className="font-mono text-sm uppercase tracking-widest py-3 border-b border-border-highlight last:border-none text-on-surface-variant hover:text-primary transition-colors duration-200"
-            >
-              {link.label}
-            </a>
+            <li key={link.label}>
+              {link.to ? (
+                <Link
+                  to={link.to}
+                  onClick={() => setMenuOpen(false)}
+                  className="block font-mono text-sm uppercase tracking-[0.2em] text-on-surface-variant hover:text-primary transition-colors py-2"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  href={getHref(link.hash)}
+                  onClick={() => setMenuOpen(false)}
+                  className="block font-mono text-sm uppercase tracking-[0.2em] text-on-surface-variant hover:text-primary transition-colors py-2"
+                >
+                  {link.label}
+                </a>
+              )}
+            </li>
           ))}
-          <a
-            href={getHref("#contact")}
-            onClick={() => setMenuOpen(false)}
-            className="inline-flex items-center justify-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-full mt-3 hover:bg-primary-fixed transition-colors duration-200"
-          >
-            <span className="material-symbols-outlined text-base">
-              calendar_month
-            </span>
-            BOOK SESSION
-          </a>
-        </div>
+          <li className="pt-2">
+            <a
+              href={getHref('#contact')}
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center justify-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-4 rounded-full"
+            >
+              <span className="material-symbols-outlined text-base">
+                calendar_month
+              </span>
+              BOOK SESSION
+            </a>
+          </li>
+        </ul>
       </div>
     </header>
   );

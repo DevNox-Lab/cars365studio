@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { usePackageBuilderContext } from '../context/PackageBuilderContext';
 
 const WHATSAPP_NUMBER = '971544541345'
 
@@ -198,6 +199,12 @@ export default function ServiceModal({ service, isOpen, onClose }) {
   const [visible, setVisible] = useState(false)
   const panelRef = useRef(null)
   const closeButtonRef = useRef(null)
+  const { addService } = usePackageBuilderContext();
+
+  function handleAddToCart() {
+    addService(service.id);
+    onClose();
+  }
 
   // ── Body scroll lock + entrance animation trigger ──────────────────────────
   useEffect(() => {
@@ -283,7 +290,10 @@ export default function ServiceModal({ service, isOpen, onClose }) {
         onClick={onClose}
       >
         {/* Backdrop */}
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" aria-hidden="true" />
+        <div
+          className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+          aria-hidden="true"
+        />
 
         {/* ── Modal panel ── */}
         <div
@@ -308,7 +318,10 @@ export default function ServiceModal({ service, isOpen, onClose }) {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Mobile drag pill */}
-          <div className="md:hidden flex justify-center pt-3 pb-1 shrink-0" aria-hidden="true">
+          <div
+            className="md:hidden flex justify-center pt-3 pb-1 shrink-0"
+            aria-hidden="true"
+          >
             <div className="w-10 h-1 rounded-full bg-outline-variant" />
           </div>
 
@@ -327,19 +340,24 @@ export default function ServiceModal({ service, isOpen, onClose }) {
               focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none
             "
           >
-            <span className="material-symbols-outlined text-xl" style={{ fontSize: '20px' }}>
+            <span
+              className="material-symbols-outlined text-xl"
+              style={{ fontSize: '20px' }}
+            >
               close
             </span>
           </button>
 
           {/* ── LEFT COLUMN: Before/After slider ── */}
           <div className="md:w-5/12 shrink-0 flex flex-col">
-            <BeforeAfterSlider gallery={service.gallery} serviceId={service.id} />
+            <BeforeAfterSlider
+              gallery={service.gallery}
+              serviceId={service.id}
+            />
           </div>
 
           {/* ── RIGHT COLUMN: Content (scrollable) ── */}
           <div className="flex-1 overflow-y-auto p-5 md:p-7 flex flex-col gap-5">
-
             {/* Header */}
             <div className="pr-8">
               <p className="font-mono text-[10px] text-primary uppercase tracking-[0.3em] mb-2">
@@ -418,7 +436,30 @@ export default function ServiceModal({ service, isOpen, onClose }) {
             </div>
 
             {/* CTA */}
-            <div className="mt-auto pt-1">
+            <div className="mt-auto pt-1 flex flex-col gap-3">
+              <button
+                type="button"
+                onClick={handleAddToCart}
+                className="
+                  flex items-center justify-center gap-2
+                  w-full
+                  bg-on-surface text-surface
+                  font-mono text-xs font-bold uppercase tracking-widest
+                  px-6 py-3.5 rounded-full
+                  hover:bg-on-surface-variant
+                  transition-all duration-200
+                  focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-on-surface focus-visible:ring-offset-surface-container-low focus-visible:outline-none
+                "
+              >
+                <span
+                  className="material-symbols-outlined text-base"
+                  style={{ fontSize: '18px' }}
+                >
+                  add_shopping_cart
+                </span>
+                Add to Cart
+              </button>
+
               <a
                 href={whatsAppUrl}
                 target="_blank"
@@ -435,19 +476,24 @@ export default function ServiceModal({ service, isOpen, onClose }) {
                   glow-effect-hover
                 "
               >
-                <span className="material-symbols-outlined text-base" style={{ fontSize: '18px' }}>
+                <span
+                  className="material-symbols-outlined text-base"
+                  style={{ fontSize: '18px' }}
+                >
                   chat
                 </span>
                 Book This Service
               </a>
-              <p className="font-body text-[11px] italic text-on-surface-variant text-center mt-3">
+              <p className="font-body text-[11px] italic text-on-surface-variant text-center mt-1">
                 We&apos;ll get back to you within 1 hour
               </p>
             </div>
-
-          </div>{/* end right column */}
-        </div>{/* end panel */}
-      </div>{/* end overlay */}
+          </div>
+          {/* end right column */}
+        </div>
+        {/* end panel */}
+      </div>
+      {/* end overlay */}
     </>
-  )
+  );
 }

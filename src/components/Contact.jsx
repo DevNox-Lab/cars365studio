@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import usePackageBuilder from '../hooks/usePackageBuilder'
+import { usePackageBuilderContext } from '../context/PackageBuilderContext'
 
 export default function Contact() {
-  const { getWhatsAppUrl } = usePackageBuilder()
+  const { getWhatsAppUrl } = usePackageBuilderContext()
 
   const [form, setForm] = useState({
     name: '',

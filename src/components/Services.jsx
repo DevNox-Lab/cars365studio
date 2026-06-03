@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 import services from "../data/services";
 import ServiceModal from "./ServiceModal";
 
@@ -118,8 +119,10 @@ function ServiceCard({ service, onViewDetails }) {
 }
 
 // ── Section ───────────────────────────────────────────────────────────────────
-export default function Services() {
+export default function Services({ limit }) {
   const [selectedService, setSelectedService] = useState(null);
+
+  const displayedServices = limit ? services.slice(0, limit) : services;
 
   return (
     <section
@@ -145,25 +148,27 @@ export default function Services() {
           </div>
 
           {/* Right — CTA */}
-          <a
-            href="#package-builder"
-            className="group inline-flex items-center gap-2 font-mono text-xs text-primary uppercase
-                       tracking-widest border-b border-primary/40 pb-0.5
-                       hover:border-primary transition-colors duration-200 shrink-0"
-          >
-            VIEW ALL SERVICES
-            <span
-              className="material-symbols-outlined text-base transition-transform duration-200
-                         group-hover:translate-x-1"
+          {limit && (
+            <Link
+              to="/services"
+              className="group inline-flex items-center gap-2 font-mono text-xs text-primary uppercase
+                         tracking-widest border-b border-primary/40 pb-0.5
+                         hover:border-primary transition-colors duration-200 shrink-0"
             >
-              arrow_forward
-            </span>
-          </a>
+              VIEW ALL SERVICES
+              <span
+                className="material-symbols-outlined text-base transition-transform duration-200
+                           group-hover:translate-x-1"
+              >
+                arrow_forward
+              </span>
+            </Link>
+          )}
         </div>
 
         {/* ── Cards grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {services.map((service) => (
+          {displayedServices.map((service) => (
             <ServiceCard
               key={service.id}
               service={service}
