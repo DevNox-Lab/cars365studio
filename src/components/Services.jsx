@@ -1,33 +1,43 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import services from "../data/services";
-import ServiceModal from "./ServiceModal";
+import services from '../data/services';
+import ServiceModal from './ServiceModal';
 
 // ── Per-service hero images (visual-only, not stored in data layer) ───────────
 const CARD_IMAGE = {
-  "front-ppf":
-    "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80",
-  "full-ppf":
-    "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80",
+  'front-ppf':
+    'https://images.pexels.com/photos/20051468/pexels-photo-20051468.jpeg',
+  'full-ppf':
+    'https://images.pexels.com/photos/31154217/pexels-photo-31154217.jpeg',
   ceramic:
-    "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80",
-  wrap: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
-  tint: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80",
+    'https://tedcardetailing.com/wp-content/uploads/2024/09/Untitled-design-33-1536x1024.jpg',
+  wrap: 'https://images.pexels.com/photos/25213457/pexels-photo-25213457.jpeg',
+  tint: 'https://images.pexels.com/photos/20522462/pexels-photo-20522462.jpeg',
   polish:
-    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-  "interior-detailing": "https://images.unsplash.com/photo-1599256621730-535171e28e50?w=800&q=80",
-  "seat-upholstery": "https://images.unsplash.com/photo-1517524008410-b443369611f1?w=800&q=80",
-  "bodykit-full": "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?w=800&q=80",
-  "carbon-hood": "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&q=80",
-  "ecu-remap": "https://images.unsplash.com/photo-1552338804-c5fea6b6f8b1?w=800&q=80",
-  "exhaust-catback": "https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=800&q=80",
-  "ambient-lighting": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80",
-  "custom-rims": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80",
+    'https://images.unsplash.com/photo-1708805282695-ef186db20192?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'interior-detailing':
+    'https://plus.unsplash.com/premium_photo-1661909961389-7d501737abde?q=80&w=1159&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'seat-upholstery':
+    'https://images.pexels.com/photos/15526366/pexels-photo-15526366.jpeg',
+  'dashboardWrapping':
+    'https://images.pexels.com/photos/193999/pexels-photo-193999.jpeg',
+  'bodykit-full':
+    'https://images.unsplash.com/photo-1542281286-9e0a16bb7366?w=800&q=80',
+  'carbon-hood':
+    'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&q=80',
+  'ecu-remap':
+    'https://images.unsplash.com/photo-1552338804-c5fea6b6f8b1?w=800&q=80',
+  'exhaust-catback':
+    'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=800&q=80',
+  'ambient-lighting':
+    'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80',
+  'custom-rims':
+    'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80',
 };
 
 // ── Service card ─────────────────────────────────────────────────────────────
 function ServiceCard({ service, onViewDetails }) {
-  const image = CARD_IMAGE[service.id] || CARD_IMAGE["front-ppf"];
+  const image = CARD_IMAGE[service.id] || CARD_IMAGE['front-ppf'];
 
   return (
     <article className="group relative overflow-hidden rounded-xl aspect-[1/1] select-none">
@@ -129,22 +139,27 @@ function ServiceCard({ service, onViewDetails }) {
 // ── Section ───────────────────────────────────────────────────────────────────
 export default function Services({ limit }) {
   const [selectedService, setSelectedService] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeTag, setActiveTag] = useState("All");
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTag, setActiveTag] = useState('All');
 
   // Extract unique tags
-  const allTags = ["All", ...Array.from(new Set(services.flatMap((s) => s.tags)))];
+  const allTags = [
+    'All',
+    ...Array.from(new Set(services.flatMap((s) => s.tags))),
+  ];
 
   const filteredServices = services.filter((service) => {
     const matchesSearch =
       service.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       service.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       service.tagline.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesTag = activeTag === "All" || service.tags.includes(activeTag);
+    const matchesTag = activeTag === 'All' || service.tags.includes(activeTag);
     return matchesSearch && matchesTag;
   });
 
-  const displayedServices = limit ? filteredServices.slice(0, limit) : filteredServices;
+  const displayedServices = limit
+    ? filteredServices.slice(0, limit)
+    : filteredServices;
 
   return (
     <section
@@ -215,8 +230,8 @@ export default function Services({ limit }) {
                     font-mono text-[10px] md:text-xs uppercase tracking-widest px-4 md:px-6 py-2 md:py-2.5 rounded-full border transition-all duration-200
                     ${
                       activeTag === tag
-                        ? "bg-primary text-on-primary border-primary shadow-[0_0_15px_rgba(233,193,118,0.3)]"
-                        : "bg-transparent text-on-surface-variant border-outline-variant hover:border-primary hover:text-primary"
+                        ? 'bg-primary text-on-primary border-primary shadow-[0_0_15px_rgba(233,193,118,0.3)]'
+                        : 'bg-transparent text-on-surface-variant border-outline-variant hover:border-primary hover:text-primary'
                     }
                   `}
                 >
@@ -247,8 +262,8 @@ export default function Services({ limit }) {
               </p>
               <button
                 onClick={() => {
-                  setSearchQuery("");
-                  setActiveTag("All");
+                  setSearchQuery('');
+                  setActiveTag('All');
                 }}
                 className="mt-4 font-mono text-xs text-primary uppercase tracking-widest border-b border-primary/40 pb-0.5 hover:border-primary transition-colors"
               >
