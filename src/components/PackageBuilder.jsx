@@ -61,7 +61,7 @@ export default function PackageBuilder() {
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left — steps (8/12) */}
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8 space-y-12">
             <VehicleSelector
               selectedVehicleId={selectedVehicleId}
               onSelectVehicle={selectVehicle}
