@@ -44,24 +44,24 @@ export default function PackageBuilder() {
       />
 
       <div className="max-w-container-max mx-auto relative z-10">
-        {/* Section header */}
-        <div className="mb-12">
-          <p className="font-mono text-xs text-primary uppercase tracking-[0.3em] mb-4">
-            Personalise
-          </p>
-          <h2 className="font-headline font-bold text-5xl md:text-6xl text-on-surface uppercase tracking-wide mb-4">
-            BUILD YOUR PACKAGE
-          </h2>
-          <p className="font-body text-on-surface-variant text-sm max-w-xl leading-relaxed">
-            Select your vehicle type and the services you want. Prices update
-            live based on your vehicle class.
-          </p>
-        </div>
-
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left — steps (8/12) */}
-          <div className="lg:col-span-8 space-y-12">
+          {/* Left — steps (8/12) - scrollable on desktop */}
+          <div className="lg:col-span-8 space-y-12 lg:h-[100vh] lg:overflow-y-auto no-scrollbar pb-12">
+            {/* Section header */}
+            <div className="mb-12">
+              <p className="font-mono text-xs text-primary uppercase tracking-[0.3em] mb-4">
+                Personalise
+              </p>
+              <h2 className="font-headline font-bold text-5xl md:text-6xl text-on-surface uppercase tracking-wide mb-4">
+                BUILD YOUR PACKAGE
+              </h2>
+              <p className="font-body text-on-surface-variant text-sm max-w-xl leading-relaxed">
+                Select your vehicle type and the services you want. Prices
+                update live based on your vehicle class.
+              </p>
+            </div>
+
             <VehicleSelector
               selectedVehicleId={selectedVehicleId}
               onSelectVehicle={selectVehicle}
