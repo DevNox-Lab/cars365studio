@@ -203,7 +203,7 @@ export const services = [
   {
     id: 'interior-detailing',
     name: 'Interior Detailing',
-    category: 'INTERIOR',
+    category: 'NO. 7 / INTERIOR',
     description:
       'Professional interior detailing with deep cleaning, steam treatment, and surface conditioning.',
     tagline: 'Factory-fresh cabin. Every corner refreshed.',
@@ -225,7 +225,7 @@ export const services = [
   {
     id: 'seat-upholstery',
     name: 'Seat Upholstery Replacement',
-    category: 'INTERIOR',
+    category: 'NO. 8 / INTERIOR',
     description:
       'Premium leather or fabric re-trimming and upholstery for vehicle seats.',
     tagline: 'Luxury you can feel. Custom tailored.',
@@ -247,7 +247,7 @@ export const services = [
   {
     id: 'dashboard-wrapping',
     name: 'Dashboard Wrapping',
-    category: 'INTERIOR',
+    category: 'NO. 9 / INTERIOR',
     description:
       'Custom wrapping of dashboard using leather, Alcantara, or vinyl for an enhanced interior finish.',
     tagline: 'Elevate your cockpit’s aesthetic.',
@@ -266,7 +266,7 @@ export const services = [
   {
     id: 'bodykit-full',
     name: 'Full Body Kit Installation',
-    category: 'BODY KITS',
+    category: 'NO. 10 / BODY KITS',
     description:
       'Professional installation and painting of complete aerodynamic body kits.',
     tagline: 'Aggressive stance. Aerodynamic design.',
@@ -285,7 +285,7 @@ export const services = [
   {
     id: 'carbon-hood',
     name: 'Carbon Fiber Hood Installation',
-    category: 'CARBON FIBER',
+    category: 'NO. 11 / CARBON FIBER',
     description:
       'Installation of lightweight, high-strength carbon fiber hood replacement.',
     tagline: 'Weight reduction. Racing DNA.',
@@ -308,7 +308,7 @@ export const services = [
   {
     id: 'facelift-complete',
     name: 'Complete Facelift Conversion',
-    category: 'CONVERSIONS',
+    category: 'NO. 12 / CONVERSIONS',
     description:
       'Exterior upgrade to refresh your vehicle with a newer model-year design language.',
     tagline: 'Modernize your machine.',
@@ -331,7 +331,7 @@ export const services = [
   {
     id: 'ecu-remap',
     name: 'ECU Remapping',
-    category: 'TUNING',
+    category: 'NO. 13 / TUNING',
     description:
       'Engine control unit software optimization for improved power and torque output.',
     tagline: "Unleash your engine's true potential.",
@@ -350,7 +350,7 @@ export const services = [
   {
     id: 'exhaust-catback',
     name: 'Cat-Back Exhaust Installation',
-    category: 'EXHAUST',
+    category: 'NO. 14 / EXHAUST',
     description:
       'Performance cat-back exhaust system designed for improved sound and exhaust flow.',
     tagline: 'Hear the power. Feel the flow.',
@@ -373,7 +373,7 @@ export const services = [
   {
     id: 'accessory-roof-rack',
     name: 'Roof Rack Installation',
-    category: 'ACCESSORIES',
+    category: 'NO. 15 / ACCESSORIES',
     description:
       'Installation of secure and durable roof rack system for additional cargo capacity.',
     tagline: 'Ready for any adventure.',
@@ -392,7 +392,7 @@ export const services = [
   {
     id: 'performance-parts',
     name: 'Performance Parts Installation',
-    category: 'MODIFICATIONS',
+    category: 'NO. 16 / MODIFICATIONS',
     description:
       'Installation of performance components including intakes, intercoolers, and suspension systems.',
     tagline: 'Built for speed. Engineered for precision.',
@@ -411,7 +411,7 @@ export const services = [
   {
     id: 'ambient-lighting',
     name: 'Ambient Lighting Installation',
-    category: 'LIGHTING',
+    category: 'NO. 17 / LIGHTING',
     description:
       'Multi-color LED ambient lighting system for an enhanced interior cabin atmosphere.',
     tagline: 'Set the mood. Change the vibe.',
@@ -433,7 +433,7 @@ export const services = [
   {
     id: 'star-roof',
     name: 'Starlight Headliner Installation',
-    category: 'LIGHTING',
+    category: 'NO. 18 / LIGHTING',
     description:
       'Custom starlight headliner system with fiber optic lighting for a premium cabin effect.',
     tagline: 'Bring the night sky inside.',
@@ -452,30 +452,12 @@ export const services = [
     ],
     gallery: [],
   },
-  // ── 10. Exterior Lighting Services ─────────────────────────────────────────
-  {
-    id: 'led-headlight-upgrade',
-    name: 'LED Headlight Upgrade',
-    category: 'LIGHTING',
-    description:
-      'High-output LED headlight conversion for improved visibility and modern styling.',
-    tagline: 'Bright eyes. Clear path.',
-    basePrice: 1200,
-    tags: ['HIGH LUMEN', 'PLUG & PLAY', 'MODERN DESIGN'],
-    icon: 'flashlight_on',
-    includes: ['Bulb replacement', 'Coding (if required)', 'Beam alignment'],
-    benefits: [
-      'Improved nighttime visibility',
-      'Modern exterior appearance',
-      'Reduced power consumption',
-    ],
-    gallery: [],
-  },
+
   // ── 11. Rim & Wheel Services ───────────────────────────────────────────────
   {
     id: 'custom-rims',
     name: 'Custom Wheel Installation',
-    category: 'WHEELS',
+    category: 'NO. 19 / WHEELS',
     description:
       'Installation of aftermarket alloy or forged wheels for improved styling and fitment.',
     tagline: 'The ultimate wheel upgrade.',
@@ -494,7 +476,7 @@ export const services = [
   {
     id: 'custom-consultation',
     name: 'Vehicle Customization Consultation',
-    category: 'CONSULTATION',
+    category: 'NO. 20 / CONSULTATION',
     description:
       'One-on-one consultation session to plan your custom vehicle build.',
     tagline: 'Your vision. Our expertise.',
@@ -516,7 +498,7 @@ export const services = [
   {
     id: 'leather-seat-install',
     name: 'Leather Seat Installation',
-    category: 'INTERIOR',
+    category: 'NO. 21 / INTERIOR',
     description:
       'Installation of premium leather seat upholstery for enhanced interior comfort and luxury.',
     tagline: 'Unmatched comfort and style.',
@@ -538,7 +520,7 @@ export const services = [
   {
     id: 'roof-lining-replacement',
     name: 'Roof Lining Replacement',
-    category: 'INTERIOR',
+    category: 'NO. 22 / INTERIOR',
     description:
       'Replacement of worn or damaged roof lining with high-quality interior materials.',
     tagline: 'A fresh look from above.',
@@ -560,7 +542,7 @@ export const services = [
   {
     id: 'steering-wheel-wrap',
     name: 'Steering Wheel Wrap',
-    category: 'INTERIOR',
+    category: 'NO. 23 / INTERIOR',
     description:
       'Custom leather or Alcantara wrapping for steering wheel enhancement.',
     tagline: 'Better grip. Better feel.',
@@ -582,7 +564,7 @@ export const services = [
   {
     id: 'door-panel-custom',
     name: 'Door Panel Customization',
-    category: 'INTERIOR',
+    category: 'NO. 24 / INTERIOR',
     description:
       'Custom door panel finishing to match your interior design theme.',
     tagline: 'Consistency in every detail.',
@@ -600,7 +582,7 @@ export const services = [
   {
     id: 'wide-body-kit',
     name: 'Wide Body Kit Installation',
-    category: 'BODY KITS',
+    category: 'NO. 25 / BODY KITS',
     description:
       'Installation of wide body fender extensions and components for an aggressive exterior stance.',
     tagline: 'The widest stance on the road.',
@@ -622,7 +604,7 @@ export const services = [
   {
     id: 'carbon-interior-trim',
     name: 'Carbon Fiber Interior Trim',
-    category: 'CARBON FIBER',
+    category: 'NO. 26 / CARBON FIBER',
     description:
       'Replacement of factory interior trims with real carbon fiber components.',
     tagline: 'Race-inspired cockpit.',
@@ -644,7 +626,7 @@ export const services = [
   {
     id: 'headlight-upgrade',
     name: 'Headlight Upgrade / Conversion',
-    category: 'LIGHTING',
+    category: 'NO. 27 / LIGHTING',
     description:
       'Upgrade or conversion to modern LED or HID headlight systems for improved visibility and styling.',
     tagline: 'See and be seen.',
@@ -666,7 +648,7 @@ export const services = [
   {
     id: 'wheel-alignment',
     name: 'Wheel Alignment & Balancing',
-    category: 'WHEELS',
+    category: 'NO. 28 / WHEELS',
     description:
       'Precision wheel alignment and dynamic balancing for improved driving stability and comfort.',
     tagline: 'Perfectly balanced. Perfectly aligned.',
