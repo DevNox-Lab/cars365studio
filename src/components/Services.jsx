@@ -19,20 +19,30 @@ const CARD_IMAGE = {
     'https://plus.unsplash.com/premium_photo-1661909961389-7d501737abde?q=80&w=1159&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   'seat-upholstery':
     'https://images.pexels.com/photos/15526366/pexels-photo-15526366.jpeg',
-  'dashboardWrapping':
+  dashboardWrapping:
     'https://images.pexels.com/photos/193999/pexels-photo-193999.jpeg',
   'bodykit-full':
-    'https://images.unsplash.com/photo-1542281286-9e0a16bb7366?w=800&q=80',
+    'https://images.unsplash.com/photo-1625430854348-2391ff8f7053?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   'carbon-hood':
-    'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&q=80',
+    'https://images.unsplash.com/photo-1774317348829-45f3c9a4b45f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  // 'https://images.unsplash.com/photo-1692089321052-d071866a300d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  // 'https://images.unsplash.com/photo-1692089566248-fe87474129a0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  // 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&q=80',
   'ecu-remap':
-    'https://images.unsplash.com/photo-1552338804-c5fea6b6f8b1?w=800&q=80',
+    // 'https://images.unsplash.com/photo-1727893380169-4dda123e19f7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://plus.unsplash.com/premium_photo-1682126117799-064f3f7a034e?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  // 'https://images.unsplash.com/photo-1659576048262-940d9c1c84fe?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   'exhaust-catback':
     'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=800&q=80',
   'ambient-lighting':
-    'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80',
+    'https://images.unsplash.com/photo-1615135902020-f499dc74b655?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  // 'https://images.unsplash.com/photo-1778938370787-427b11040c5d?q=80&w=1168&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  // 'https://images.unsplash.com/photo-1772555429170-be39986f4d99?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  // 'https://images.unsplash.com/photo-1661220715153-95724e5f3500?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  // 'https://images.unsplash.com/photo-1677137855528-81d64da55fe1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   'custom-rims':
-    'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80',
+    // 'https://images.unsplash.com/photo-1610210629765-1317a26cbc14?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1762857362077-6efc4654e737?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',  
 };
 
 // ── Service card ─────────────────────────────────────────────────────────────
