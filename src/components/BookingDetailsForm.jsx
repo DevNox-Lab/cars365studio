@@ -108,7 +108,7 @@ export default function BookingDetailsForm() {
                 type="color"
                 value={formData.color}
                 onChange={(e) => updateFormData('color', e.target.value)}
-                className="w-12 h-12 rounded-lg cursor-pointer bg-surface-container border border-border-highlight p-1"
+                className="w-[46px] h-[46px] rounded-xl cursor-pointer bg-surface-container border border-border-highlight p-1"
               />
               <span className="font-mono text-xs text-on-surface-variant uppercase">
                 {formData.color}
