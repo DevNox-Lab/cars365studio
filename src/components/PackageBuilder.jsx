@@ -1,23 +1,44 @@
-import { usePackageBuilderContext } from '../context/PackageBuilderContext';
+import { useState, useEffect } from 'react';
+import { usePackageBuilderContext, WHATSAPP_NUMBER } from '../context/PackageBuilderContext';
 import CarSelector from './CarSelector';
 import ServiceSelector from './ServiceSelector';
 import EstimateSidebar from './EstimateSidebar';
 import BookingDetailsForm from './BookingDetailsForm';
+import { createOrderAPI } from '../utils/api';
 
 function formatAED(amount) {
   return `AED ${Math.round(amount).toLocaleString('en-AE')}`;
 }
 
 export default function PackageBuilder() {
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [packageFormData, setPackageFormData] = useState({
+    visitDate: '',
+    visitTime: '',
+    userName: '',
+    userNumber: '',
+    model: '',
+    carType: '',
+    year: '',
+    color: '#000000',
+    city: 'Dubai',
+    plateType: 'Private',
+    plateLetter: '',
+    plateNumber: '',
+  });
+  
   const {
     selectedServiceIds,
     selectedServicesWithPrices,
     currentCar,
     total,
-    getWhatsAppUrl,
   } = usePackageBuilderContext();
 
-  function handleProceed() {
+  function handlePackageFormChange(field, value) {
+    setPackageFormData((prev) => ({ ...prev, [field]: value }));
+  }
+
+  async function handleProceed() {
     if (!currentCar) {
       alert('Please select a car first to continue.');
       return;
@@ -26,9 +47,75 @@ export default function PackageBuilder() {
       alert('Please select at least one service to continue.');
       return;
     }
-    const url = getWhatsAppUrl();
-    window.open(url, '_blank', 'noopener,noreferrer');
+    if (!packageFormData.userName || !packageFormData.userNumber) {
+      alert('Please fill in your name and phone number to continue.');
+      return;
+    }
+
+    setIsProcessing(true);
+    try {
+      // Prepare order data with all form details
+      const orderData = {
+        customerName: packageFormData.userName,
+        phoneNumber: packageFormData.userNumber,
+        visitDate: packageFormData.visitDate,
+        visitTime: packageFormData.visitTime,
+        vehicleInfo: {
+          model: currentCar.model,
+          carType: currentCar.carType,
+          yearOfManufacture: packageFormData.year ? parseInt(packageFormData.year) : null,
+          color: packageFormData.color,
+        },
+        plateInfo: {
+          city: packageFormData.city,
+          plateType: packageFormData.plateType,
+          plateLetter: packageFormData.plateLetter || '',
+          plateNumber: packageFormData.plateNumber || '',
+        },
+        services: {
+          selectedServiceIds: Array.from(selectedServiceIds),
+          selectedServices: selectedServicesWithPrices.map((service) => ({
+            serviceId: service.id,
+            serviceName: service.name,
+            price: service.basePrice,
+            multiplier: currentCar.pricing[service.id] / service.basePrice,
+            finalPrice: service.calculatedPrice,
+          })),
+          totalPrice: total,
+          currency: 'AED',
+        },
+      };
+
+      // Create order and get fetch URL
+      const response = await createOrderAPI(orderData);
+      
+      if (response.success && response.fetchUrl) {
+        // Construct simplified WhatsApp message
+        const message = `New Order Request from ${packageFormData.userName}:\n${response.fetchUrl}`;
+
+        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      } else {
+        alert('Failed to create order. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during order creation:', error);
+      alert(`Error: ${error.message || 'Failed to process your request. Please try again.'}`);
+    } finally {
+      setIsProcessing(false);
+    }
   }
+
+  // Update model and carType when car is selected
+  useEffect(() => {
+    if (currentCar) {
+      setPackageFormData((prev) => ({
+        ...prev,
+        model: currentCar.model,
+        carType: currentCar.carType,
+      }));
+    }
+  }, [currentCar]);
 
   return (
     <section
@@ -65,7 +152,10 @@ export default function PackageBuilder() {
 
             <CarSelector />
 
-            <BookingDetailsForm />
+            <BookingDetailsForm 
+              formData={packageFormData} 
+              onFormChange={handlePackageFormChange} 
+            />
 
             <ServiceSelector />
           </div>
@@ -76,6 +166,7 @@ export default function PackageBuilder() {
               selectedServicesWithPrices={selectedServicesWithPrices}
               total={total}
               onProceed={handleProceed}
+              isProcessing={isProcessing}
             />
           </div>
         </div>
@@ -96,10 +187,13 @@ export default function PackageBuilder() {
             <button
               type="button"
               onClick={handleProceed}
-              className="flex items-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-full hover:bg-primary-fixed active:scale-95 transition-all duration-200 shrink-0"
+              disabled={isProcessing}
+              className="flex items-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-full hover:bg-primary-fixed active:scale-95 transition-all duration-200 shrink-0 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              <span className="material-symbols-outlined text-base">chat</span>
-              BOOK
+              <span className="material-symbols-outlined text-base">
+                {isProcessing ? 'hourglass_empty' : 'chat'}
+              </span>
+              {isProcessing ? 'PROCESSING...' : 'BOOK'}
             </button>
           </div>
         </div>

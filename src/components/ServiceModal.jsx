@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { usePackageBuilderContext } from '../context/PackageBuilderContext';
-
-const WHATSAPP_NUMBER = '971544541345'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Before / After Slider
@@ -195,15 +194,17 @@ function CheckRow({ text }) {
 // ─────────────────────────────────────────────────────────────────────────────
 // Main Modal
 // ─────────────────────────────────────────────────────────────────────────────
-export default function ServiceModal({ service, isOpen, onClose }) {
+export default function ServiceModal({ service, serviceImage, isOpen, onClose }) {
   const [visible, setVisible] = useState(false)
   const panelRef = useRef(null)
   const closeButtonRef = useRef(null)
+  const navigate = useNavigate()
   const { addService } = usePackageBuilderContext();
 
   function handleAddToCart() {
     addService(service.id);
     onClose();
+    navigate('/build-package');
   }
 
   // ── Body scroll lock + entrance animation trigger ──────────────────────────
@@ -270,9 +271,6 @@ export default function ServiceModal({ service, isOpen, onClose }) {
   // Don't render anything when closed
   if (!isOpen || !service) return null
 
-  const whatsAppMsg = `Hello Cars365 Studio! I'm interested in booking the ${service.name} service. Could you please provide more details and availability?`
-  const whatsAppUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsAppMsg)}`
-
   return (
     <>
       {/* ── Full-screen overlay ── */}
@@ -300,12 +298,12 @@ export default function ServiceModal({ service, isOpen, onClose }) {
           ref={panelRef}
           className={`
             relative z-10
-            w-full md:max-w-4xl md:mx-auto
+            w-full md:max-w-5xl md:mx-auto
             bg-surface-container-low
             border border-border-highlight
-            rounded-t-2xl md:rounded-xl
+            rounded-t-3xl md:rounded-2xl
             flex flex-col md:flex-row
-            max-h-[92vh] md:max-h-[85vh]
+            max-h-[95vh] md:max-h-[90vh]
             overflow-hidden
             transition-all duration-300 ease-out
             motion-reduce:transition-none motion-reduce:transform-none
@@ -332,8 +330,8 @@ export default function ServiceModal({ service, isOpen, onClose }) {
             onClick={onClose}
             aria-label="Close service details"
             className="
-              absolute top-3 right-3 z-20
-              flex items-center justify-center w-8 h-8
+              absolute top-3 right-3 sm:top-4 sm:right-4 z-20
+              flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9
               rounded-full bg-surface-container border border-border-highlight
               text-on-surface-variant hover:text-primary hover:border-primary
               transition-all duration-200
@@ -348,25 +346,43 @@ export default function ServiceModal({ service, isOpen, onClose }) {
             </span>
           </button>
 
-          {/* ── LEFT COLUMN: Before/After slider ── */}
-          <div className="md:w-5/12 shrink-0 flex flex-col">
+          {/* ── LEFT COLUMN: Service Image ── */}
+          <div className="w-full md:w-5/12 shrink-0 flex flex-col aspect-[4/3] md:aspect-auto overflow-hidden bg-surface-container">
+            {/* Service Image */}
+            {serviceImage ? (
+              <img
+                src={serviceImage}
+                alt={service.name}
+                loading="lazy"
+                draggable={false}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-surface-container">
+                <span className="material-symbols-outlined text-outline text-5xl">image</span>
+              </div>
+            )}
+            
+            {/* 
+            ── COMMENTED OUT: Before/After slider ──
             <BeforeAfterSlider
               gallery={service.gallery}
               serviceId={service.id}
             />
+            */}
           </div>
 
           {/* ── RIGHT COLUMN: Content (scrollable) ── */}
-          <div className="flex-1 overflow-y-auto p-5 md:p-7 flex flex-col gap-5">
+          <div className="w-full md:flex-1 overflow-y-auto p-5 md:p-7 flex flex-col gap-5">
             {/* Header */}
-            <div className="pr-8">
-              <p className="font-mono text-[10px] text-primary uppercase tracking-[0.3em] mb-2">
+            <div className="pr-6 sm:pr-8">
+              <p className="font-mono text-[9px] sm:text-[10px] text-primary uppercase tracking-[0.3em] mb-2">
                 {service.category}
               </p>
-              <h2 className="font-headline font-bold text-2xl md:text-3xl text-on-surface uppercase tracking-wide leading-tight mb-2">
+              <h2 className="font-headline font-bold text-xl sm:text-2xl md:text-3xl text-on-surface uppercase tracking-wide leading-tight mb-2">
                 {service.name}
               </h2>
-              <p className="font-body text-sm text-on-surface-variant leading-relaxed">
+              <p className="font-body text-xs sm:text-sm text-on-surface-variant leading-relaxed">
                 {service.tagline}
               </p>
             </div>
@@ -376,7 +392,7 @@ export default function ServiceModal({ service, isOpen, onClose }) {
               {service.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="font-mono text-[11px] text-primary border border-outline-variant rounded-full px-3 py-1 tracking-widest"
+                  className="font-mono text-[9px] sm:text-[11px] text-primary border border-outline-variant rounded-full px-2.5 sm:px-3 py-1 tracking-widest"
                 >
                   {tag}
                 </span>
@@ -389,10 +405,10 @@ export default function ServiceModal({ service, isOpen, onClose }) {
             {/* What's Included */}
             {service.includes?.length > 0 && (
               <div>
-                <p className="font-mono text-[10px] text-primary uppercase tracking-[0.25em] mb-3">
+                <p className="font-mono text-[9px] sm:text-[10px] text-primary uppercase tracking-[0.25em] mb-3">
                   What&apos;s Included
                 </p>
-                <ul className="flex flex-col gap-2.5">
+                <ul className="flex flex-col gap-2">
                   {service.includes.map((item) => (
                     <CheckRow key={item} text={item} />
                   ))}
@@ -403,10 +419,10 @@ export default function ServiceModal({ service, isOpen, onClose }) {
             {/* Why CARS365 */}
             {service.benefits?.length > 0 && (
               <div>
-                <p className="font-mono text-[10px] text-primary uppercase tracking-[0.25em] mb-3">
+                <p className="font-mono text-[9px] sm:text-[10px] text-primary uppercase tracking-[0.25em] mb-3">
                   Why CARS365
                 </p>
-                <ul className="flex flex-col gap-2.5">
+                <ul className="flex flex-col gap-2">
                   {service.benefits.map((benefit) => (
                     <CheckRow key={benefit} text={benefit} />
                   ))}
@@ -415,20 +431,20 @@ export default function ServiceModal({ service, isOpen, onClose }) {
             )}
 
             {/* Pricing */}
-            <div className="rounded-xl border border-border-highlight bg-surface-container px-4 py-3 flex items-end justify-between gap-4">
+            <div className="rounded-xl border border-border-highlight bg-surface-container px-4 py-3 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
-                <p className="font-mono text-[9px] text-on-surface-variant uppercase tracking-widest mb-1">
+                <p className="font-mono text-[8px] sm:text-[9px] text-on-surface-variant uppercase tracking-widest mb-1">
                   Starting From
                 </p>
-                <p className="font-headline font-bold text-3xl text-primary leading-none">
+                <p className="font-headline font-bold text-2xl sm:text-3xl text-primary leading-none">
                   AED {service.basePrice.toLocaleString('en-AE')}
                 </p>
-                <p className="font-body text-[11px] italic text-on-surface-variant mt-1">
+                <p className="font-body text-[10px] sm:text-[11px] italic text-on-surface-variant mt-1">
                   price varies by vehicle size
                 </p>
               </div>
               <span
-                className="material-symbols-outlined text-primary/40 shrink-0"
+                className="material-symbols-outlined text-primary/40 shrink-0 hidden sm:block"
                 style={{ fontSize: '40px' }}
               >
                 {service.icon}
@@ -436,7 +452,7 @@ export default function ServiceModal({ service, isOpen, onClose }) {
             </div>
 
             {/* CTA */}
-            <div className="mt-auto pt-1 flex flex-col gap-3">
+            <div className="mt-auto pt-2 sm:pt-4 flex flex-col gap-2 sm:gap-3">
               <button
                 type="button"
                 onClick={handleAddToCart}
@@ -444,8 +460,8 @@ export default function ServiceModal({ service, isOpen, onClose }) {
                   flex items-center justify-center gap-2
                   w-full
                   bg-on-surface text-surface
-                  font-mono text-xs font-bold uppercase tracking-widest
-                  px-6 py-3.5 rounded-full
+                  font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest
+                  px-4 sm:px-6 py-3 sm:py-3.5 rounded-full
                   hover:bg-on-surface-variant
                   transition-all duration-200
                   focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-on-surface focus-visible:ring-offset-surface-container-low focus-visible:outline-none
@@ -460,16 +476,15 @@ export default function ServiceModal({ service, isOpen, onClose }) {
                 Add to Cart
               </button>
 
-              <a
-                href={whatsAppUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={handleAddToCart}
                 className="
                   flex items-center justify-center gap-2
                   w-full
                   bg-primary text-on-primary
-                  font-mono text-xs font-bold uppercase tracking-widest
-                  px-6 py-3.5 rounded-full
+                  font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest
+                  px-4 sm:px-6 py-3 sm:py-3.5 rounded-full
                   hover:bg-amber-glow
                   transition-all duration-200
                   focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary focus-visible:ring-offset-surface-container-low focus-visible:outline-none
@@ -478,13 +493,13 @@ export default function ServiceModal({ service, isOpen, onClose }) {
               >
                 <span
                   className="material-symbols-outlined text-base"
-                  style={{ fontSize: '18px' }}
+                  style={{ fontSize: '16px' }}
                 >
                   chat
                 </span>
                 Book This Service
-              </a>
-              <p className="font-body text-[11px] italic text-on-surface-variant text-center mt-1">
+              </button>
+              <p className="font-body text-[10px] sm:text-[11px] italic text-on-surface-variant text-center mt-1">
                 We&apos;ll get back to you within 1 hour
               </p>
             </div>

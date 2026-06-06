@@ -1,7 +1,11 @@
 import { usePackageBuilderContext } from '../context/PackageBuilderContext';
 
-export default function BookingDetailsForm() {
-  const { formData, updateFormData } = usePackageBuilderContext();
+export default function BookingDetailsForm({ formData, onFormChange }) {
+  // If props are provided, use them (standalone mode)
+  // Otherwise use context (backward compatibility)
+  const contextData = usePackageBuilderContext();
+  const actualFormData = formData || contextData?.formData;
+  const actualUpdateFormData = onFormChange || contextData?.updateFormData;
 
   const today = new Date().toISOString().split('T')[0];
 
@@ -23,8 +27,8 @@ export default function BookingDetailsForm() {
             <input
               type="date"
               min={today}
-              value={formData.visitDate}
-              onChange={(e) => updateFormData('visitDate', e.target.value)}
+              value={actualFormData.visitDate}
+              onChange={(e) => actualUpdateFormData('visitDate', e.target.value)}
               className={inputClass}
             />
           </div>
@@ -32,8 +36,8 @@ export default function BookingDetailsForm() {
             <label className={labelClass}>Select Time</label>
             <input
               type="time"
-              value={formData.visitTime}
-              onChange={(e) => updateFormData('visitTime', e.target.value)}
+              value={actualFormData.visitTime}
+              onChange={(e) => actualUpdateFormData('visitTime', e.target.value)}
               className={inputClass}
             />
           </div>
@@ -49,8 +53,8 @@ export default function BookingDetailsForm() {
             <input
               type="text"
               placeholder="Your name"
-              value={formData.userName}
-              onChange={(e) => updateFormData('userName', e.target.value)}
+              value={actualFormData.userName}
+              onChange={(e) => actualUpdateFormData('userName', e.target.value)}
               className={inputClass}
             />
           </div>
@@ -59,8 +63,8 @@ export default function BookingDetailsForm() {
             <input
               type="tel"
               placeholder="+971 -- --- ----"
-              value={formData.userNumber}
-              onChange={(e) => updateFormData('userNumber', e.target.value)}
+              value={actualFormData.userNumber}
+              onChange={(e) => actualUpdateFormData('userNumber', e.target.value)}
               className={inputClass}
             />
           </div>
@@ -79,7 +83,7 @@ export default function BookingDetailsForm() {
             <input
               type="text"
               placeholder="e.g. Porsche 911 GT3"
-              value={formData.model}
+              value={actualFormData.model}
               readOnly
               className="w-full bg-surface border border-border-highlight rounded-xl px-4 py-3 font-body text-sm text-on-surface placeholder:text-outline focus:outline-none transition-colors duration-200 opacity-75 cursor-not-allowed"
             />
@@ -89,7 +93,7 @@ export default function BookingDetailsForm() {
             <input
               type="text"
               placeholder="e.g. Coupe / Sedan"
-              value={formData.carType}
+              value={actualFormData.carType}
               readOnly
               className="w-full bg-surface border border-border-highlight rounded-xl px-4 py-3 font-body text-sm text-on-surface placeholder:text-outline focus:outline-none transition-colors duration-200 opacity-75 cursor-not-allowed"
             />
@@ -99,8 +103,8 @@ export default function BookingDetailsForm() {
             <input
               type="number"
               placeholder="e.g. 2024"
-              value={formData.year}
-              onChange={(e) => updateFormData('year', e.target.value)}
+              value={actualFormData.year}
+              onChange={(e) => actualUpdateFormData('year', e.target.value)}
               className={inputClass}
             />
           </div>
@@ -109,12 +113,12 @@ export default function BookingDetailsForm() {
             <div className="flex items-center gap-3">
               <input
                 type="color"
-                value={formData.color}
-                onChange={(e) => updateFormData('color', e.target.value)}
+                value={actualFormData.color}
+                onChange={(e) => actualUpdateFormData('color', e.target.value)}
                 className="w-[46px] h-[46px] rounded-xl cursor-pointer bg-surface-container border border-border-highlight p-1"
               />
               <span className="font-mono text-xs text-on-surface-variant uppercase">
-                {formData.color}
+                {actualFormData.color}
               </span>
             </div>
           </div>
@@ -128,8 +132,8 @@ export default function BookingDetailsForm() {
           <div>
             <label className={labelClass}>Select City</label>
             <select
-              value={formData.city}
-              onChange={(e) => updateFormData('city', e.target.value)}
+              value={actualFormData.city}
+              onChange={(e) => actualUpdateFormData('city', e.target.value)}
               className={inputClass}
             >
               <option value="Dubai">Dubai</option>
@@ -144,8 +148,8 @@ export default function BookingDetailsForm() {
           <div>
             <label className={labelClass}>Plate Type</label>
             <select
-              value={formData.plateType}
-              onChange={(e) => updateFormData('plateType', e.target.value)}
+              value={actualFormData.plateType}
+              onChange={(e) => actualUpdateFormData('plateType', e.target.value)}
               className={inputClass}
             >
               <option value="Private">Private</option>
@@ -159,9 +163,9 @@ export default function BookingDetailsForm() {
               type="text"
               placeholder="e.g. A"
               maxLength={2}
-              value={formData.plateLetter}
+              value={actualFormData.plateLetter}
               onChange={(e) =>
-                updateFormData('plateLetter', e.target.value.toUpperCase())
+                actualUpdateFormData('plateLetter', e.target.value.toUpperCase())
               }
               className={inputClass}
             />
@@ -171,8 +175,8 @@ export default function BookingDetailsForm() {
             <input
               type="text"
               placeholder="e.g. 12345"
-              value={formData.plateNumber}
-              onChange={(e) => updateFormData('plateNumber', e.target.value)}
+              value={actualFormData.plateNumber}
+              onChange={(e) => actualUpdateFormData('plateNumber', e.target.value)}
               className={inputClass}
             />
           </div>

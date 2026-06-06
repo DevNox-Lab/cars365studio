@@ -2,7 +2,7 @@ function formatAED(amount) {
   return `AED ${Math.round(amount).toLocaleString('en-AE')}`
 }
 
-export default function EstimateSidebar({ selectedServicesWithPrices, total, onProceed }) {
+export default function EstimateSidebar({ selectedServicesWithPrices, total, onProceed, isProcessing }) {
   return (
     <aside className="hidden lg:block sticky top-32 self-start">
       <div className="rounded-xl border border-border-highlight bg-surface-container p-6 flex flex-col gap-5">
@@ -68,10 +68,13 @@ export default function EstimateSidebar({ selectedServicesWithPrices, total, onP
         <button
           type="button"
           onClick={onProceed}
-          className="w-full flex items-center justify-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-full hover:bg-primary-fixed active:scale-95 transition-all duration-200"
+          disabled={isProcessing}
+          className="w-full flex items-center justify-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-full hover:bg-primary-fixed active:scale-95 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          <span className="material-symbols-outlined text-base">chat</span>
-          PROCEED TO WHATSAPP
+          <span className="material-symbols-outlined text-base">
+            {isProcessing ? 'hourglass_empty' : 'chat'}
+          </span>
+          {isProcessing ? 'PROCESSING...' : 'PROCEED TO WHATSAPP'}
         </button>
       </div>
     </aside>

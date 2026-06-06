@@ -315,6 +315,7 @@ export default function Services({ limit }) {
       {/* ── Service detail modal ── */}
       <ServiceModal
         service={selectedService}
+        serviceImage={selectedService ? CARD_IMAGE[selectedService.id] || CARD_IMAGE['front-ppf'] : null}
         isOpen={!!selectedService}
         onClose={() => setSelectedService(null)}
       />

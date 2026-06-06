@@ -6,6 +6,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import ServicesPage from './pages/ServicesPage';
 import BuildPackagePage from './pages/BuildPackagePage';
+import OrderDetailsPage from './pages/OrderDetailsPage';
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { PackageBuilderProvider } from './context/PackageBuilderContext';
@@ -27,6 +28,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/build-package" element={<BuildPackagePage />} />
+              <Route path="/order/:id" element={<OrderDetailsPage />} />
               <Route
                 path="/terms-and-conditions"
                 element={<TermsAndConditions />}
