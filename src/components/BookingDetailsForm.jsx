@@ -70,6 +70,9 @@ export default function BookingDetailsForm() {
       {/* ── Vehicle Information ── */}
       <div>
         <h3 className={sectionTitleClass}>Vehicle Information</h3>
+        <p className="font-body text-xs text-on-surface-variant mb-4">
+          Model and Car Type are automatically populated from your car selection in Step One. You can adjust the year and color below.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className={labelClass}>Model</label>
@@ -77,8 +80,8 @@ export default function BookingDetailsForm() {
               type="text"
               placeholder="e.g. Porsche 911 GT3"
               value={formData.model}
-              onChange={(e) => updateFormData('model', e.target.value)}
-              className={inputClass}
+              readOnly
+              className="w-full bg-surface border border-border-highlight rounded-xl px-4 py-3 font-body text-sm text-on-surface placeholder:text-outline focus:outline-none transition-colors duration-200 opacity-75 cursor-not-allowed"
             />
           </div>
           <div>
@@ -87,8 +90,8 @@ export default function BookingDetailsForm() {
               type="text"
               placeholder="e.g. Coupe / Sedan"
               value={formData.carType}
-              onChange={(e) => updateFormData('carType', e.target.value)}
-              className={inputClass}
+              readOnly
+              className="w-full bg-surface border border-border-highlight rounded-xl px-4 py-3 font-body text-sm text-on-surface placeholder:text-outline focus:outline-none transition-colors duration-200 opacity-75 cursor-not-allowed"
             />
           </div>
           <div>

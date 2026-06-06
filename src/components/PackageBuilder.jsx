@@ -1,5 +1,5 @@
 import { usePackageBuilderContext } from '../context/PackageBuilderContext';
-import VehicleSelector from './VehicleSelector';
+import CarSelector from './CarSelector';
 import ServiceSelector from './ServiceSelector';
 import EstimateSidebar from './EstimateSidebar';
 import BookingDetailsForm from './BookingDetailsForm';
@@ -10,17 +10,18 @@ function formatAED(amount) {
 
 export default function PackageBuilder() {
   const {
-    selectedVehicleId,
     selectedServiceIds,
-    currentMultiplier,
     selectedServicesWithPrices,
+    currentCar,
     total,
-    selectVehicle,
-    toggleService,
     getWhatsAppUrl,
   } = usePackageBuilderContext();
 
   function handleProceed() {
+    if (!currentCar) {
+      alert('Please select a car first to continue.');
+      return;
+    }
     if (selectedServicesWithPrices.length === 0) {
       alert('Please select at least one service to continue.');
       return;
@@ -57,23 +58,16 @@ export default function PackageBuilder() {
                 BUILD YOUR PACKAGE
               </h2>
               <p className="font-body text-on-surface-variant text-sm max-w-xl leading-relaxed">
-                Select your vehicle type and the services you want. Prices
-                update live based on your vehicle class.
+                Select your specific car model and the services you want. Prices
+                update live based on your vehicle's pricing tier.
               </p>
             </div>
 
-            <VehicleSelector
-              selectedVehicleId={selectedVehicleId}
-              onSelectVehicle={selectVehicle}
-            />
+            <CarSelector />
 
             <BookingDetailsForm />
 
-            <ServiceSelector
-              selectedServiceIds={selectedServiceIds}
-              currentMultiplier={currentMultiplier}
-              onToggleService={toggleService}
-            />
+            <ServiceSelector />
           </div>
 
           {/* Right — sticky estimate sidebar (4/12) */}

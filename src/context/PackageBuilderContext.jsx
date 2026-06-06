@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useMemo, useEffect } from 'react';
-import vehicles from '../data/vehicles';
 import services from '../data/services';
+import { cars } from '../data/carData';
 
 const PackageBuilderContext = createContext();
 
@@ -8,8 +8,8 @@ export const WHATSAPP_NUMBER = '971544541345';
 
 export function PackageBuilderProvider({ children }) {
   // Initialize from localStorage
-  const [selectedVehicleId, setSelectedVehicleId] = useState(() => {
-    return localStorage.getItem('selectedVehicleId') || 'coupe';
+  const [selectedCarId, setSelectedCarId] = useState(() => {
+    return localStorage.getItem('selectedCarId') || null;
   });
 
   const [selectedServiceIds, setSelectedServiceIds] = useState(() => {
@@ -42,8 +42,8 @@ export function PackageBuilderProvider({ children }) {
 
   // Persist to localStorage
   useEffect(() => {
-    localStorage.setItem('selectedVehicleId', selectedVehicleId);
-  }, [selectedVehicleId]);
+    localStorage.setItem('selectedCarId', selectedCarId || '');
+  }, [selectedCarId]);
 
   useEffect(() => {
     localStorage.setItem(
@@ -60,21 +60,36 @@ export function PackageBuilderProvider({ children }) {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const currentVehicle = useMemo(
-    () => vehicles.find((v) => v.id === selectedVehicleId) || vehicles[0],
-    [selectedVehicleId]
+  const currentCar = useMemo(
+    () => (selectedCarId ? cars.find((c) => c.id === selectedCarId) : null),
+    [selectedCarId]
   );
 
-  const currentMultiplier = currentVehicle.multiplier;
+  // Get unique manufacturers sorted alphabetically
+  const manufacturers = useMemo(() => {
+    const brands = new Set(cars.map((car) => car.manufacturer));
+    return Array.from(brands).sort();
+  }, []);
 
+  // Get models for selected manufacturer
+  const modelsByBrand = useMemo(() => {
+    if (!currentCar) return [];
+    return cars
+      .filter((car) => car.manufacturer === currentCar.manufacturer)
+      .sort((a, b) => a.model.localeCompare(b.model));
+  }, [currentCar]);
+
+  // Calculate selected services with prices from the selected car
   const selectedServicesWithPrices = useMemo(() => {
+    if (!currentCar) return [];
     return services
       .filter((s) => selectedServiceIds.has(s.id))
       .map((s) => ({
         ...s,
-        calculatedPrice: Math.round(s.basePrice * currentMultiplier),
-      }));
-  }, [selectedServiceIds, currentMultiplier]);
+        calculatedPrice: currentCar.pricing[s.id] || 0,
+      }))
+      .filter((s) => s.calculatedPrice > 0); // Filter out services with no pricing
+  }, [selectedServiceIds, currentCar]);
 
   const total = useMemo(
     () =>
@@ -82,11 +97,21 @@ export function PackageBuilderProvider({ children }) {
     [selectedServicesWithPrices]
   );
 
-  function selectVehicle(id) {
-    setSelectedVehicleId(id);
+  function selectCar(carId) {
+    const car = cars.find((c) => c.id === carId);
+    if (car) {
+      setSelectedCarId(carId);
+      // Auto-populate formData with car info
+      updateFormData('model', car.model);
+      updateFormData('carType', car.carType);
+    }
   }
 
   function toggleService(id) {
+    // Only allow service selection if a car is selected
+    if (!currentCar) {
+      return;
+    }
     setSelectedServiceIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) {
@@ -99,12 +124,15 @@ export function PackageBuilderProvider({ children }) {
   }
 
   function addService(id) {
+    // Only allow if car is selected
+    if (!currentCar) {
+      return;
+    }
     setSelectedServiceIds((prev) => {
       const next = new Set(prev);
       next.add(id);
       return next;
     });
-    // Now just open the cart drawer instead of the builder popup
     setIsCartOpen(true);
   }
 
@@ -117,57 +145,37 @@ export function PackageBuilderProvider({ children }) {
   }
 
   function getWhatsAppUrl(overrideName, overridePhone) {
-    const vehicleLabel = currentVehicle.label;
-
-    const serviceLines = selectedServicesWithPrices
-      .map(
-        (s) => `- ${s.name}: AED ${s.calculatedPrice.toLocaleString('en-AE')}`
-      )
-      .join('\n');
+    const vehicleLabel = currentCar
+      ? `${currentCar.manufacturer} ${currentCar.model}`
+      : 'Unknown Vehicle';
 
     const name = overrideName || formData.userName;
     const phone = overridePhone || formData.userNumber;
 
     const message = [
-      `*NEW BOOKING FROM CARS365 STUDIO*`,
-      `--------------------------------`,
-      `*Services for ${vehicleLabel}:*`,
-      serviceLines || '- (No services selected)',
-      ``,
-      `*Total Estimate:* AED ${total.toLocaleString('en-AE')}`,
-      `--------------------------------`,
-      `*Visit Details:*`,
-      `- Date: ${formData.visitDate || 'N/A'}`,
-      `- Time: ${formData.visitTime || 'N/A'}`,
-      ``,
-      `*Vehicle Info:*`,
-      `- Model: ${formData.model || 'N/A'}`,
-      `- Type: ${formData.carType || 'N/A'}`,
-      `- Year: ${formData.year || 'N/A'}`,
-      `- Color: ${formData.color || 'N/A'}`,
-      ``,
-      `*Plate Info:*`,
-      `- City: ${formData.city || 'N/A'}`,
-      `- Type: ${formData.plateType || 'N/A'}`,
-      `- Letter: ${formData.plateLetter || 'N/A'}`,
-      `- Number: ${formData.plateNumber || 'N/A'}`,
+      `*NEW INQUIRY FROM CARS365 STUDIO*`,
       ``,
       `*Customer Info:*`,
       `- Name: ${name || 'N/A'}`,
       `- Phone: ${phone || 'N/A'}`,
+      ``,
+      `*Vehicle:* ${vehicleLabel}`,
+      ``,
+      `*Preferred Time:* ${formData.visitTime || 'N/A'}`,
     ].join('\n');
 
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   }
 
   const value = {
-    selectedVehicleId,
+    selectedCarId,
     selectedServiceIds,
-    currentVehicle,
-    currentMultiplier,
+    currentCar,
+    manufacturers,
+    modelsByBrand,
     selectedServicesWithPrices,
     total,
-    selectVehicle,
+    selectCar,
     toggleService,
     addService,
     removeService,
