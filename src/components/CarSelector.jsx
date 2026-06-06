@@ -3,38 +3,26 @@ import { cars } from '../data/carData';
 import { useMemo } from 'react';
 
 export default function CarSelector() {
-  const { selectedCarId, manufacturers, modelsByBrand, selectCar, currentCar } = usePackageBuilderContext();
-
-  // Get current brand from selectedCarId
-  const currentBrand = useMemo(() => {
-    if (!currentCar) return '';
-    return currentCar.manufacturer;
-  }, [currentCar]);
-
-  // Get all models for current brand
-  const brandsModels = useMemo(() => {
-    if (!currentBrand) return [];
-    return cars
-      .filter((car) => car.manufacturer === currentBrand)
-      .sort((a, b) => a.model.localeCompare(b.model));
-  }, [currentBrand]);
+  const {
+    selectedCarId,
+    selectedBrand,
+    setSelectedBrand,
+    manufacturers,
+    modelsByBrand,
+    selectCar,
+    currentCar,
+  } = usePackageBuilderContext();
 
   const handleBrandChange = (e) => {
-    const selectedBrand = e.target.value;
-    if (selectedBrand) {
-      // Get first car of the selected brand
-      const firstCar = cars.find((car) => car.manufacturer === selectedBrand);
-      if (firstCar) {
-        selectCar(firstCar.id);
-      }
-    }
+    const brand = e.target.value;
+    setSelectedBrand(brand);
+    // When brand changes, clear the specific car selection
+    selectCar(null);
   };
 
   const handleModelChange = (e) => {
     const selectedModelId = e.target.value;
-    if (selectedModelId) {
-      selectCar(selectedModelId);
-    }
+    selectCar(selectedModelId || null);
   };
 
   const getPricingTierDisplay = (classKey) => {
@@ -91,7 +79,7 @@ export default function CarSelector() {
             Select Brand
           </label>
           <select
-            value={currentBrand}
+            value={selectedBrand}
             onChange={handleBrandChange}
             className="w-full bg-surface-container border border-border-highlight rounded-xl px-4 py-3 font-body text-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-200"
           >
@@ -112,13 +100,15 @@ export default function CarSelector() {
           <select
             value={selectedCarId || ''}
             onChange={handleModelChange}
-            disabled={!currentBrand}
+            disabled={!selectedBrand}
             className="w-full bg-surface-container border border-border-highlight rounded-xl px-4 py-3 font-body text-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <option value="">
-              {currentBrand ? '-- Choose a model --' : '-- Select brand first --'}
+              {selectedBrand
+                ? '-- Choose a model --'
+                : '-- Select brand first --'}
             </option>
-            {brandsModels.map((car) => (
+            {modelsByBrand.map((car) => (
               <option key={car.id} value={car.id}>
                 {car.model} ({car.yearFrom})
               </option>
@@ -174,7 +164,8 @@ export default function CarSelector() {
                 Sample Service Price
               </p>
               <p className="font-headline font-bold text-lg text-primary">
-                AED {(currentCar.pricing['front-ppf'] || 0).toLocaleString('en-AE')}
+                AED{' '}
+                {(currentCar.pricing['front-ppf'] || 0).toLocaleString('en-AE')}
               </p>
               <p className="font-mono text-[10px] text-on-surface-variant">
                 (Front PPF)

@@ -9,7 +9,11 @@ export const WHATSAPP_NUMBER = '971544541345';
 export function PackageBuilderProvider({ children }) {
   // Initialize from localStorage
   const [selectedCarId, setSelectedCarId] = useState(() => {
-    return localStorage.getItem('selectedCarId') || cars[0].id;
+    return localStorage.getItem('selectedCarId') || null;
+  });
+
+  const [selectedBrand, setSelectedBrand] = useState(() => {
+    return localStorage.getItem('selectedBrand') || '';
   });
 
   const [selectedServiceIds, setSelectedServiceIds] = useState(() => {
@@ -48,6 +52,10 @@ export function PackageBuilderProvider({ children }) {
   }, [selectedCarId]);
 
   useEffect(() => {
+    localStorage.setItem('selectedBrand', selectedBrand || '');
+  }, [selectedBrand]);
+
+  useEffect(() => {
     localStorage.setItem(
       'selectedServiceIds',
       JSON.stringify(Array.from(selectedServiceIds))
@@ -75,11 +83,11 @@ export function PackageBuilderProvider({ children }) {
 
   // Get models for selected manufacturer
   const modelsByBrand = useMemo(() => {
-    if (!currentCar) return [];
+    if (!selectedBrand) return [];
     return cars
-      .filter((car) => car.manufacturer === currentCar.manufacturer)
+      .filter((car) => car.manufacturer === selectedBrand)
       .sort((a, b) => a.model.localeCompare(b.model));
-  }, [currentCar]);
+  }, [selectedBrand]);
 
   // Calculate selected services with prices from the selected car
   const selectedServicesWithPrices = useMemo(() => {
@@ -108,9 +116,16 @@ export function PackageBuilderProvider({ children }) {
   );
 
   function selectCar(carId) {
+    if (!carId) {
+      setSelectedCarId(null);
+      updateFormData('model', '');
+      updateFormData('carType', '');
+      return;
+    }
     const car = cars.find((c) => c.id === carId);
     if (car) {
       setSelectedCarId(carId);
+      setSelectedBrand(car.manufacturer);
       // Auto-populate formData with car info
       updateFormData('model', car.model);
       updateFormData('carType', car.carType);
@@ -171,6 +186,8 @@ export function PackageBuilderProvider({ children }) {
 
   const value = {
     selectedCarId,
+    selectedBrand,
+    setSelectedBrand,
     selectedServiceIds,
     currentCar,
     manufacturers,
