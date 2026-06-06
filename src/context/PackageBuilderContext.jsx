@@ -9,7 +9,7 @@ export const WHATSAPP_NUMBER = '971544541345';
 export function PackageBuilderProvider({ children }) {
   // Initialize from localStorage
   const [selectedCarId, setSelectedCarId] = useState(() => {
-    return localStorage.getItem('selectedCarId') || null;
+    return localStorage.getItem('selectedCarId') || cars[0].id;
   });
 
   const [selectedServiceIds, setSelectedServiceIds] = useState(() => {
@@ -22,22 +22,24 @@ export function PackageBuilderProvider({ children }) {
   // New form fields
   const [formData, setFormData] = useState(() => {
     const saved = localStorage.getItem('formData');
-    return saved
-      ? JSON.parse(saved)
-      : {
-          visitDate: '',
-          visitTime: '',
-          model: '',
-          carType: '',
-          year: '',
-          color: '#000000',
-          city: 'Dubai',
-          plateType: 'Private',
-          plateLetter: '',
-          plateNumber: '',
-          userName: '',
-          userNumber: '',
-        };
+    if (saved) return JSON.parse(saved);
+
+    // Default form data with first car info if no car is selected
+    const defaultCar = cars.find((c) => c.id === selectedCarId) || cars[0];
+    return {
+      visitDate: '',
+      visitTime: '',
+      model: defaultCar.model,
+      carType: defaultCar.carType,
+      year: defaultCar.year || '',
+      color: '#000000',
+      city: 'Dubai',
+      plateType: 'Private',
+      plateLetter: '',
+      plateNumber: '',
+      userName: '',
+      userNumber: '',
+    };
   });
 
   // Persist to localStorage
@@ -81,14 +83,22 @@ export function PackageBuilderProvider({ children }) {
 
   // Calculate selected services with prices from the selected car
   const selectedServicesWithPrices = useMemo(() => {
-    if (!currentCar) return [];
+    if (!currentCar) {
+      // Fallback to base pricing if no car is selected
+      return services
+        .filter((s) => selectedServiceIds.has(s.id))
+        .map((s) => ({
+          ...s,
+          calculatedPrice: s.basePrice,
+        }));
+    }
+
     return services
       .filter((s) => selectedServiceIds.has(s.id))
       .map((s) => ({
         ...s,
-        calculatedPrice: currentCar.pricing[s.id] || 0,
-      }))
-      .filter((s) => s.calculatedPrice > 0); // Filter out services with no pricing
+        calculatedPrice: currentCar.pricing[s.id] || s.basePrice,
+      }));
   }, [selectedServiceIds, currentCar]);
 
   const total = useMemo(
@@ -108,10 +118,6 @@ export function PackageBuilderProvider({ children }) {
   }
 
   function toggleService(id) {
-    // Only allow service selection if a car is selected
-    if (!currentCar) {
-      return;
-    }
     setSelectedServiceIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) {
@@ -124,10 +130,6 @@ export function PackageBuilderProvider({ children }) {
   }
 
   function addService(id) {
-    // Only allow if car is selected
-    if (!currentCar) {
-      return;
-    }
     setSelectedServiceIds((prev) => {
       const next = new Set(prev);
       next.add(id);
