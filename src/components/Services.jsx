@@ -86,7 +86,7 @@ const CARD_IMAGE = {
     'https://img.magnific.com/premium-photo/hand-holding-headlight-dark-car_23-2147963066.jpg?w=2000',
 
   'wheel-alignment':
-    'https://img.magnific.com/premium-photo/mechanic-using-computer-balancing-machine-car-wheel_695242-21394.jpg?w=2000',
+    'https://img.magnific.com/free-photo/car-mechanic-changing-wheels-car_1303-27463.jpg?semt=ais_hybrid&w=740&q=80',
 };
 
 // ── Service card ─────────────────────────────────────────────────────────────
@@ -199,7 +199,7 @@ export default function Services({ limit }) {
   // Extract unique tags
   const allTags = [
     'All',
-    ...Array.from(new Set(services.flatMap((s) => s.tags))),
+    ...Array.from(new Set(services.flatMap((s) => s.category.split(' / ')[1]))),
   ];
 
   const filteredServices = services.filter((service) => {
@@ -207,7 +207,8 @@ export default function Services({ limit }) {
       service.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       service.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       service.tagline.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesTag = activeTag === 'All' || service.tags.includes(activeTag);
+    const matchesTag =
+      activeTag === 'All' || service.category.includes(activeTag); 
     return matchesSearch && matchesTag;
   });
 
@@ -274,24 +275,26 @@ export default function Services({ limit }) {
               />
             </div>
 
-            {/* Tags Scrollable/Wrap */}
-            <div className="flex flex-wrap gap-2 md:gap-3">
-              {allTags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => setActiveTag(tag)}
-                  className={`
-                    font-mono text-[10px] md:text-xs uppercase tracking-widest px-4 md:px-6 py-2 md:py-2.5 rounded-full border transition-all duration-200
-                    ${
-                      activeTag === tag
-                        ? 'bg-primary text-on-primary border-primary shadow-[0_0_15px_rgba(233,193,118,0.3)]'
-                        : 'bg-transparent text-on-surface-variant border-outline-variant hover:border-primary hover:text-primary'
-                    }
-                  `}
-                >
-                  {tag}
-                </button>
-              ))}
+            {/* Tags Scrollable */}
+            <div className="flex overflow-x-auto no-scrollbar gap-2 md:gap-3 pb-2 -mx-2 px-2">
+              <div className="flex gap-2 md:gap-3 shrink-0">
+                {allTags.map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() => setActiveTag(tag)}
+                    className={`
+                      font-mono text-[10px] md:text-xs uppercase tracking-widest px-4 md:px-6 py-2 md:py-2.5 rounded-full border transition-all duration-200 whitespace-nowrap
+                      ${
+                        activeTag === tag
+                          ? 'bg-primary text-on-primary border-primary shadow-[0_0_15px_rgba(233,193,118,0.3)]'
+                          : 'bg-transparent text-on-surface-variant border-outline-variant hover:border-primary hover:text-primary'
+                      }
+                    `}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         )}

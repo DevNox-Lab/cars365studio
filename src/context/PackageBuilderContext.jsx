@@ -12,6 +12,10 @@ export function PackageBuilderProvider({ children }) {
     return localStorage.getItem('selectedCarId') || null;
   });
 
+  const [selectedBrand, setSelectedBrand] = useState(() => {
+    return localStorage.getItem('selectedBrand') || '';
+  });
+
   const [selectedServiceIds, setSelectedServiceIds] = useState(() => {
     const saved = localStorage.getItem('selectedServiceIds');
     return saved ? new Set(JSON.parse(saved)) : new Set();
@@ -22,28 +26,34 @@ export function PackageBuilderProvider({ children }) {
   // New form fields
   const [formData, setFormData] = useState(() => {
     const saved = localStorage.getItem('formData');
-    return saved
-      ? JSON.parse(saved)
-      : {
-          visitDate: '',
-          visitTime: '',
-          model: '',
-          carType: '',
-          year: '',
-          color: '#000000',
-          city: 'Dubai',
-          plateType: 'Private',
-          plateLetter: '',
-          plateNumber: '',
-          userName: '',
-          userNumber: '',
-        };
+    if (saved) return JSON.parse(saved);
+
+    // Default form data with first car info if no car is selected
+    const defaultCar = cars.find((c) => c.id === selectedCarId) || cars[0];
+    return {
+      visitDate: '',
+      visitTime: '',
+      model: defaultCar.model,
+      carType: defaultCar.carType,
+      year: defaultCar.year || '',
+      color: '#000000',
+      city: 'Dubai',
+      plateType: 'Private',
+      plateLetter: '',
+      plateNumber: '',
+      userName: '',
+      userNumber: '',
+    };
   });
 
   // Persist to localStorage
   useEffect(() => {
     localStorage.setItem('selectedCarId', selectedCarId || '');
   }, [selectedCarId]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedBrand', selectedBrand || '');
+  }, [selectedBrand]);
 
   useEffect(() => {
     localStorage.setItem(
@@ -73,22 +83,30 @@ export function PackageBuilderProvider({ children }) {
 
   // Get models for selected manufacturer
   const modelsByBrand = useMemo(() => {
-    if (!currentCar) return [];
+    if (!selectedBrand) return [];
     return cars
-      .filter((car) => car.manufacturer === currentCar.manufacturer)
+      .filter((car) => car.manufacturer === selectedBrand)
       .sort((a, b) => a.model.localeCompare(b.model));
-  }, [currentCar]);
+  }, [selectedBrand]);
 
   // Calculate selected services with prices from the selected car
   const selectedServicesWithPrices = useMemo(() => {
-    if (!currentCar) return [];
+    if (!currentCar) {
+      // Fallback to base pricing if no car is selected
+      return services
+        .filter((s) => selectedServiceIds.has(s.id))
+        .map((s) => ({
+          ...s,
+          calculatedPrice: s.basePrice,
+        }));
+    }
+
     return services
       .filter((s) => selectedServiceIds.has(s.id))
       .map((s) => ({
         ...s,
-        calculatedPrice: currentCar.pricing[s.id] || 0,
-      }))
-      .filter((s) => s.calculatedPrice > 0); // Filter out services with no pricing
+        calculatedPrice: currentCar.pricing[s.id] || s.basePrice,
+      }));
   }, [selectedServiceIds, currentCar]);
 
   const total = useMemo(
@@ -98,9 +116,16 @@ export function PackageBuilderProvider({ children }) {
   );
 
   function selectCar(carId) {
+    if (!carId) {
+      setSelectedCarId(null);
+      updateFormData('model', '');
+      updateFormData('carType', '');
+      return;
+    }
     const car = cars.find((c) => c.id === carId);
     if (car) {
       setSelectedCarId(carId);
+      setSelectedBrand(car.manufacturer);
       // Auto-populate formData with car info
       updateFormData('model', car.model);
       updateFormData('carType', car.carType);
@@ -108,10 +133,6 @@ export function PackageBuilderProvider({ children }) {
   }
 
   function toggleService(id) {
-    // Only allow service selection if a car is selected
-    if (!currentCar) {
-      return;
-    }
     setSelectedServiceIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) {
@@ -124,10 +145,6 @@ export function PackageBuilderProvider({ children }) {
   }
 
   function addService(id) {
-    // Only allow if car is selected
-    if (!currentCar) {
-      return;
-    }
     setSelectedServiceIds((prev) => {
       const next = new Set(prev);
       next.add(id);
@@ -169,6 +186,8 @@ export function PackageBuilderProvider({ children }) {
 
   const value = {
     selectedCarId,
+    selectedBrand,
+    setSelectedBrand,
     selectedServiceIds,
     currentCar,
     manufacturers,
