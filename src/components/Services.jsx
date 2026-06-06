@@ -5,16 +5,12 @@ import ServiceModal from './ServiceModal';
 
 // ── Per-service hero images (visual-only, not stored in data layer) ───────────
 const CARD_IMAGE = {
-  'front-ppf':
-    'https://images.pexels.com/photos/20051468/pexels-photo-20051468.jpeg',
-  'full-ppf':
-    'https://images.pexels.com/photos/31154217/pexels-photo-31154217.jpeg',
-  ceramic:
-    'https://tedcardetailing.com/wp-content/uploads/2024/09/Untitled-design-33-1536x1024.jpg',
-  wrap: 'https://images.pexels.com/photos/25213457/pexels-photo-25213457.jpeg',
-  tint: 'https://images.pexels.com/photos/20522462/pexels-photo-20522462.jpeg',
-  polish:
-    'https://images.unsplash.com/photo-1708805282695-ef186db20192?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'front-ppf': '/public/images1/Full Front PPF cars365Studio.webp',
+  'full-ppf': '/public/images1/Full Body PPF cars365Studio.webp',
+  ceramic: '/public/images1/Ceramic Coating cars365Studio.webp',
+  wrap: '/public/images1/Full Car Wrap cars365Studio.webp',
+  tint: '/public/images1/Window Tinting cars365Studio.webp',
+  polish: '',
   'interior-detailing':
     'https://plus.unsplash.com/premium_photo-1661909961389-7d501737abde?q=80&w=1159&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   'seat-upholstery':
