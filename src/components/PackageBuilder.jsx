@@ -12,6 +12,7 @@ function formatAED(amount) {
 
 export default function PackageBuilder() {
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
   const [packageFormData, setPackageFormData] = useState({
     visitDate: '',
     visitTime: '',
@@ -32,6 +33,7 @@ export default function PackageBuilder() {
     selectedServicesWithPrices,
     currentCar,
     total,
+    removeService,
   } = usePackageBuilderContext();
 
   function handlePackageFormChange(field, value) {
@@ -95,6 +97,9 @@ export default function PackageBuilder() {
 
         const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        
+        // Close mobile modal if open
+        setIsEstimateModalOpen(false);
       } else {
         alert('Failed to create order. Please try again.');
       }
@@ -167,6 +172,7 @@ export default function PackageBuilder() {
               total={total}
               onProceed={handleProceed}
               isProcessing={isProcessing}
+              onRemoveService={removeService}
             />
           </div>
         </div>
@@ -186,7 +192,7 @@ export default function PackageBuilder() {
             </div>
             <button
               type="button"
-              onClick={handleProceed}
+              onClick={() => setIsEstimateModalOpen(true)}
               disabled={isProcessing}
               className="flex items-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-full hover:bg-primary-fixed active:scale-95 transition-all duration-200 shrink-0 disabled:opacity-70 disabled:cursor-not-allowed"
             >
@@ -195,6 +201,39 @@ export default function PackageBuilder() {
               </span>
               {isProcessing ? 'PROCESSING...' : 'BOOK'}
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Estimate Modal */}
+      {isEstimateModalOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col bg-surface lg:hidden">
+          {/* Modal Header */}
+          <div className="sticky top-0 z-10 flex items-center justify-between bg-surface-container border-b border-border-highlight px-margin-mobile py-4">
+            <h3 className="font-headline font-bold text-lg text-on-surface uppercase tracking-widest">
+              ESTIMATE
+            </h3>
+            <button
+              type="button"
+              onClick={() => setIsEstimateModalOpen(false)}
+              className="material-symbols-outlined text-on-surface hover:text-primary transition-colors"
+            >
+              close
+            </button>
+          </div>
+
+          {/* Modal Body with EstimateSidebar */}
+          <div className="flex-1 overflow-y-auto pb-4">
+            <div className="px-margin-mobile pt-4">
+              <EstimateSidebar
+                selectedServicesWithPrices={selectedServicesWithPrices}
+                total={total}
+                onProceed={handleProceed}
+                isProcessing={isProcessing}
+                onRemoveService={removeService}
+                isMobileModal={true}
+              />
+            </div>
           </div>
         </div>
       )}

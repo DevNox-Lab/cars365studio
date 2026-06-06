@@ -369,7 +369,7 @@ export const generateInvoicePDF = async (order) => {
               </div>
               <div class="field">
                 <span class="field-label">Email</span>
-                <span class="field-value">info@cars365studio.ae</span>
+                <span class="field-value">cars365studio@gmail.com</span>
               </div>
               <div class="field">
                 <span class="field-label">Location</span>
