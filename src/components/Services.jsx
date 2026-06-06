@@ -5,69 +5,69 @@ import ServiceModal from './ServiceModal';
 
 // ── Per-service hero images (visual-only, not stored in data layer) ───────────
 const CARD_IMAGE = {
-  'front-ppf': '/public/images/Full Front PPF cars365Studio.webp',
-  'full-ppf': '/public/images/Full Body PPF cars365Studio.webp',
-  ceramic: '/public/images/Ceramic Coating cars365Studio.webp',
-  wrap: '/public/images/Full Car Wrap cars365Studio.webp',
-  tint: '/public/images/Window Tinting cars365Studio.webp',
-  polish: '/public/images/Paint Correction cars365Studio.webp',
-  'interior-detailing': '/public/images/Interior Detailing cars365Studio.webp',
+  'front-ppf': '/images/Full Front PPF cars365Studio.webp',
+  'full-ppf': '/images/Full Body PPF cars365Studio.webp',
+  ceramic: '/images/Ceramic Coating cars365Studio.webp',
+  wrap: '/images/Full Car Wrap cars365Studio.webp',
+  tint: '/images/Window Tinting cars365Studio.webp',
+  polish: '/images/Paint Correction cars365Studio.webp',
+  'interior-detailing': '/images/Interior Detailing cars365Studio.webp',
   'seat-upholstery':
-    '/public/images/Seat Upholstery Replacement cars365Studio.webp',
-  'dashboard-wrapping': '/public/images/Dashboard Wrapping cars365Studio.webp',
+    '/images/Seat Upholstery Replacement cars365Studio.webp',
+  'dashboard-wrapping': '/images/Dashboard wrapping cars365Studio.webp',
 
   'accessory-roof-rack':
-    '/public/images/Roof Rack Installation cars365Studio.webp',
+    '/images/Roof Rack Installation cars365Studio.webp',
 
   'exhaust-catback':
-    '/public/images/Cat-Back Exhaust Installation cars365Studio.webp',
+    '/images/Cat-Back Exhaust Installation Cars365Studio.webp',
   'bodykit-full':
-    '/public/images/Full Body Kit Installation cars365Studio.webp',
+    '/images/Full Body Kit Installation cars365Studio.webp',
 
   'carbon-hood':
-    '/public/images/Carbon fiber hood Installation cars365Studio.webp',
+    '/images/Carbon fiber hood Installation cars365Studio.webp',
 
-  'ecu-remap': '/public/images/ECU Remapping cars365Studio.webp',
+  'ecu-remap': '/images/ECU Remapping cars365Studio.webp',
 
   'ambient-lighting':
-    '/public/images/Ambient Lighting Installation cars365Studio.webp',
+    '/images/Ambient Lighting Installation cars365Studio.webp',
 
-  'custom-rims': '/public/images/Custom Wheel Installation cars365Studio.webp',
+  'custom-rims': '/images/Custom Wheel Installation cars365Studio.webp',
 
   'facelift-complete':
-    '/public/images/Complete Facelift Conversion cars365Studio.webp',
+    '/images/Complete Facelift Conversion cars365Studio.webp',
 
   'performance-parts':
-    '/public/images/Performance Parts Installation cars365Studio.webp',
+    '/images/Performance Parts Installation cars365studio.webp',
 
   'star-roof':
-    '/public/images/Starlight Headliner Installation cars365Studio.webp',
+    '/images/Starlight Headliner Installation cars365Studio.webp',
 
   'custom-consultation':
-    '/public/images/Vehicle Customization Consultation cars365Studio.webp',
+    '/images/Vehicle Customization Consultation cars365Studio.webp',
 
   'leather-seat-install':
-    '/public/images/Leather Seat Installation cars365Studio.webp',
+    '/images/Leather Seat Installation cars365Studio.webp',
 
   'roof-lining-replacement':
-    '/public/images/Roof Lining Replacement cars365Studio.webp',
+    '/images/Roof Lining Replacement cars365Studio.webp',
 
   'steering-wheel-wrap':
-    '/public/images/Steering Wheel Wrap cars365Studio.webp',
+    '/images/Steering Wheel Wrap cars365Studio.webp',
 
   'door-panel-custom':
-    '/public/images/Door Panel Customization cars365Studio.webp',
+    '/images/Door Panel Customization cars365Studio.webp',
 
   'wide-body-kit':
-    '/public/images/Wide Body Kit Installation cars365Studio.webp',
+    '/images/Wide Body Kit Installation cars365Studio.webp',
 
   'carbon-interior-trim':
-    '/public/images/Carbon Fiber Interior Trim cars365Studio.webp',
+    '/images/Carbon Fiber Interior Trim cars365Studio.webp',
 
-  'headlight-upgrade': '/public/images/Headlight Upgrade cars365Studio.webp',
+  'headlight-upgrade': '/images/Headlight Upgrade cars365Studio.webp',
 
   'wheel-alignment':
-    '/public/images/Wheel ALIGNMENT & BALANCING cars365Studio.webp',
+    '/images/Wheel ALIGNMENT & BALANCING cars365Studio.webp',
 };
 
 // ── Service card ─────────────────────────────────────────────────────────────
