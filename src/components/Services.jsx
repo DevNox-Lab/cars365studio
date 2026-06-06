@@ -5,88 +5,69 @@ import ServiceModal from './ServiceModal';
 
 // ── Per-service hero images (visual-only, not stored in data layer) ───────────
 const CARD_IMAGE = {
-  'front-ppf': '/public/images1/Full Front PPF cars365Studio.webp',
-  'full-ppf': '/public/images1/Full Body PPF cars365Studio.webp',
-  ceramic: '/public/images1/Ceramic Coating cars365Studio.webp',
-  wrap: '/public/images1/Full Car Wrap cars365Studio.webp',
-  tint: '/public/images1/Window Tinting cars365Studio.webp',
-  polish: '',
-  'interior-detailing':
-    'https://plus.unsplash.com/premium_photo-1661909961389-7d501737abde?q=80&w=1159&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'front-ppf': '/public/images/Full Front PPF cars365Studio.webp',
+  'full-ppf': '/public/images/Full Body PPF cars365Studio.webp',
+  ceramic: '/public/images/Ceramic Coating cars365Studio.webp',
+  wrap: '/public/images/Full Car Wrap cars365Studio.webp',
+  tint: '/public/images/Window Tinting cars365Studio.webp',
+  polish: '/public/images/Paint Correction cars365Studio.webp',
+  'interior-detailing': '/public/images/Interior Detailing cars365Studio.webp',
   'seat-upholstery':
-    'https://images.pexels.com/photos/15526366/pexels-photo-15526366.jpeg',
-  'dashboard-wrapping':
-    'https://images.unsplash.com/photo-1549064233-945d7063292f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  // 'https://images.pexels.com/photos/193999/pexels-photo-193999.jpeg',
+    '/public/images/Seat Upholstery Replacement cars365Studio.webp',
+  'dashboard-wrapping': '/public/images/Dashboard Wrapping cars365Studio.webp',
 
   'accessory-roof-rack':
-    'https://images.unsplash.com/photo-1583073438286-344990a97638?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    '/public/images/Roof Rack Installation cars365Studio.webp',
 
   'exhaust-catback':
-    'https://cdn.pixabay.com/photo/2017/10/20/17/58/porsche-2872152_1280.jpg',
+    '/public/images/Cat-Back Exhaust Installation cars365Studio.webp',
   'bodykit-full':
-    'https://images.unsplash.com/photo-1625430854348-2391ff8f7053?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    '/public/images/Full Body Kit Installation cars365Studio.webp',
 
   'carbon-hood':
-    'https://images.unsplash.com/photo-1774317348829-45f3c9a4b45f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  // 'https://images.unsplash.com/photo-1692089321052-d071866a300d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  // 'https://images.unsplash.com/photo-1692089566248-fe87474129a0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  // 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&q=80',
+    '/public/images/Carbon fiber hood Installation cars365Studio.webp',
 
-  'ecu-remap':
-    'https://images.unsplash.com/photo-1659576048262-940d9c1c84fe?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  // 'https://images.unsplash.com/photo-1727893380169-4dda123e19f7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  // 'https://plus.unsplash.com/premium_photo-1682126117799-064f3f7a034e?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'ecu-remap': '/public/images/ECU Remapping cars365Studio.webp',
 
   'ambient-lighting':
-    'https://images.unsplash.com/photo-1615135902020-f499dc74b655?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  // 'https://images.unsplash.com/photo-1778938370787-427b11040c5d?q=80&w=1168&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  // 'https://images.unsplash.com/photo-1772555429170-be39986f4d99?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  // 'https://images.unsplash.com/photo-1661220715153-95724e5f3500?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  // 'https://images.unsplash.com/photo-1677137855528-81d64da55fe1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    '/public/images/Ambient Lighting Installation cars365Studio.webp',
 
-  'custom-rims':
-    // 'https://images.unsplash.com/photo-1610210629765-1317a26cbc14?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    'https://images.unsplash.com/photo-1762857362077-6efc4654e737?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'custom-rims': '/public/images/Custom Wheel Installation cars365Studio.webp',
 
   'facelift-complete':
-    // 'https://images.pexels.com/photos/17878183/pexels-photo-17878183.jpeg',
-    'https://images.pexels.com/photos/14776716/pexels-photo-14776716.jpeg',
+    '/public/images/Complete Facelift Conversion cars365Studio.webp',
 
   'performance-parts':
-    'https://images.unsplash.com/photo-1666554498255-5250121b4865?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    '/public/images/Performance Parts Installation cars365Studio.webp',
 
   'star-roof':
-    'https://images.unsplash.com/photo-1776639520962-dad59bd15197?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    '/public/images/Starlight Headliner Installation cars365Studio.webp',
 
   'custom-consultation':
-    'https://img.magnific.com/premium-photo/seller-buyer-auto-show_255667-1750.jpg',
-  // 'https://images.pexels.com/photos/36730224/pexels-photo-36730224.jpeg',
-  // 'https://img.magnific.com/premium-photo/picture-two-men-standing-inside-they-hold-journal-look-it-people-smile-they-stand-red-car-man-white-shirt-points-journal-smile_152404-5642.jpg',
+    '/public/images/Vehicle Customization Consultation cars365Studio.webp',
 
   'leather-seat-install':
-    'https://img.magnific.com/free-photo/luxury-car-interior-brown-black-colors_181624-31177.jpg?t=st=1780575408~exp=1780579008~hmac=39c2db29196de10ef47493480dc72edd81482c5157fe157e2c55bf9689b8e10b&w=2000',
+    '/public/images/Leather Seat Installation cars365Studio.webp',
 
   'roof-lining-replacement':
-    'https://img.magnific.com/premium-photo/interior-design-modern-car-sunroof-incorporates-sleek-aesthetics-innovative-features_152904-56323.jpg',
+    '/public/images/Roof Lining Replacement cars365Studio.webp',
 
   'steering-wheel-wrap':
-    'https://images.unsplash.com/photo-1770588802071-4d2cc4f0328e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fHN0ZWVyaW5nJTIwd2hlZWwlMjB3cmFwfGVufDB8fDB8fHww',
+    '/public/images/Steering Wheel Wrap cars365Studio.webp',
 
   'door-panel-custom':
-    'https://images.unsplash.com/photo-1780296269515-0c8c068d0767?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    '/public/images/Door Panel Customization cars365Studio.webp',
 
   'wide-body-kit':
-    'https://images.unsplash.com/photo-1771556961902-4979a2ebd55f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    '/public/images/Wide Body Kit Installation cars365Studio.webp',
 
   'carbon-interior-trim':
-    'https://img.magnific.com/premium-photo/car-automatic-shift-lever_466739-8645.jpg?w=2000',
+    '/public/images/Carbon Fiber Interior Trim cars365Studio.webp',
 
-  'headlight-upgrade':
-    'https://img.magnific.com/premium-photo/hand-holding-headlight-dark-car_23-2147963066.jpg?w=2000',
+  'headlight-upgrade': '/public/images/Headlight Upgrade cars365Studio.webp',
 
   'wheel-alignment':
-    'https://img.magnific.com/free-photo/car-mechanic-changing-wheels-car_1303-27463.jpg?semt=ais_hybrid&w=740&q=80',
+    '/public/images/Wheel ALIGNMENT & BALANCING cars365Studio.webp',
 };
 
 // ── Service card ─────────────────────────────────────────────────────────────
@@ -208,7 +189,7 @@ export default function Services({ limit }) {
       service.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       service.tagline.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesTag =
-      activeTag === 'All' || service.category.includes(activeTag); 
+      activeTag === 'All' || service.category.includes(activeTag);
     return matchesSearch && matchesTag;
   });
 
