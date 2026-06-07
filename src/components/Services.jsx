@@ -71,7 +71,9 @@ function ServiceCard({ service, index, onViewDetails }) {
   const dynamicCategory = `NO. ${index + 1} / ${rawLabel}`;
 
   return (
-    <article className="group relative overflow-hidden rounded-xl aspect-[1/1] select-none">
+    <article 
+      onClick={() => onViewDetails(service)}
+      className="group relative overflow-hidden rounded-xl aspect-[1/1] select-none cursor-pointer">
       {/* ── Background image: grayscale → colour on hover ── */}
       <img
         src={image}

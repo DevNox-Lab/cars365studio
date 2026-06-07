@@ -250,7 +250,7 @@ export default function BookingDetailsForm({ formData, onFormChange }) {
             </button>
 
             {colorOpen && (
-              <div className="absolute z-50 top-[calc(100%+6px)] left-0 right-0 bg-surface border border-border-highlight rounded-xl shadow-2xl overflow-hidden max-h-72 overflow-y-auto">
+              <div className="absolute z-50 top-[calc(100%+6px)] left-0 right-0 bg-surface border border-border-highlight rounded-xl shadow-2xl overflow-hidden max-h-72 overflow-y-auto modal-scrollbar">
                 {CAR_COLORS.map((c) => (
                   <div
                     key={c.hex}

@@ -218,6 +218,11 @@ export default function ServiceModal({
   function handleAddToCart() {
     addService(service.id);
     onClose();
+  }
+
+  function handleBookService() {
+    addService(service.id);
+    onClose();
     navigate('/build-package');
   }
 
@@ -389,7 +394,7 @@ export default function ServiceModal({
           </div>
 
           {/* ── RIGHT COLUMN: Content (scrollable) ── */}
-          <div className="w-full md:flex-1 overflow-y-auto p-5 md:p-7 flex flex-col gap-5">
+          <div className="w-full md:flex-1 overflow-y-auto modal-scrollbar p-5 md:p-7 flex flex-col gap-5">
             {/* Header */}
             <div className="pr-6 sm:pr-8">
               <p className="font-mono text-[9px] sm:text-[10px] text-primary uppercase tracking-[0.3em] mb-2">
@@ -494,7 +499,7 @@ export default function ServiceModal({
 
               <button
                 type="button"
-                onClick={handleAddToCart}
+                onClick={handleBookService}
                 className="
                   flex items-center justify-center gap-2
                   w-full

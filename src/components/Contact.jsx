@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { usePackageBuilderContext } from '../context/PackageBuilderContext'
 
-export default function Contact() {
-  const { getWhatsAppUrl } = usePackageBuilderContext()
+const WHATSAPP_NUMBER_CONTACT = '971544541345'
 
+export default function Contact() {
   const [form, setForm] = useState({
     name: '',
     phone: '',
@@ -16,9 +16,26 @@ export default function Contact() {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
+  function createContactWhatsAppUrl(contactData) {
+    const { name, phone, vehicleDetails, preferredDate } = contactData
+    
+    const message = [
+      `*BOOKING REQUEST FROM CARS365 STUDIO*`,
+      ``,
+      `*Customer Info:*`,
+      `- Name: ${name || 'N/A'}`,
+      `- Phone: ${phone || 'N/A'}`,
+      ``,
+      `*Vehicle Details:* ${vehicleDetails || 'N/A'}`,
+      `*Preferred Date:* ${preferredDate || 'N/A'}`,
+    ].join('\n')
+
+    return `https://wa.me/${WHATSAPP_NUMBER_CONTACT}?text=${encodeURIComponent(message)}`
+  }
+
   function handleSubmit(e) {
     e.preventDefault()
-    const url = getWhatsAppUrl(form.name, form.phone)
+    const url = createContactWhatsAppUrl(form)
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
