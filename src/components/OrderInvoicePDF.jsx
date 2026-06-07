@@ -10,7 +10,7 @@ export default function OrderInvoicePDF({ order, onPrint }) {
     return new Date(dateString).toLocaleDateString('en-AE', {
       year: 'numeric',
       month: '2-digit',
-      day: '2-digit'
+      day: '2-digit',
     });
   };
 
@@ -20,7 +20,7 @@ export default function OrderInvoicePDF({ order, onPrint }) {
     return date.toLocaleDateString('en-AE', {
       year: 'numeric',
       month: '2-digit',
-      day: '2-digit'
+      day: '2-digit',
     });
   };
 
@@ -60,10 +60,19 @@ export default function OrderInvoicePDF({ order, onPrint }) {
           <div className="text-right">
             <p className="text-2xl font-bold text-yellow-500">INVOICE</p>
             <div className="text-sm text-gray-400 mt-2">
-              <p>INVOICE NO. <span className="text-white font-bold">{invoiceNumber}</span></p>
-              <p>DATE <span className="text-white font-bold">{createdDate}</span></p>
-              <p>DUE DATE <span className="text-white font-bold">{dueDate}</span></p>
-              <p>STATUS <span className="text-yellow-500 font-bold">UNPAID</span></p>
+              <p>
+                INVOICE NO.{' '}
+                <span className="text-white font-bold">{invoiceNumber}</span>
+              </p>
+              <p>
+                DATE <span className="text-white font-bold">{createdDate}</span>
+              </p>
+              <p>
+                DUE DATE <span className="text-white font-bold">{dueDate}</span>
+              </p>
+              <p>
+                STATUS <span className="text-yellow-500 font-bold">UNPAID</span>
+              </p>
             </div>
           </div>
         </div>
@@ -76,10 +85,30 @@ export default function OrderInvoicePDF({ order, onPrint }) {
               CUSTOMER DETAILS
             </h3>
             <div className="space-y-2 text-sm text-gray-300">
-              <p><span className="text-gray-500">Name:</span> <span className="text-white font-semibold">{order.customerName}</span></p>
-              <p><span className="text-gray-500">Phone:</span> <span className="text-white font-semibold">{order.phoneNumber}</span></p>
-              <p><span className="text-gray-500">Email:</span> <span className="text-white font-semibold">contact@cars365studio.ae</span></p>
-              <p><span className="text-gray-500">Address:</span> <span className="text-white font-semibold">Unit 12, Al Quoz Industrial Area 4, Dubai</span></p>
+              <p>
+                <span className="text-gray-500">Name:</span>{' '}
+                <span className="text-white font-semibold">
+                  {order.customerName}
+                </span>
+              </p>
+              <p>
+                <span className="text-gray-500">Phone:</span>{' '}
+                <span className="text-white font-semibold">
+                  {order.phoneNumber}
+                </span>
+              </p>
+              <p>
+                <span className="text-gray-500">Email:</span>{' '}
+                <span className="text-white font-semibold">
+                  contact@cars365studio.ae
+                </span>
+              </p>
+              <p>
+                <span className="text-gray-500">Address:</span>{' '}
+                <span className="text-white font-semibold">
+                  Unit 12, Al Quoz Industrial Area 4, Dubai
+                </span>
+              </p>
             </div>
           </div>
 
@@ -89,21 +118,65 @@ export default function OrderInvoicePDF({ order, onPrint }) {
               VEHICLE INFORMATION
             </h3>
             <div className="space-y-2 text-sm text-gray-300">
-              <p><span className="text-gray-500">Model/Make:</span> <span className="text-white font-semibold">{order.vehicleInfo?.model || 'N/A'}</span></p>
-              <p><span className="text-gray-500">Year:</span> <span className="text-white font-semibold">{order.vehicleInfo?.yearOfManufacture || 'N/A'}</span></p>
-              <p><span className="text-gray-500">Type:</span> <span className="text-white font-semibold">{order.vehicleInfo?.carType || 'N/A'}</span></p>
-              <p><span className="text-gray-500">Color:</span> <span className="text-white font-semibold flex items-center gap-2">{order.vehicleInfo?.color || 'N/A'} <div className="w-4 h-4 border border-gray-600 rounded" style={{ backgroundColor: order.vehicleInfo?.color || '#000' }} /></span></p>
-              <p><span className="text-gray-500">Plate No.:</span> <span className="text-white font-semibold">{order.plateInfo?.city} {order.plateInfo?.plateLetter} {order.plateInfo?.plateNumber}</span></p>
+              <p>
+                <span className="text-gray-500">Model/Make:</span>{' '}
+                <span className="text-white font-semibold">
+                  {order.vehicleInfo?.model || 'N/A'}
+                </span>
+              </p>
+              <p>
+                <span className="text-gray-500">Year:</span>{' '}
+                <span className="text-white font-semibold">
+                  {order.vehicleInfo?.yearOfManufacture || 'N/A'}
+                </span>
+              </p>
+              <p>
+                <span className="text-gray-500">Type:</span>{' '}
+                <span className="text-white font-semibold">
+                  {order.vehicleInfo?.carType || 'N/A'}
+                </span>
+              </p>
+              <p>
+                <span className="text-gray-500">Color:</span>{' '}
+                <span className="text-white font-semibold flex items-center gap-2">
+                  {order.vehicleInfo?.color || 'N/A'}{' '}
+                  <div
+                    className="w-4 h-4 border border-gray-600 rounded"
+                    style={{
+                      backgroundColor: order.vehicleInfo?.color || '#000',
+                    }}
+                  />
+                </span>
+              </p>
+              <p>
+                <span className="text-gray-500">Plate No.:</span>{' '}
+                <span className="text-white font-semibold">
+                  {order.plateInfo?.city} {order.plateInfo?.plateLetter}{' '}
+                  {order.plateInfo?.plateNumber}
+                </span>
+              </p>
             </div>
           </div>
         </div>
 
         {/* Visit Details */}
         <div className="mb-12 p-4 bg-gray-900 rounded border border-yellow-600">
-          <h3 className="text-xs font-bold text-yellow-500 tracking-widest mb-3">VISIT DETAILS</h3>
+          <h3 className="text-xs font-bold text-yellow-500 tracking-widest mb-3">
+            VISIT DETAILS
+          </h3>
           <div className="grid grid-cols-2 gap-4 text-sm text-gray-300">
-            <p><span className="text-gray-500">Visit Date:</span> <span className="text-white font-semibold">{formatDate(order.visitDate)}</span></p>
-            <p><span className="text-gray-500">Visit Time:</span> <span className="text-white font-semibold">{order.visitTime || 'N/A'}</span></p>
+            <p>
+              <span className="text-gray-500">Visit Date:</span>{' '}
+              <span className="text-white font-semibold">
+                {formatDate(order.visitDate)}
+              </span>
+            </p>
+            <p>
+              <span className="text-gray-500">Visit Time:</span>{' '}
+              <span className="text-white font-semibold">
+                {order.visitTime || 'N/A'}
+              </span>
+            </p>
           </div>
         </div>
 
@@ -112,21 +185,48 @@ export default function OrderInvoicePDF({ order, onPrint }) {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-y-2 border-yellow-600">
-                <th className="text-left py-3 px-2 text-xs font-bold text-yellow-500 tracking-widest">#</th>
-                <th className="text-left py-3 px-2 text-xs font-bold text-yellow-500 tracking-widest">SERVICE</th>
-                <th className="text-left py-3 px-2 text-xs font-bold text-yellow-500 tracking-widest">CATEGORY</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-yellow-500 tracking-widest">UNIT PRICE(AED)</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-yellow-500 tracking-widest">TOTAL (AED)</th>
+                <th className="text-left py-3 px-2 text-xs font-bold text-yellow-500 tracking-widest">
+                  #
+                </th>
+                <th className="text-left py-3 px-2 text-xs font-bold text-yellow-500 tracking-widest">
+                  SERVICE
+                </th>
+                <th className="text-left py-3 px-2 text-xs font-bold text-yellow-500 tracking-widest">
+                  CATEGORY
+                </th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-yellow-500 tracking-widest">
+                  UNIT PRICE(AED)
+                </th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-yellow-500 tracking-widest">
+                  TOTAL (AED)
+                </th>
               </tr>
             </thead>
             <tbody>
               {order.services?.selectedServices?.map((service, index) => (
-                <tr key={service.serviceId} className="border-b border-gray-700 hover:bg-gray-900">
-                  <td className="py-3 px-2 text-gray-400">{String(index + 1).padStart(2, '0')}</td>
-                  <td className="py-3 px-2 text-gray-200">{service.serviceName}</td>
+                <tr
+                  key={service.serviceId}
+                  className="border-b border-gray-700 hover:bg-gray-900"
+                >
+                  <td className="py-3 px-2 text-gray-400">
+                    {String(index + 1).padStart(2, '0')}
+                  </td>
+                  <td className="py-3 px-2 text-gray-200">
+                    {service.serviceName}
+                  </td>
                   <td className="py-3 px-2 text-gray-400 text-xs">SERVICE</td>
-                  <td className="py-3 px-2 text-right text-gray-200">{service.price?.toLocaleString('en-AE', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</td>
-                  <td className="py-3 px-2 text-right font-semibold text-gray-100">{service.finalPrice?.toLocaleString('en-AE', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</td>
+                  <td className="py-3 px-2 text-right text-gray-200">
+                    {service.price?.toLocaleString('en-AE', {
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 0,
+                    })}
+                  </td>
+                  <td className="py-3 px-2 text-right font-semibold text-gray-100">
+                    {service.finalPrice?.toLocaleString('en-AE', {
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 0,
+                    })}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -139,15 +239,21 @@ export default function OrderInvoicePDF({ order, onPrint }) {
             <div className="space-y-2 text-sm">
               <div className="flex justify-between py-2 border-b border-gray-700">
                 <span className="text-gray-400">Subtotal</span>
-                <span className="text-gray-200">AED {subtotal?.toLocaleString('en-AE')}</span>
+                <span className="text-gray-200">
+                  AED {subtotal?.toLocaleString('en-AE')}
+                </span>
               </div>
               <div className="flex justify-between py-2 border-b border-gray-700">
                 <span className="text-gray-400">Discount</span>
-                <span className="text-gray-200">AED {discount?.toLocaleString('en-AE')}</span>
+                <span className="text-gray-200">
+                  AED {discount?.toLocaleString('en-AE')}
+                </span>
               </div>
               <div className="flex justify-between py-2 border-b border-gray-700">
                 <span className="text-gray-400">VAT (5%)</span>
-                <span className="text-gray-200">AED {vat?.toLocaleString('en-AE')}</span>
+                <span className="text-gray-200">
+                  AED {vat?.toLocaleString('en-AE')}
+                </span>
               </div>
               <div className="flex justify-between py-3 px-3 bg-yellow-600 text-black font-bold rounded mt-2">
                 <span>TOTAL DUE</span>
@@ -160,15 +266,27 @@ export default function OrderInvoicePDF({ order, onPrint }) {
         {/* Payment Notes */}
         <div className="bg-gray-900 p-4 rounded border border-gray-700 text-xs text-gray-400 space-y-2 mb-8">
           <h3 className="font-bold text-yellow-500 mb-2">PAYMENT & NOTES</h3>
-          <p>Payment due within 7 days of invoice date.</p>
-          <p>Bank Transfer: IBAN AE XX XXXX XXXX XXXX XXXX | Bank: Emirates NBD</p>
+          <p>
+            A 30% advance payment is required to confirm the booking. The
+            remaining 70% balance is due upon completion of the service and
+            prior to vehicle handover.
+          </p>
+          <p>
+            Bank Transfer: IBAN AE XX XXXX XXXX XXXX XXXX | Bank: Emirates NBD
+          </p>
           <p>All prices in AED. VAT (5%) applied on amount after discount.</p>
-          <p>Warranty terms apply per service. Contact us at info@cars365studio.ae</p>
+          <p>
+            Warranty terms apply per service. Contact us at
+            info@cars365studio.ae
+          </p>
         </div>
 
         {/* Footer */}
         <div className="border-t border-yellow-600 pt-8 text-center text-xs text-gray-500">
-          <p>CARS365STUDIO • Al Quoz Industrial Area, Dubai, UAE • +971 4 XXX XXXX • www.cars365studio.ae</p>
+          <p>
+            CARS365STUDIO • 15B St - Al Qouz Ind.fourth - Al Quoz - Dubai -
+            United Arab Emirates • +971 50 436 2316 • www.cars365studio.com
+          </p>
         </div>
       </div>
 
