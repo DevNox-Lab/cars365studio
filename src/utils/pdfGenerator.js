@@ -29,6 +29,10 @@ export const generateInvoicePDF = async (order) => {
     const createdDate = formatDate(order.createdAt);
     const dueDate = calculateDueDate(order.createdAt);
     const total = order.services?.totalPrice || 0;
+    const plateNumber =
+      [order.plateInfo?.plateLetter, order.plateInfo?.plateNumber]
+        .filter(Boolean)
+        .join(' ') || 'N/A';
 
     const colorOrange = '#FFDEA5';
     const colorDarkGrey = '#121315';
@@ -430,6 +434,10 @@ export const generateInvoicePDF = async (order) => {
                 <div class="field">
                   <span class="field-label">Type</span>
                   <span class="field-value">${order.vehicleInfo?.carType || 'N/A'}</span>
+                </div>
+                <div class="field">
+                  <span class="field-label">Plate No.</span>
+                  <span class="field-value">${plateNumber}</span>
                 </div>
                 <div class="field">
                   <span class="field-label">Color</span>
