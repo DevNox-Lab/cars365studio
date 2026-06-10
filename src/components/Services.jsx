@@ -80,6 +80,7 @@ function ServiceCard({ service, index, onViewDetails }) {
         draggable={false}
         className="absolute inset-0 w-full h-full object-cover
                    grayscale transition duration-700 ease-in-out
+                   
                    group-hover:grayscale-0 group-hover:scale-105"
       />
 
