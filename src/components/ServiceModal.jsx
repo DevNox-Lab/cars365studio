@@ -1,75 +1,75 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { usePackageBuilderContext } from '../context/PackageBuilderContext';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Before / After Slider
 // ─────────────────────────────────────────────────────────────────────────────
 function BeforeAfterSlider({ gallery, serviceId }) {
-  const [sliderPos, setSliderPos] = useState(50)
-  const [galleryIndex, setGalleryIndex] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
-  const containerRef = useRef(null)
+  const [sliderPos, setSliderPos] = useState(50);
+  const [galleryIndex, setGalleryIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef(null);
 
   // Reset to centre whenever the service or gallery pair changes
   useEffect(() => {
-    setSliderPos(50)
-    setGalleryIndex(0)
-  }, [serviceId])
+    setSliderPos(50);
+    setGalleryIndex(0);
+  }, [serviceId]);
 
   useEffect(() => {
-    setSliderPos(50)
-  }, [galleryIndex])
+    setSliderPos(50);
+  }, [galleryIndex]);
 
-  const currentPair = gallery?.[galleryIndex] ?? {}
+  const currentPair = gallery?.[galleryIndex] ?? {};
 
   // ── Shared position calculator ───────────────────────────────────────────
   const calcPos = useCallback((clientX) => {
-    if (!containerRef.current) return 50
-    const { left, width } = containerRef.current.getBoundingClientRect()
-    return Math.max(0, Math.min(100, ((clientX - left) / width) * 100))
-  }, [])
+    if (!containerRef.current) return 50;
+    const { left, width } = containerRef.current.getBoundingClientRect();
+    return Math.max(0, Math.min(100, ((clientX - left) / width) * 100));
+  }, []);
 
   // ── Mouse handlers ───────────────────────────────────────────────────────
   const onMouseDown = useCallback(
     (e) => {
-      e.preventDefault()
-      setIsDragging(true)
-      setSliderPos(calcPos(e.clientX))
+      e.preventDefault();
+      setIsDragging(true);
+      setSliderPos(calcPos(e.clientX));
     },
     [calcPos]
-  )
+  );
 
   const onMouseMove = useCallback(
     (e) => {
-      if (!isDragging) return
-      setSliderPos(calcPos(e.clientX))
+      if (!isDragging) return;
+      setSliderPos(calcPos(e.clientX));
     },
     [isDragging, calcPos]
-  )
+  );
 
-  const onMouseUp = useCallback(() => setIsDragging(false), [])
+  const onMouseUp = useCallback(() => setIsDragging(false), []);
 
   // ── Touch handlers ───────────────────────────────────────────────────────
   const onTouchStart = useCallback(
     (e) => {
-      setIsDragging(true)
-      setSliderPos(calcPos(e.touches[0].clientX))
+      setIsDragging(true);
+      setSliderPos(calcPos(e.touches[0].clientX));
     },
     [calcPos]
-  )
+  );
 
   const onTouchMove = useCallback(
     (e) => {
-      if (!isDragging) return
+      if (!isDragging) return;
       // Prevent page scroll while dragging the slider
-      e.preventDefault()
-      setSliderPos(calcPos(e.touches[0].clientX))
+      e.preventDefault();
+      setSliderPos(calcPos(e.touches[0].clientX));
     },
     [isDragging, calcPos]
-  )
+  );
 
-  const onTouchEnd = useCallback(() => setIsDragging(false), [])
+  const onTouchEnd = useCallback(() => setIsDragging(false), []);
 
   return (
     <div className="flex flex-col h-full bg-surface-container-lowest">
@@ -77,7 +77,10 @@ function BeforeAfterSlider({ gallery, serviceId }) {
       <div
         ref={containerRef}
         className="relative flex-1 aspect-[4/3] md:aspect-auto overflow-hidden select-none"
-        style={{ touchAction: 'none', cursor: isDragging ? 'ew-resize' : 'default' }}
+        style={{
+          touchAction: 'none',
+          cursor: isDragging ? 'ew-resize' : 'default',
+        }}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
         onMouseLeave={onMouseUp}
@@ -95,7 +98,9 @@ function BeforeAfterSlider({ gallery, serviceId }) {
           />
         ) : (
           <div className="absolute inset-0 bg-surface-container flex items-center justify-center">
-            <span className="material-symbols-outlined text-outline text-4xl">image</span>
+            <span className="material-symbols-outlined text-outline text-4xl">
+              image
+            </span>
           </div>
         )}
 
@@ -171,7 +176,7 @@ function BeforeAfterSlider({ gallery, serviceId }) {
         </div>
       )}
     </div>
-  )
+  );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -182,23 +187,32 @@ function CheckRow({ text }) {
     <li className="flex items-start gap-3">
       <span
         className="material-symbols-outlined text-primary text-base shrink-0 mt-0.5"
-        style={{ fontVariationSettings: "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20" }}
+        style={{
+          fontVariationSettings: "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20",
+        }}
       >
         check_circle
       </span>
-      <span className="font-body text-sm text-on-surface leading-relaxed">{text}</span>
+      <span className="font-body text-sm text-on-surface leading-relaxed">
+        {text}
+      </span>
     </li>
-  )
+  );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Main Modal
 // ─────────────────────────────────────────────────────────────────────────────
-export default function ServiceModal({ service, serviceImage, isOpen, onClose }) {
-  const [visible, setVisible] = useState(false)
-  const panelRef = useRef(null)
-  const closeButtonRef = useRef(null)
-  const navigate = useNavigate()
+export default function ServiceModal({
+  service,
+  serviceImage,
+  isOpen,
+  onClose,
+}) {
+  const [visible, setVisible] = useState(false);
+  const panelRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const navigate = useNavigate();
   const { addService } = usePackageBuilderContext();
 
   function handleAddToCart() {
@@ -210,66 +224,66 @@ export default function ServiceModal({ service, serviceImage, isOpen, onClose })
   // ── Body scroll lock + entrance animation trigger ──────────────────────────
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden';
       // Double rAF ensures the element is painted before the class change
       // that triggers the CSS transition
       const raf = requestAnimationFrame(() =>
         requestAnimationFrame(() => setVisible(true))
-      )
+      );
       return () => {
-        cancelAnimationFrame(raf)
-        document.body.style.overflow = ''
-      }
+        cancelAnimationFrame(raf);
+        document.body.style.overflow = '';
+      };
     } else {
-      setVisible(false)
-      document.body.style.overflow = ''
+      setVisible(false);
+      document.body.style.overflow = '';
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   // ── Focus close button once animation has started ─────────────────────────
   useEffect(() => {
-    if (!isOpen) return
-    const t = setTimeout(() => closeButtonRef.current?.focus(), 60)
-    return () => clearTimeout(t)
-  }, [isOpen])
+    if (!isOpen) return;
+    const t = setTimeout(() => closeButtonRef.current?.focus(), 60);
+    return () => clearTimeout(t);
+  }, [isOpen]);
 
   // ── ESC key + basic focus trap ────────────────────────────────────────────
   useEffect(() => {
-    if (!isOpen) return
+    if (!isOpen) return;
 
     function handleKeyDown(e) {
       if (e.key === 'Escape') {
-        onClose()
-        return
+        onClose();
+        return;
       }
 
-      if (e.key !== 'Tab' || !panelRef.current) return
+      if (e.key !== 'Tab' || !panelRef.current) return;
 
       const focusable = [
         ...panelRef.current.querySelectorAll(
           'button:not([disabled]), [href]:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
         ),
-      ]
-      if (focusable.length === 0) return
+      ];
+      if (focusable.length === 0) return;
 
-      const first = focusable[0]
-      const last = focusable[focusable.length - 1]
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
 
       if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault()
-        last.focus()
+        e.preventDefault();
+        last.focus();
       } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault()
-        first.focus()
+        e.preventDefault();
+        first.focus();
       }
     }
 
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isOpen, onClose])
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   // Don't render anything when closed
-  if (!isOpen || !service) return null
+  if (!isOpen || !service) return null;
 
   return (
     <>
@@ -359,10 +373,12 @@ export default function ServiceModal({ service, serviceImage, isOpen, onClose })
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-surface-container">
-                <span className="material-symbols-outlined text-outline text-5xl">image</span>
+                <span className="material-symbols-outlined text-outline text-5xl">
+                  image
+                </span>
               </div>
             )}
-            
+
             {/* 
             ── COMMENTED OUT: Before/After slider ──
             <BeforeAfterSlider
