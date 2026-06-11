@@ -12,7 +12,7 @@ export default function Hero() {
       {/* ── Full-width background image ─────────────────────────────────────── */}
       <img
         // src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1920&auto=format&fit=crop&q=85"
-        src="../../public/images/hero section cars365Studio.webp"
+        src="/images/hero section cars365Studio.webp"
         alt="Luxury car — CARS365 STUDIO"
         loading="eager"
         fetchpriority="high"
