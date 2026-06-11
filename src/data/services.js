@@ -27,10 +27,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '../../public/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+          '../../public/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
       {
         before:
@@ -67,9 +67,16 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&q=80',
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
         after:
-          'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80',
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
       },
     ],
   },
@@ -89,7 +96,21 @@ export const services = [
       'Protection against scratches and UV damage',
       'Easy maintenance and cleaning',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'ceramic',
@@ -119,9 +140,16 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80',
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
         after:
-          'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80',
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
       },
     ],
   },
@@ -150,9 +178,16 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80',
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
         after:
-          'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80',
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
       },
     ],
   },
@@ -180,9 +215,16 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80',
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
         after:
-          'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=800&q=80',
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
       },
     ],
   },
@@ -211,9 +253,16 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1635774855317-edf3ee4463db?w=800&q=80',
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
         after:
-          'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=800&q=80',
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
       },
     ],
   },
@@ -238,7 +287,21 @@ export const services = [
       'Revitalizes interior surfaces',
       'Creates a cleaner, more hygienic cabin',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'seat-upholstery',
@@ -260,7 +323,21 @@ export const services = [
       'Improved seating comfort and feel',
       'Enhances interior appearance and value perception',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'dashboard-wrapping',
@@ -278,7 +355,21 @@ export const services = [
       'Reduced dashboard glare',
       'Custom interior styling',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   // ── 2. Body Kit Installation Services ──────────────────────────────────────
   {
@@ -297,7 +388,21 @@ export const services = [
       'Aerodynamic styling',
       'Custom exterior look',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   // ── 3. Carbon Fiber Services ────────────────────────────────────────────────
   {
@@ -320,7 +425,21 @@ export const services = [
       'Sport-inspired styling',
       'Enhanced heat management',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   // ── 4. Facelift & Conversion Services ──────────────────────────────────────
   {
@@ -343,7 +462,21 @@ export const services = [
       'Modernized styling',
       'Enhanced visual appeal',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   // ── 5. Dyno Tuning Services ────────────────────────────────────────────────
   {
@@ -362,7 +495,21 @@ export const services = [
       'Improved throttle response',
       'Optimized fuel calibration',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   // ── 6. Exhaust Services ────────────────────────────────────────────────────
   {
@@ -385,7 +532,21 @@ export const services = [
       'Reduced exhaust restriction',
       'Sport-inspired driving feel',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   // ── 7. Car Accessories Installation ────────────────────────────────────────
   {
@@ -404,7 +565,21 @@ export const services = [
       'Improved storage versatility',
       'Enhanced utility for travel',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   // ── 8. Aftermarket Modification Services ───────────────────────────────────
   {
@@ -423,7 +598,21 @@ export const services = [
       'Enhanced handling characteristics',
       'Optimized system performance',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   // ── 9. Interior Lighting Services ──────────────────────────────────────────
   {
@@ -446,7 +635,21 @@ export const services = [
       'Customizable color options',
       'Premium cabin atmosphere',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'star-roof',
@@ -468,7 +671,21 @@ export const services = [
       'Twinkling star effect',
       'Custom interior design',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
 
   // ── 11. Rim & Wheel Services ───────────────────────────────────────────────
@@ -488,7 +705,21 @@ export const services = [
       'Optimized wheel setup',
       'Improved stance appearance',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   // ── 12. General Modification ───────────────────────────────────────────────
   {
@@ -511,7 +742,21 @@ export const services = [
       'Structured build roadmap',
       'Personalized customization plan',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'leather-seat-install',
@@ -533,7 +778,21 @@ export const services = [
       'Refined interior appearance',
       'Improved cabin comfort',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'roof-lining-replacement',
@@ -555,7 +814,21 @@ export const services = [
       'Custom material options',
       'Improved cabin comfort',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'steering-wheel-wrap',
@@ -577,7 +850,21 @@ export const services = [
       'Sport-inspired appearance',
       'Personalized interior detail',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'door-panel-custom',
@@ -595,7 +882,21 @@ export const services = [
       'Refined interior finish',
       'Personalized styling',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'wide-body-kit',
@@ -617,7 +918,21 @@ export const services = [
       'Enhanced stance design',
       'Distinctive road presence',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'carbon-interior-trim',
@@ -639,7 +954,21 @@ export const services = [
       'Modern cockpit design',
       'Sport-inspired cabin feel',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'headlight-upgrade',
@@ -661,7 +990,21 @@ export const services = [
       'Enhanced exterior styling',
       'Optimized lighting efficiency',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
   {
     id: 'wheel-alignment',
@@ -683,7 +1026,21 @@ export const services = [
       'Improved fuel efficiency',
       'Enhanced driving stability',
     ],
-    gallery: [],
+    gallery: [
+      {
+        before:
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+
+        after:
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      },
+      {
+        before:
+          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+        after:
+          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+      },
+    ],
   },
 ];
 
