@@ -175,7 +175,7 @@ export default function PackageBuilder() {
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left — steps (8/12) - scrollable on desktop */}
-          <div className="lg:col-span-8 space-y-12 lg:h-[100vh] lg:overflow-y-auto no-scrollbar pb-12">
+          <div className="lg:col-span-8 space-y-12 lg:h-[100vh] lg:overflow-y-auto overflow-x-clip no-scrollbar pb-12">
             {/* Section header */}
             <div className="mb-12">
               <p className="font-mono text-xs text-primary uppercase tracking-[0.3em] mb-4">
