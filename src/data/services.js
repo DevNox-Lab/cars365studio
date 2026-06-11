@@ -99,16 +99,16 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '../../public/images/WEBP Before After Images/3. Before Color PPF Installation cars365Studio.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+          '../../public/images/WEBP Before After Images/3. After Color PPF Installation cars365Studio.webp',
       },
       {
         before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+          '../../public/images/WEBP Before After Images/3. Before Color PPF Installation cars365Studio.webp',
         after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '../../public/images/WEBP Before After Images/3. After Color PPF Installation cars365Studio.webp',
       },
     ],
   },
