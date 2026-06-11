@@ -159,7 +159,7 @@ export default function CarSelector() {
             </div>
 
             {/* Base Price Example */}
-            <div>
+            {/* <div>
               <p className="font-mono text-[10px] text-on-surface-variant uppercase tracking-[0.25em] mb-1">
                 Sample Service Price
               </p>
@@ -170,7 +170,7 @@ export default function CarSelector() {
               <p className="font-mono text-[10px] text-on-surface-variant">
                 (Front PPF)
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       )}

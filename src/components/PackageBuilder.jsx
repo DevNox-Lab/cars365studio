@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import { usePackageBuilderContext, WHATSAPP_NUMBER } from '../context/PackageBuilderContext';
+import {
+  usePackageBuilderContext,
+  WHATSAPP_NUMBER,
+} from '../context/PackageBuilderContext';
 import CarSelector from './CarSelector';
 import ServiceSelector from './ServiceSelector';
 import EstimateSidebar from './EstimateSidebar';
@@ -21,19 +24,22 @@ export default function PackageBuilder() {
     model: '',
     carType: '',
     year: '',
-    color: '#000000',
+    color: 'Black',
     city: 'Dubai',
     plateType: 'Private',
     plateLetter: '',
     plateNumber: '',
   });
-  
+
   const {
     selectedServiceIds,
     selectedServicesWithPrices,
     currentCar,
     total,
     removeService,
+    setIsCartOpen,
+    setSelectedBrand,
+    selectCar,
   } = usePackageBuilderContext();
 
   function handlePackageFormChange(field, value) {
@@ -65,7 +71,9 @@ export default function PackageBuilder() {
         vehicleInfo: {
           model: currentCar.model,
           carType: currentCar.carType,
-          yearOfManufacture: packageFormData.year ? parseInt(packageFormData.year) : null,
+          yearOfManufacture: packageFormData.year
+            ? parseInt(packageFormData.year)
+            : null,
           color: packageFormData.color,
         },
         plateInfo: {
@@ -90,14 +98,39 @@ export default function PackageBuilder() {
 
       // Create order and get fetch URL
       const response = await createOrderAPI(orderData);
-      
+
       if (response.success && response.fetchUrl) {
         // Construct simplified WhatsApp message
         const message = `New Order Request from ${packageFormData.userName}:\n${response.fetchUrl}`;
 
         const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-        
+
+        // Clear selected services (empty the cart)
+        Array.from(selectedServiceIds).forEach((id) => removeService(id));
+        // Close cart UI if open
+        if (setIsCartOpen) setIsCartOpen(false);
+
+        // Reset selected brand and model (clear car selection)
+        if (setSelectedBrand) setSelectedBrand('');
+        if (selectCar) selectCar(null);
+
+        // Reset the build package form to empty defaults
+        setPackageFormData({
+          visitDate: '',
+          visitTime: '',
+          userName: '',
+          userNumber: '',
+          model: '',
+          carType: '',
+          year: '',
+          color: 'black',
+          city: 'Dubai',
+          plateType: 'Private',
+          plateLetter: '',
+          plateNumber: '',
+        });
+
         // Close mobile modal if open
         setIsEstimateModalOpen(false);
       } else {
@@ -105,7 +138,9 @@ export default function PackageBuilder() {
       }
     } catch (error) {
       console.error('Error during order creation:', error);
-      alert(`Error: ${error.message || 'Failed to process your request. Please try again.'}`);
+      alert(
+        `Error: ${error.message || 'Failed to process your request. Please try again.'}`
+      );
     } finally {
       setIsProcessing(false);
     }
@@ -157,9 +192,9 @@ export default function PackageBuilder() {
 
             <CarSelector />
 
-            <BookingDetailsForm 
-              formData={packageFormData} 
-              onFormChange={handlePackageFormChange} 
+            <BookingDetailsForm
+              formData={packageFormData}
+              onFormChange={handlePackageFormChange}
             />
 
             <ServiceSelector />
