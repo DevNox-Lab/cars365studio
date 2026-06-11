@@ -74,9 +74,27 @@ export const services = [
     ],
   },
   {
+    id: 'color-PPF',
+    name: 'Color PPF Installation',
+    category: 'NO. 3 / PAINT PROTECTION',
+    description:
+      'Installation of color-matched paint protection film for enhanced vehicle aesthetics and protection.',
+    tagline: 'Protect your paint. Enhance your style.',
+    basePrice: 1200,
+    tags: ['MULTI-COLOR', 'PAINT PROTECTION', 'AESTHETIC UPGRADE'],
+    icon: 'style',
+    includes: ['Surface preparation', 'PPF application', 'Quality inspection'],
+    benefits: [
+      'Enhanced vehicle appearance',
+      'Protection against scratches and UV damage',
+      'Easy maintenance and cleaning',
+    ],
+    gallery: [],
+  },
+  {
     id: 'ceramic',
     name: 'Ceramic Coating',
-    category: 'NO. 3 / CERAMIC',
+    category: 'NO. 4 / CERAMIC',
 
     TODO: 'BHAI jab card ko click kreen to ceramic coating k nechy likha ana chahiye',
     description:

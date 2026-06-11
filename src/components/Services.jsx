@@ -7,25 +7,21 @@ import ServiceModal from './ServiceModal';
 const CARD_IMAGE = {
   'front-ppf': '/images/Full Front PPF cars365Studio.webp',
   'full-ppf': '/images/Full Body PPF cars365Studio.webp',
+  'color-PPF': '/images/Color PPF cars365Studio.webp',
   ceramic: '/images/Ceramic Coating cars365Studio.webp',
   wrap: '/images/Full Car Wrap cars365Studio.webp',
   tint: '/images/Window Tinting cars365Studio.webp',
   polish: '/images/Paint Correction cars365Studio.webp',
   'interior-detailing': '/images/Interior Detailing cars365Studio.webp',
-  'seat-upholstery':
-    '/images/Seat Upholstery Replacement cars365Studio.webp',
+  'seat-upholstery': '/images/Seat Upholstery Replacement cars365Studio.webp',
   'dashboard-wrapping': '/images/Dashboard wrapping cars365Studio.webp',
 
-  'accessory-roof-rack':
-    '/images/Roof Rack Installation cars365Studio.webp',
+  'accessory-roof-rack': '/images/Roof Rack Installation cars365Studio.webp',
 
-  'exhaust-catback':
-    '/images/Cat-Back Exhaust Installation Cars365Studio.webp',
-  'bodykit-full':
-    '/images/Full Body Kit Installation cars365Studio.webp',
+  'exhaust-catback': '/images/Cat-Back Exhaust Installation Cars365Studio.webp',
+  'bodykit-full': '/images/Full Body Kit Installation cars365Studio.webp',
 
-  'carbon-hood':
-    '/images/Carbon fiber hood Installation cars365Studio.webp',
+  'carbon-hood': '/images/Carbon fiber hood Installation cars365Studio.webp',
 
   'ecu-remap': '/images/ECU Remapping cars365Studio.webp',
 
@@ -40,8 +36,7 @@ const CARD_IMAGE = {
   'performance-parts':
     '/images/Performance Parts Installation cars365studio.webp',
 
-  'star-roof':
-    '/images/Starlight Headliner Installation cars365Studio.webp',
+  'star-roof': '/images/Starlight Headliner Installation cars365Studio.webp',
 
   'custom-consultation':
     '/images/Vehicle Customization Consultation cars365Studio.webp',
@@ -52,27 +47,28 @@ const CARD_IMAGE = {
   'roof-lining-replacement':
     '/images/Roof Lining Replacement cars365Studio.webp',
 
-  'steering-wheel-wrap':
-    '/images/Steering Wheel Wrap cars365Studio.webp',
+  'steering-wheel-wrap': '/images/Steering Wheel Wrap cars365Studio.webp',
 
-  'door-panel-custom':
-    '/images/Door Panel Customization cars365Studio.webp',
+  'door-panel-custom': '/images/Door Panel Customization cars365Studio.webp',
 
-  'wide-body-kit':
-    '/images/Wide Body Kit Installation cars365Studio.webp',
+  'wide-body-kit': '/images/Wide Body Kit Installation cars365Studio.webp',
 
   'carbon-interior-trim':
     '/images/Carbon Fiber Interior Trim cars365Studio.webp',
 
   'headlight-upgrade': '/images/Headlight Upgrade cars365Studio.webp',
 
-  'wheel-alignment':
-    '/images/Wheel ALIGNMENT & BALANCING cars365Studio.webp',
+  'wheel-alignment': '/images/Wheel ALIGNMENT & BALANCING cars365Studio.webp',
 };
 
 // ── Service card ─────────────────────────────────────────────────────────────
-function ServiceCard({ service, onViewDetails }) {
+function ServiceCard({ service, index, onViewDetails }) {
   const image = CARD_IMAGE[service.id] || CARD_IMAGE['front-ppf'];
+
+  const rawLabel = service.category.includes(' / ')
+    ? service.category.split(' / ')[1]
+    : service.category;
+  const dynamicCategory = `NO. ${index + 1} / ${rawLabel}`;
 
   return (
     <article 
@@ -86,6 +82,7 @@ function ServiceCard({ service, onViewDetails }) {
         draggable={false}
         className="absolute inset-0 w-full h-full object-cover
                    grayscale transition duration-700 ease-in-out
+                   
                    group-hover:grayscale-0 group-hover:scale-105"
       />
 
@@ -121,7 +118,7 @@ function ServiceCard({ service, onViewDetails }) {
       <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
         {/* Category / number label */}
         <p className="font-mono text-[10px] text-primary uppercase tracking-[0.25em] mb-2">
-          {service.category}
+          {dynamicCategory}
         </p>
 
         {/* Service name */}
@@ -285,10 +282,11 @@ export default function Services({ limit }) {
         {/* ── Cards grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {displayedServices.length > 0 ? (
-            displayedServices.map((service) => (
+            displayedServices.map((service, index) => (
               <ServiceCard
                 key={service.id}
                 service={service}
+                index={index}
                 onViewDetails={setSelectedService}
               />
             ))
@@ -317,7 +315,11 @@ export default function Services({ limit }) {
       {/* ── Service detail modal ── */}
       <ServiceModal
         service={selectedService}
-        serviceImage={selectedService ? CARD_IMAGE[selectedService.id] || CARD_IMAGE['front-ppf'] : null}
+        serviceImage={
+          selectedService
+            ? CARD_IMAGE[selectedService.id] || CARD_IMAGE['front-ppf']
+            : null
+        }
         isOpen={!!selectedService}
         onClose={() => setSelectedService(null)}
       />

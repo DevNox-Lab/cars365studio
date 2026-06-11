@@ -1,5 +1,5 @@
 const TICKER_TEXT =
-  "PPF \u2022 CERAMIC COATING \u2022 WRAPPING \u2022 POLISHING \u2022 WINDOW TINTING \u2022 ";
+  'PPF \u2022 CERAMIC COATING \u2022 WRAPPING \u2022 POLISHING \u2022 WINDOW TINTING \u2022 ';
 
 export default function Hero() {
   const tickerContent = TICKER_TEXT.repeat(4);
@@ -11,12 +11,13 @@ export default function Hero() {
     >
       {/* ── Full-width background image ─────────────────────────────────────── */}
       <img
-        src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1920&auto=format&fit=crop&q=85"
+        // src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1920&auto=format&fit=crop&q=85"
+        src="/images/hero section cars365Studio.webp"
         alt="Luxury car — CARS365 STUDIO"
         loading="eager"
         fetchpriority="high"
         className="absolute inset-0 w-full h-full object-cover object-center"
-        style={{ filter: "brightness(0.72) contrast(1.08) saturate(0.9)" }}
+        style={{ filter: 'brightness(0.72) contrast(1.08) saturate(0.9)' }}
       />
 
       {/* ── Gradient layers ─────────────────────────────────────────────────── */}
@@ -26,7 +27,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to top, #080808 0%, rgba(8,8,8,0.92) 12%, rgba(8,8,8,0.55) 30%, rgba(8,8,8,0.15) 55%, transparent 75%)",
+            'linear-gradient(to top, #080808 0%, rgba(8,8,8,0.92) 12%, rgba(8,8,8,0.55) 30%, rgba(8,8,8,0.15) 55%, transparent 75%)',
         }}
       />
 
@@ -35,7 +36,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(8,8,8,0.65) 0%, transparent 25%)",
+            'linear-gradient(to bottom, rgba(8,8,8,0.65) 0%, transparent 25%)',
         }}
       />
 
@@ -44,7 +45,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to right, rgba(8,8,8,0.75) 0%, rgba(8,8,8,0.3) 35%, transparent 65%)",
+            'linear-gradient(to right, rgba(8,8,8,0.75) 0%, rgba(8,8,8,0.3) 35%, transparent 65%)',
         }}
       />
 
@@ -53,7 +54,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 40% at 50% 100%, rgba(233,193,118,0.07) 0%, transparent 70%)",
+            'radial-gradient(ellipse 80% 40% at 50% 100%, rgba(233,193,118,0.07) 0%, transparent 70%)',
         }}
       />
 
@@ -67,7 +68,7 @@ export default function Hero() {
         {/* Headline */}
         <h2
           className="font-headline font-bold text-on-surface uppercase leading-none mb-5"
-          style={{ fontSize: "clamp(2.2rem, 5.5vw, 5rem)" }}
+          style={{ fontSize: 'clamp(2.2rem, 5.5vw, 5rem)' }}
         >
           PROTECT. POLISH.
           <br />
