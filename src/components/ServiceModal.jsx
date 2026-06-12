@@ -145,14 +145,14 @@ function BeforeAfterSlider({ gallery, serviceId }) {
         {/* BEFORE label */}
         <div className="absolute bottom-3 left-3 z-20 pointer-events-none">
           <span className="font-mono text-[9px] text-white uppercase tracking-widest px-2.5 py-1 bg-black/70 backdrop-blur-sm rounded-full">
-            BEFORE
+            AFTER
           </span>
         </div>
 
         {/* AFTER label */}
         <div className="absolute bottom-3 right-3 z-20 pointer-events-none">
           <span className="font-mono text-[9px] text-white uppercase tracking-widest px-2.5 py-1 bg-black/70 backdrop-blur-sm rounded-full">
-            AFTER
+            BEFORE
           </span>
         </div>
       </div>
@@ -368,7 +368,7 @@ export default function ServiceModal({
           {/* ── LEFT COLUMN: Service Image ── */}
           <div className="w-full md:w-5/12 shrink-0 flex flex-col aspect-[4/3] md:aspect-auto overflow-hidden bg-surface-container">
             {/* Service Image */}
-            {serviceImage ? (
+            {/* {serviceImage ? (
               <img
                 src={serviceImage}
                 alt={service.name}
@@ -382,15 +382,13 @@ export default function ServiceModal({
                   image
                 </span>
               </div>
-            )}
+            )} */}
 
-            {/* 
-            ── COMMENTED OUT: Before/After slider ──
+            {/* ── Before/After slider ── */}
             <BeforeAfterSlider
               gallery={service.gallery}
               serviceId={service.id}
             />
-            */}
           </div>
 
           {/* ── RIGHT COLUMN: Content (scrollable) ── */}

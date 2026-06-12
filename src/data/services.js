@@ -27,16 +27,10 @@ export const services = [
     gallery: [
       {
         before:
-          '../../public/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          '../../public/images/WEBP Before After Images/1. After Full Front PPF.webp',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
     ],
   },
@@ -67,16 +61,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
     ],
   },
@@ -99,16 +87,10 @@ export const services = [
     gallery: [
       {
         before:
-          '../../public/images/WEBP Before After Images/3. Before Color PPF Installation cars365Studio.webp',
+          '/images/WEBP Before After Images/3. Before Color PPF Installation cars365Studio.webp',
 
         after:
-          '../../public/images/WEBP Before After Images/3. After Color PPF Installation cars365Studio.webp',
-      },
-      {
-        before:
-          '../../public/images/WEBP Before After Images/3. Before Color PPF Installation cars365Studio.webp',
-        after:
-          '../../public/images/WEBP Before After Images/3. After Color PPF Installation cars365Studio.webp',
+          '/images/WEBP Before After Images/3. After Color PPF Installation cars365Studio.webp',
       },
     ],
   },
@@ -140,16 +122,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
     ],
   },
@@ -178,16 +154,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
     ],
   },
@@ -215,16 +185,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
     ],
   },
@@ -253,16 +217,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
     ],
   },
@@ -290,16 +248,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
     ],
   },
@@ -326,16 +278,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
     ],
   },
@@ -358,16 +304,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
     ],
   },
@@ -391,16 +331,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
     ],
   },
@@ -428,16 +362,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/11. Before Carbon Fiber Hood Installation.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/11. After Carbon Fiber Hood Installation.webp',
       },
     ],
   },
@@ -465,16 +393,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/12. Before Complete Facelift Conversion.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/12. After Complete Facelift Conversion.webp',
       },
     ],
   },
@@ -498,16 +420,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/13. Before ECU Remapping.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/13. After ECU Remapping.webp',
       },
     ],
   },
@@ -535,16 +451,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/14. Before Cat-Back Exhaust Installation.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/14. After Cat-Back Exhaust Installation.webp',
       },
     ],
   },
@@ -568,16 +478,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/15. Before Roof Rack Installation.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/15. After Roof Rack Installation.webp',
       },
     ],
   },
@@ -601,16 +505,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/16. Before Performance Parts Installation.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/16. After Performance Parts Installation.webp',
       },
     ],
   },
@@ -638,16 +536,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/17. Before Ambient Lighting Installation.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/17. After Ambient Lighting Installation.webp',
       },
     ],
   },
@@ -674,16 +566,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/18. Before Starlight Headliner Installation.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/18. After Starlight Headliner Installation.webp',
       },
     ],
   },
@@ -708,16 +594,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/19. Before Custom Wheel Installation.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/19. After Custom Wheel Installation.webp',
       },
     ],
   },
@@ -745,16 +625,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
       },
     ],
   },
@@ -781,16 +655,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/21. Before Leather Seat Installation.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/21. After Leather Seat Installation.webp',
       },
     ],
   },
@@ -817,16 +685,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/22. Before Roof Lining Replacement.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/22. After Roof Lining Replacement.webp',
       },
     ],
   },
@@ -853,16 +715,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/23. Before Steering Wheel Wrap.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/23. After Steering Wheel Wrap.webp',
       },
     ],
   },
@@ -885,16 +741,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/24. Before Door Panel Customization.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/24. After Door Panel Customization.webp',
       },
     ],
   },
@@ -921,16 +771,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/25. Before Wide Body Kit Installation.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/25. After Wide Body Kit Installation.webp',
       },
     ],
   },
@@ -957,16 +801,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/26. Before Carbon Fiber Interior Trim.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/26. After Carbon Fiber Interior Trim.webp',
       },
     ],
   },
@@ -993,16 +831,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/27. Before Headlight Upgrade  Conversion.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/27. After Headlight Upgrade  Conversion.webp',
       },
     ],
   },
@@ -1029,16 +861,10 @@ export const services = [
     gallery: [
       {
         before:
-          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+          '/images/WEBP Before After Images/28. Before Wheel Alignment & Balancing.webp',
 
         after:
-          'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
-      },
-      {
-        before:
-          'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
-        after:
-          'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+          '/images/WEBP Before After Images/28. After Wheel Alignment & Balancing.webp',
       },
     ],
   },
