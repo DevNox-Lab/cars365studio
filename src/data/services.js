@@ -27,10 +27,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/1. Before Full Front PPF cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
+          '/images/WEBP Before After Images/1. After Full Front PPF cars365Studio.webp',
       },
     ],
   },
@@ -61,10 +61,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/2.1 Before Full Body PPF cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
+          '/images/WEBP Before After Images/2.1 After Full Body PPF cars365Studio.webp',
       },
     ],
   },
@@ -99,7 +99,6 @@ export const services = [
     name: 'Ceramic Coating',
     category: 'NO. 4 / CERAMIC',
 
-    TODO: 'BHAI jab card ko click kreen to ceramic coating k nechy likha ana chahiye',
     description:
       // 'A professional nano-ceramic coating bonded to your paint for years of lasting protection and shine',
       'A durable nano-ceramic shield that enhances gloss and protects your paint for years.',
@@ -122,10 +121,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/3.1 Before Ceramic Coating cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
+          '/images/WEBP Before After Images/3.1 After Ceramic Coating cars365Studio.webp',
       },
     ],
   },
@@ -154,10 +153,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/4.1 before Full Car Wrap cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
+          '/images/WEBP Before After Images/4.1 After Full Car Wrap cars365Studio.webp',
       },
     ],
   },
@@ -185,10 +184,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/5.1 Before Window Tinting cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
+          '/images/WEBP Before After Images/5.1 After Window Tinting cars365Studio.webp',
       },
     ],
   },
@@ -217,10 +216,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/6.1 Before Paint Correction cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
+          '/images/WEBP Before After Images/6.1 After Paint Correction cars365Studio.webp',
       },
     ],
   },
@@ -248,10 +247,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/7.1 Before Interior Detailing cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
+          '/images/WEBP Before After Images/7.1 After Interior Detailing cars365Studio.webp',
       },
     ],
   },
@@ -278,10 +277,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/9.1 Before Leather Seat Installation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
+          '/images/WEBP Before After Images/9.1 After Leather Seat Installation cars365Studio.webp',
       },
     ],
   },
@@ -304,10 +303,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/9.3 Before Dashboard Wrapping cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
+          '/images/WEBP Before After Images/9.3 After Dashboard Wrapping cars365Studio.webp',
       },
     ],
   },
@@ -331,10 +330,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/10.1 Before Full Body Kit Installation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
+          '/images/WEBP Before After Images/10.1 After Full Body Kit Installation cars365Studio.webp',
       },
     ],
   },
@@ -362,10 +361,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/11. Before Carbon Fiber Hood Installation.webp',
+          '/images/WEBP Before After Images/11. Before Carbon Fiber Hood Installation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/11. After Carbon Fiber Hood Installation.webp',
+          '/images/WEBP Before After Images/11. After Carbon Fiber Hood Installation cars365Studio.webp',
       },
     ],
   },
@@ -393,10 +392,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/12. Before Complete Facelift Conversion.webp',
+          '/images/WEBP Before After Images/12. Before Complete Facelift Conversion cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/12. After Complete Facelift Conversion.webp',
+          '/images/WEBP Before After Images/12. After Complete Facelift Conversion cars365Studio.webp',
       },
     ],
   },
@@ -420,10 +419,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/13. Before ECU Remapping.webp',
+          '/images/WEBP Before After Images/13. Before ECU Remapping cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/13. After ECU Remapping.webp',
+          '/images/WEBP Before After Images/13. After ECU Remapping cars365Studio.webp',
       },
     ],
   },
@@ -451,10 +450,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/14. Before Cat-Back Exhaust Installation.webp',
+          '/images/WEBP Before After Images/14. Before Cat-Back Exhaust Installation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/14. After Cat-Back Exhaust Installation.webp',
+          '/images/WEBP Before After Images/14. After Cat-Back Exhaust Installation cars365Studio.webp',
       },
     ],
   },
@@ -478,10 +477,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/15. Before Roof Rack Installation.webp',
+          '/images/WEBP Before After Images/15. Before Roof Rack Installation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/15. After Roof Rack Installation.webp',
+          '/images/WEBP Before After Images/15. After Roof Rack Installation cars365Studio.webp',
       },
     ],
   },
@@ -505,10 +504,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/16. Before Performance Parts Installation.webp',
+          '/images/WEBP Before After Images/16. Before Performance Parts Installation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/16. After Performance Parts Installation.webp',
+          '/images/WEBP Before After Images/16. After Performance Parts Installation cars365Studio.webp',
       },
     ],
   },
@@ -536,10 +535,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/17. Before Ambient Lighting Installation.webp',
+          '/images/WEBP Before After Images/17. Before Ambient Lighting Installation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/17. After Ambient Lighting Installation.webp',
+          '/images/WEBP Before After Images/17. After Ambient Lighting Installation cars365Studio.webp',
       },
     ],
   },
@@ -566,10 +565,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/18. Before Starlight Headliner Installation.webp',
+          '/images/WEBP Before After Images/18. Before Starlight Headliner Installation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/18. After Starlight Headliner Installation.webp',
+          '/images/WEBP Before After Images/18. After Starlight Headliner Installation cars365Studio.webp',
       },
     ],
   },
@@ -594,10 +593,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/19. Before Custom Wheel Installation.webp',
+          '/images/WEBP Before After Images/19. Before Custom Wheel Installation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/19. After Custom Wheel Installation.webp',
+          '/images/WEBP Before After Images/19. After Custom Wheel Installation cars365Studio.webp',
       },
     ],
   },
@@ -625,10 +624,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/1. Before Full Front PPF.webp',
+          '/images/WEBP Before After Images/Before Vehicle Customization Consultation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/1. After Full Front PPF.webp',
+          '/images/WEBP Before After Images/After Vehicle Customization Consultation cars365Studio.webp',
       },
     ],
   },
@@ -655,10 +654,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/21. Before Leather Seat Installation.webp',
+          '/images/WEBP Before After Images/21. Before Leather Seat Installation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/21. After Leather Seat Installation.webp',
+          '/images/WEBP Before After Images/21. After Leather Seat Installation cars365Studio.webp',
       },
     ],
   },
@@ -685,10 +684,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/22. Before Roof Lining Replacement.webp',
+          '/images/WEBP Before After Images/22. Before Roof Lining Replacement cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/22. After Roof Lining Replacement.webp',
+          '/images/WEBP Before After Images/22. After Roof Lining Replacement cars365Studio.webp',
       },
     ],
   },
@@ -715,10 +714,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/23. Before Steering Wheel Wrap.webp',
+          '/images/WEBP Before After Images/23. Before Steering Wheel Wrap cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/23. After Steering Wheel Wrap.webp',
+          '/images/WEBP Before After Images/23. After Steering Wheel Wrap cars365Studio.webp',
       },
     ],
   },
@@ -741,10 +740,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/24. Before Door Panel Customization.webp',
+          '/images/WEBP Before After Images/24. Before Door Panel Customization cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/24. After Door Panel Customization.webp',
+          '/images/WEBP Before After Images/24. After Door Panel Customization cars365Studio.webp',
       },
     ],
   },
@@ -771,10 +770,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/25. Before Wide Body Kit Installation.webp',
+          '/images/WEBP Before After Images/25. Before Wide Body Kit Installation cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/25. After Wide Body Kit Installation.webp',
+          '/images/WEBP Before After Images/25. After Wide Body Kit Installation cars365Studio.webp',
       },
     ],
   },
@@ -801,10 +800,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/26. Before Carbon Fiber Interior Trim.webp',
+          '/images/WEBP Before After Images/26. Before Carbon Fiber Interior Trim cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/26. After Carbon Fiber Interior Trim.webp',
+          '/images/WEBP Before After Images/26. After Carbon Fiber Interior Trim cars365Studio.webp',
       },
     ],
   },
@@ -831,10 +830,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/27. Before Headlight Upgrade  Conversion.webp',
+          '/images/WEBP Before After Images/27. Before Headlight Upgrade  Conversion cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/27. After Headlight Upgrade  Conversion.webp',
+          '/images/WEBP Before After Images/27. After Headlight Upgrade  Conversion cars365Studio.webp',
       },
     ],
   },
@@ -861,10 +860,10 @@ export const services = [
     gallery: [
       {
         before:
-          '/images/WEBP Before After Images/28. Before Wheel Alignment & Balancing.webp',
+          '/images/WEBP Before After Images/28. Before Wheel Alignment & Balancing cars365Studio.webp',
 
         after:
-          '/images/WEBP Before After Images/28. After Wheel Alignment & Balancing.webp',
+          '/images/WEBP Before After Images/28. After Wheel Alignment & Balancing cars365Studio.webp',
       },
     ],
   },

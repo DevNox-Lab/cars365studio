@@ -111,7 +111,7 @@ function BeforeAfterSlider({ gallery, serviceId }) {
             alt="After treatment"
             draggable={false}
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
+            style={{ clipPath: `inset(0 0 0 ${sliderPos}%)` }}
           />
         )}
 
@@ -145,14 +145,14 @@ function BeforeAfterSlider({ gallery, serviceId }) {
         {/* BEFORE label */}
         <div className="absolute bottom-3 left-3 z-20 pointer-events-none">
           <span className="font-mono text-[9px] text-white uppercase tracking-widest px-2.5 py-1 bg-black/70 backdrop-blur-sm rounded-full">
-            AFTER
+            BEFORE
           </span>
         </div>
 
         {/* AFTER label */}
         <div className="absolute bottom-3 right-3 z-20 pointer-events-none">
           <span className="font-mono text-[9px] text-white uppercase tracking-widest px-2.5 py-1 bg-black/70 backdrop-blur-sm rounded-full">
-            BEFORE
+            AFTER
           </span>
         </div>
       </div>
