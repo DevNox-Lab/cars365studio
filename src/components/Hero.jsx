@@ -1,3 +1,5 @@
+import { LuCalendarDays } from 'react-icons/lu';
+
 const TICKER_TEXT =
   'PPF \u2022 CERAMIC COATING \u2022 WRAPPING \u2022 POLISHING \u2022 WINDOW TINTING \u2022 ';
 
@@ -87,12 +89,10 @@ export default function Hero() {
             href="#contact"
             className="inline-flex items-center gap-2 bg-primary text-on-primary
                        font-mono text-xs font-bold uppercase tracking-widest
-                       px-5 py-2.5 rounded-full hover:bg-primary-fixed
+                       px-5 py-3 rounded-full hover:bg-primary-fixed
                        transition-colors duration-200"
           >
-            <span className="material-symbols-outlined text-base">
-              calendar_month
-            </span>
+            <LuCalendarDays className="w-3.5 h-3.5" />
             BOOK A SESSION
           </a>
         </div>
