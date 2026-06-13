@@ -7,7 +7,8 @@ function formatAED(amount) {
 }
 
 export default function ServiceSelector() {
-  const { selectedServiceIds, currentCar, toggleService } = usePackageBuilderContext();
+  const { selectedServiceIds, currentCar, toggleService } =
+    usePackageBuilderContext();
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTag, setActiveTag] = useState('All');
 
@@ -27,13 +28,13 @@ export default function ServiceSelector() {
       service.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       service.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       service.tagline.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const categoryName = service.category.includes(' / ') 
-      ? service.category.split(' / ')[1] 
+
+    const categoryName = service.category.includes(' / ')
+      ? service.category.split(' / ')[1]
       : service.category;
-      
+
     const matchesTag = activeTag === 'All' || categoryName === activeTag;
-    
+
     return matchesSearch && matchesTag;
   });
 
@@ -58,7 +59,8 @@ export default function ServiceSelector() {
       {!currentCar && (
         <div className="border-l-4 border-orange-500 bg-orange-500/10 rounded-r-lg px-4 py-3 mb-6">
           <p className="font-body text-sm text-on-surface">
-            ⚠️ <strong>Select a car first</strong> to unlock services. Go back to Step One to choose your vehicle.
+            ⚠️ <strong>Select a car first</strong> to unlock services. Go back
+            to Step One to choose your vehicle.
           </p>
         </div>
       )}
@@ -90,7 +92,7 @@ export default function ServiceSelector() {
                   font-mono text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border transition-all duration-200 whitespace-nowrap
                   ${
                     activeTag === tag
-                      ? 'bg-primary text-on-primary border-primary shadow-lg shadow-primary/20'
+                      ? 'bg-primary text-on-primary border-primary '
                       : 'bg-transparent text-on-surface-variant border-outline-variant hover:border-primary hover:text-primary'
                   }
                 `}
@@ -107,7 +109,9 @@ export default function ServiceSelector() {
         {filteredServices.length > 0 ? (
           filteredServices.map((service) => {
             const isSelected = selectedServiceIds.has(service.id);
-            const servicePrice = currentCar ? (currentCar.pricing[service.id] || null) : null;
+            const servicePrice = currentCar
+              ? currentCar.pricing[service.id] || null
+              : null;
             const hasPrice = servicePrice !== null && servicePrice > 0;
             const isDisabled = !currentCar || !hasPrice;
 
@@ -121,8 +125,8 @@ export default function ServiceSelector() {
                   isDisabled
                     ? 'cursor-not-allowed opacity-50 border-border-highlight bg-surface-container'
                     : isSelected
-                    ? 'border-primary bg-primary/5 cursor-pointer'
-                    : 'border-border-highlight bg-surface-container hover:border-outline cursor-pointer'
+                      ? 'border-primary bg-primary/5 cursor-pointer'
+                      : 'border-border-highlight bg-surface-container hover:border-outline cursor-pointer'
                 }`}
                 aria-pressed={isSelected && !isDisabled}
               >
@@ -132,8 +136,8 @@ export default function ServiceSelector() {
                     isDisabled
                       ? 'border-outline bg-transparent'
                       : isSelected
-                      ? 'border-primary bg-primary'
-                      : 'border-outline group-hover:border-on-surface-variant bg-transparent'
+                        ? 'border-primary bg-primary'
+                        : 'border-outline group-hover:border-on-surface-variant bg-transparent'
                   }`}
                 >
                   {isSelected && !isDisabled && (
@@ -149,7 +153,9 @@ export default function ServiceSelector() {
                     <div className="min-w-0">
                       <p
                         className={`font-headline font-semibold text-base uppercase tracking-wide transition-colors duration-200 ${
-                          isSelected && !isDisabled ? 'text-primary' : 'text-on-surface'
+                          isSelected && !isDisabled
+                            ? 'text-primary'
+                            : 'text-on-surface'
                         }`}
                       >
                         {service.name}
@@ -163,12 +169,12 @@ export default function ServiceSelector() {
                     <div className="shrink-0 text-right">
                       <p
                         className={`font-mono font-bold text-sm transition-colors duration-200 ${
-                          isSelected && !isDisabled ? 'text-primary' : 'text-on-surface'
+                          isSelected && !isDisabled
+                            ? 'text-primary'
+                            : 'text-on-surface'
                         }`}
                       >
-                        {hasPrice
-                          ? formatAED(servicePrice)
-                          : 'N/A'}
+                        {hasPrice ? formatAED(servicePrice) : 'N/A'}
                       </p>
                       {!hasPrice && currentCar && (
                         <p className="font-mono text-[10px] text-outline">

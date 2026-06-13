@@ -267,7 +267,7 @@ export default function Services({ limit }) {
                       font-mono text-[10px] md:text-xs uppercase tracking-widest px-4 md:px-6 py-2 md:py-2.5 rounded-full border transition-all duration-200 whitespace-nowrap
                       ${
                         activeTag === tag
-                          ? 'bg-primary text-on-primary border-primary shadow-[0_0_15px_rgba(233,193,118,0.3)]'
+                          ? 'bg-primary text-on-primary border-primary '
                           : 'bg-transparent text-on-surface-variant border-outline-variant hover:border-primary hover:text-primary'
                       }
                     `}

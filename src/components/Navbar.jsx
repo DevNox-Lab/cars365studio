@@ -117,9 +117,9 @@ export default function Navbar() {
           >
             <span className="material-symbols-outlined ">
               <img
-                src="../../public/images/icons/calendar (1).png"
+                src="../../public/images/icons/calendar_icon1.png"
                 alt="Calendar Icon"
-                className="w-5 h-5"
+                className="w-4 h-4"
               />
             </span>
             BOOK SESSION
@@ -190,12 +190,12 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               className="flex items-center justify-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-4 rounded-full"
             >
-              <span className="text-base">
-                {/* <img
+              <span className="">
+                <img
                   src="../../public/images/icons/calendar_black.png"
                   alt="Calendar Icon"
                   className="w-5 h-5"
-                /> */}
+                />
               </span>
               BOOK SESSION
             </a>
