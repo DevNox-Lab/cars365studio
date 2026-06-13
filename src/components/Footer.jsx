@@ -1,22 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const serviceLinks = [
-  { label: "Ceramic Coating", href: "/#services" },
-  { label: "Paint Protection Film", href: "/#services" },
-  { label: "Interior Detailing", href: "/#services" },
-  { label: "Window Tinting", href: "/#services" },
+  { label: 'Ceramic Coating', href: '/#services' },
+  { label: 'Paint Protection Film', href: '/#services' },
+  { label: 'Interior Detailing', href: '/#services' },
+  { label: 'Window Tinting', href: '/#services' },
 ];
 
 const companyLinks = [
-  { label: "About Us", href: "#" },
-  { label: "Portfolio", href: "#" },
-  { label: "Contact", href: "/#contact" },
-  { label: "Membership", href: "#" },
+  { label: 'About Us', href: '#' },
+  { label: 'Portfolio', href: '#' },
+  { label: 'Contact', href: '/#contact' },
+  // { label: 'Membership', href: '#' },
 ];
 
 const legalLinks = [
-  { label: "Terms & Conditions", to: "/terms-and-conditions" },
-  { label: "Privacy Policy", to: "/privacy-policy" },
+  { label: 'Terms & Conditions', to: '/terms-and-conditions' },
+  { label: 'Privacy Policy', to: '/privacy-policy' },
 ];
 
 export default function Footer() {
@@ -156,7 +156,17 @@ export default function Footer() {
                 favorite
               </span>
               <span className="font-mono text-[10px] text-outline uppercase tracking-widest">
-                in Dubai
+                by
+              </span>
+              <span className="font-mono text-[10px] text-outline uppercase tracking-widest">
+                <a
+                  href="https://devnoxlab.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary"
+                >
+                  DevNox Lab
+                </a>
               </span>
             </div>
           </div>

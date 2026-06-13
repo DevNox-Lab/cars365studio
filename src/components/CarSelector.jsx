@@ -120,7 +120,7 @@ export default function CarSelector() {
       {/* Selected Car Info Card */}
       {currentCar && (
         <div className="border-2 border-primary bg-primary/5 rounded-xl p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-between gap-4">
             {/* Car Name */}
             <div>
               <p className="font-mono text-[10px] text-on-surface-variant uppercase tracking-[0.25em] mb-1">
