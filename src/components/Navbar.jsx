@@ -4,7 +4,6 @@ import { usePackageBuilderContext } from '../context/PackageBuilderContext';
 import { LuCalendarDays } from 'react-icons/lu';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 
-
 // Hash links always use the absolute /#hash form so they work from any page.
 // On the home page this is just a same-document hash change (no reload);
 // from a sub-page React Router navigates to / and the browser jumps to the anchor.
@@ -60,9 +59,9 @@ export default function Navbar() {
         </Link> */}
         <div>
           <img
-            src="../../public/images/Logo image/cars365studio_logo.webp"
+            src="../../public/images/Logo image/121.png"
             alt="CARS365 STUDIO logo"
-            className="h-12 w-auto"
+            className="h-39 w-40"
           />
         </div>
 
