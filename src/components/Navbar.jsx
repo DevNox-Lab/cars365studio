@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { usePackageBuilderContext } from '../context/PackageBuilderContext';
+import { LuCalendarDays } from 'react-icons/lu';
+import { MdOutlineShoppingCart } from 'react-icons/md';
+
 
 // Hash links always use the absolute /#hash form so they work from any page.
 // On the home page this is just a same-document hash change (no reload);
@@ -97,11 +100,7 @@ export default function Navbar() {
             aria-label="View cart"
           >
             <span className="material-symbols-outlined text-xl">
-              <img
-                src="../../public/images/icons/shopping-cart.png"
-                alt="Cart Icon"
-                className="w-6 h-6 invert"
-              />
+              <MdOutlineShoppingCart />
             </span>
             {selectedServiceIds.size > 0 && (
               <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[9px] font-bold text-on-primary">
@@ -113,15 +112,9 @@ export default function Navbar() {
           {/* Booking CTA */}
           <a
             href={getHref('#contact')}
-            className="inline-flex items-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full hover:bg-primary-fixed transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-full hover:bg-primary-fixed transition-colors duration-200"
           >
-            <span className="material-symbols-outlined ">
-              <img
-                src="../../public/images/icons/calendar (1).png"
-                alt="Calendar Icon"
-                className="w-5 h-5"
-              />
-            </span>
+            <LuCalendarDays className="w-3.5 h-3.5" />
             BOOK SESSION
           </a>
         </div>
