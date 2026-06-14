@@ -30,12 +30,17 @@ export default function Footer() {
           <div className="lg:col-span-2 flex flex-col gap-6">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 w-fit group">
-              <span className="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform duration-200">
+              {/* <span className="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform duration-200">
                 directions_car
               </span>
               <span className="font-headline font-bold text-xl tracking-widest text-primary">
                 CARS365 STUDIO
-              </span>
+              </span> */}
+              <img
+                src="/public/images/Logo image/121.png"
+                alt="CARS365 STUDIO logo"
+                className="h-22 w-40"
+              />
             </Link>
 
             {/* Tagline */}
