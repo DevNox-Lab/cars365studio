@@ -1,22 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const serviceLinks = [
-  { label: "Ceramic Coating", href: "/#services" },
-  { label: "Paint Protection Film", href: "/#services" },
-  { label: "Interior Detailing", href: "/#services" },
-  { label: "Window Tinting", href: "/#services" },
+  { label: 'Ceramic Coating', href: '/#services' },
+  { label: 'Paint Protection Film', href: '/#services' },
+  { label: 'Interior Detailing', href: '/#services' },
+  { label: 'Window Tinting', href: '/#services' },
 ];
 
 const companyLinks = [
-  { label: "About Us", href: "#" },
-  { label: "Portfolio", href: "#" },
-  { label: "Contact", href: "/#contact" },
-  { label: "Membership", href: "#" },
+  { label: 'About Us', href: '#' },
+  { label: 'Portfolio', href: '#' },
+  { label: 'Contact', href: '/#contact' },
+  // { label: 'Membership', href: '#' },
 ];
 
 const legalLinks = [
-  { label: "Terms & Conditions", to: "/terms-and-conditions" },
-  { label: "Privacy Policy", to: "/privacy-policy" },
+  { label: 'Terms & Conditions', to: '/terms-and-conditions' },
+  { label: 'Privacy Policy', to: '/privacy-policy' },
 ];
 
 export default function Footer() {
@@ -30,12 +30,17 @@ export default function Footer() {
           <div className="lg:col-span-2 flex flex-col gap-6">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 w-fit group">
-              <span className="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform duration-200">
+              {/* <span className="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform duration-200">
                 directions_car
               </span>
               <span className="font-headline font-bold text-xl tracking-widest text-primary">
                 CARS365 STUDIO
-              </span>
+              </span> */}
+              <img
+                src="/public/images/Logo image/121.png"
+                alt="CARS365 STUDIO logo"
+                className="h-22 w-40"
+              />
             </Link>
 
             {/* Tagline */}
@@ -156,7 +161,17 @@ export default function Footer() {
                 favorite
               </span>
               <span className="font-mono text-[10px] text-outline uppercase tracking-widest">
-                in Dubai
+                by
+              </span>
+              <span className="font-mono text-[10px] text-outline uppercase tracking-widest">
+                <a
+                  href="https://devnoxlab.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary"
+                >
+                  DevNox Lab
+                </a>
               </span>
             </div>
           </div>

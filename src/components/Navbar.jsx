@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { usePackageBuilderContext } from '../context/PackageBuilderContext';
+import { LuCalendarDays } from 'react-icons/lu';
+import { MdOutlineShoppingCart } from 'react-icons/md';
 
 // Hash links always use the absolute /#hash form so they work from any page.
 // On the home page this is just a same-document hash change (no reload);
@@ -15,7 +17,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
-  const isHome = pathname === "/";
+  const isHome = pathname === '/';
   const { setIsCartOpen, selectedServiceIds } = usePackageBuilderContext();
 
   useEffect(() => {
@@ -25,8 +27,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // On the home page use bare hashes (smooth-scroll in place);
@@ -43,7 +45,7 @@ export default function Navbar() {
     >
       <nav className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between h-16">
         {/* Logo — always links to home */}
-        <Link
+        {/* <Link
           to="/"
           className="flex items-center gap-2 group"
           aria-label="CARS365 STUDIO home"
@@ -54,7 +56,14 @@ export default function Navbar() {
           <span className="font-headline font-bold text-xl tracking-widest text-primary">
             CARS365 STUDIO
           </span>
-        </Link>
+        </Link> */}
+        <div>
+          <img
+            src="../../public/images/Logo image/121.png"
+            alt="CARS365 STUDIO logo"
+            className="h-39 w-40"
+          />
+        </div>
 
         {/* Desktop nav links */}
         <ul className="hidden md:flex items-center gap-8">
@@ -90,7 +99,7 @@ export default function Navbar() {
             aria-label="View cart"
           >
             <span className="material-symbols-outlined text-xl">
-              shopping_cart
+              <MdOutlineShoppingCart />
             </span>
             {selectedServiceIds.size > 0 && (
               <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[9px] font-bold text-on-primary">
@@ -102,11 +111,9 @@ export default function Navbar() {
           {/* Booking CTA */}
           <a
             href={getHref('#contact')}
-            className="inline-flex items-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full hover:bg-primary-fixed transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-full hover:bg-primary-fixed transition-colors duration-200"
           >
-            <span className="material-symbols-outlined text-base">
-              calendar_month
-            </span>
+            <LuCalendarDays className="w-3.5 h-3.5" />
             BOOK SESSION
           </a>
         </div>
@@ -115,10 +122,10 @@ export default function Navbar() {
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative flex items-center justify-center w-10 h-10 rounded-full bg-surface-container border border-border-highlight text-on-surface-variant"
+            className="relative flex items-center justify-center w-10 h-10 rounded-full bg-surface-container border border-border-highlight text-white"
             aria-label="View cart"
           >
-            <span className="material-symbols-outlined text-xl">
+            <span className="material-symbols-outlined text-xl text-white">
               shopping_cart
             </span>
             {selectedServiceIds.size > 0 && (
@@ -175,8 +182,12 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               className="flex items-center justify-center gap-2 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-widest px-5 py-4 rounded-full"
             >
-              <span className="material-symbols-outlined text-base">
-                calendar_month
+              <span className="text-base">
+                {/* <img
+                  src="../../public/images/icons/calendar_black.png"
+                  alt="Calendar Icon"
+                  className="w-5 h-5"
+                /> */}
               </span>
               BOOK SESSION
             </a>
