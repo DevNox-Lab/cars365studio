@@ -1,20 +1,22 @@
-import { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ScrollToTop from "./components/ScrollToTop";
-import Home from "./pages/Home";
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage';
 import BuildPackagePage from './pages/BuildPackagePage';
 import OrderDetailsPage from './pages/OrderDetailsPage';
-import TermsAndConditions from "./pages/TermsAndConditions";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from './pages/TermsAndConditions';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 import { PackageBuilderProvider } from './context/PackageBuilderContext';
 import CartDrawer from './components/CartDrawer';
 
 export default function App() {
   useEffect(() => {
-    document.documentElement.classList.add("dark");
+    document.documentElement.classList.add('dark');
   }, []);
 
   return (
@@ -28,6 +30,8 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/build-package" element={<BuildPackagePage />} />
+              <Route path="/admin-login" element={<Login />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/order/:id" element={<OrderDetailsPage />} />
               <Route
                 path="/terms-and-conditions"
