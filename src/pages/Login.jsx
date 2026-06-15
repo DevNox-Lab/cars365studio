@@ -72,7 +72,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] px-4 pt-24 pb-12 bg-obsidian-deep text-on-surface">
+    <div className="min-h-[100vh] px-4 pt-24 pb-12 bg-obsidian-deep text-on-surface">
       <div className="mx-auto w-full max-w-md rounded-3xl border border-border-highlight bg-surface-container p-10 shadow-xl">
         <div className="mb-8 text-center">
           <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-on-surface-variant">
@@ -143,6 +143,26 @@ export default function Login() {
           </button>
         </form>
       </div>
+
+      <footer className=" mt-20  px-0 py-5 text-center text-sm text-on-surface-variant shadow-xl">
+        <div className="border-t border-border-highlight pt-3">
+          <span className="mb-0">
+            Made with{' '}
+            <span className="material-symbols-outlined text-primary text-sm">
+              favorite
+            </span>{' '}
+            By{' '}
+          </span>
+          <a
+            href="https://www.devnoxlab.com"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="font-semibold text-primary hover:text-primary-fixed"
+          >
+            DevNox Lab
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }

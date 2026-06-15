@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -22,28 +22,40 @@ export default function App() {
   return (
     <BrowserRouter>
       <PackageBuilderProvider>
-        <div className="bg-obsidian-deep text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary">
-          <ScrollToTop />
-          <Navbar />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/build-package" element={<BuildPackagePage />} />
-              <Route path="/admin-login" element={<Login />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/order/:id" element={<OrderDetailsPage />} />
-              <Route
-                path="/terms-and-conditions"
-                element={<TermsAndConditions />}
-              />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            </Routes>
-          </main>
-          <Footer />
-          <CartDrawer />
-        </div>
+        <AppContent />
       </PackageBuilderProvider>
     </BrowserRouter>
+  );
+}
+
+function AppContent() {
+  const { pathname } = useLocation();
+  // Hide header/footer on these login routes
+  const hideOn = ['/login', '/admin-login'];
+  const hide = hideOn.includes(pathname);
+
+  return (
+    <div className="bg-obsidian-deep text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary">
+      <ScrollToTop />
+      {!hide && <Navbar />}
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/build-package" element={<BuildPackagePage />} />
+          <Route path="/admin-login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/order/:id" element={<OrderDetailsPage />} />
+          <Route
+            path="/terms-and-conditions"
+            element={<TermsAndConditions />}
+          />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        </Routes>
+      </main>
+      {!hide && <Footer />}
+      <CartDrawer />
+    </div>
   );
 }
