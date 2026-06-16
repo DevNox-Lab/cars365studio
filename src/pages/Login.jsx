@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { FiArrowLeft, FiEye, FiEyeOff } from 'react-icons/fi';
 
 const API_BASE = 'http://localhost:5000';
 const LOGIN_ENDPOINT = `${API_BASE}/auth/login`;
@@ -72,7 +72,15 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-[100vh] px-4 pt-24 pb-12 bg-obsidian-deep text-on-surface">
+    <div className="min-h-[100vh] px-4 pt-24 bg-obsidian-deep text-on-surface">
+      <button
+        type="button"
+        onClick={() => navigate('/')}
+        className="ml-5 inline-flex items-center rounded-full border border-border-highlight bg-surface px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-on-surface-variant transition-colors duration-200 hover:border-primary hover:text-primary"
+      >
+        <FiArrowLeft className="mr-2 h-4 w-4" />
+        Back
+      </button>
       <div className="mx-auto w-full max-w-md rounded-3xl border border-border-highlight bg-surface-container p-10 shadow-xl">
         <div className="mb-8 text-center">
           <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-on-surface-variant">
@@ -144,7 +152,7 @@ export default function Login() {
         </form>
       </div>
 
-      <footer className=" mt-20  px-0 py-5 text-center text-sm text-on-surface-variant shadow-xl">
+      <footer className=" mt-28  px-0 pt-0  text-center text-sm text-on-surface-variant shadow-xl">
         <div className="border-t border-border-highlight pt-3">
           <span className="mb-0">
             Made with{' '}

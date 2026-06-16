@@ -44,7 +44,6 @@ function AppContent() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/build-package" element={<BuildPackagePage />} />
           <Route path="/admin-login" element={<Login />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/order/:id" element={<OrderDetailsPage />} />
           <Route
