@@ -30,8 +30,8 @@ export default function App() {
 
 function AppContent() {
   const { pathname } = useLocation();
-  // Hide header/footer on these login routes
-  const hideOn = ['/login', '/admin-login'];
+  // Hide header/footer on these routes (including dashboard)
+  const hideOn = ['/login', '/admin-login', '/dashboard'];
   const hide = hideOn.includes(pathname);
 
   return (
