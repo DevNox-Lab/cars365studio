@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { usePackageBuilderContext } from '../context/PackageBuilderContext';
 
 export default function CartDrawer() {
-  const { 
-    isCartOpen, 
-    setIsCartOpen, 
-    selectedServicesWithPrices, 
+  const {
+    isCartOpen,
+    setIsCartOpen,
+    selectedServicesWithPrices,
     total,
-    removeService 
+    removeService,
   } = usePackageBuilderContext();
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
@@ -62,7 +62,9 @@ export default function CartDrawer() {
             onClick={() => setIsCartOpen(false)}
             className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors"
           >
-            <span className="material-symbols-outlined text-on-surface">close</span>
+            <span className="material-symbols-outlined text-on-surface">
+              close
+            </span>
           </button>
         </div>
 
@@ -73,7 +75,9 @@ export default function CartDrawer() {
               <span className="material-symbols-outlined text-outline text-6xl mb-4">
                 shopping_cart_off
               </span>
-              <p className="font-body text-on-surface-variant">Your cart is empty.</p>
+              <p className="font-body text-on-surface-variant">
+                Your cart is empty.
+              </p>
               <button
                 onClick={() => {
                   setIsCartOpen(false);
@@ -102,7 +106,9 @@ export default function CartDrawer() {
                   onClick={() => removeService(service.id)}
                   className="text-outline hover:text-error transition-colors p-1"
                 >
-                  <span className="material-symbols-outlined text-xl">delete</span>
+                  <span className="material-symbols-outlined text-xl">
+                    delete
+                  </span>
                 </button>
               </div>
             ))

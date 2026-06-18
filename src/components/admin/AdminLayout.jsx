@@ -53,7 +53,9 @@ export default function AdminLayout() {
   const handlePointerMove = (event) => {
     if (!dragging || !sidebarRef.current) return;
     const delta = event.clientX - dragStartX;
-    setDragTranslate(delta < 0 ? Math.max(delta, -sidebarRef.current.offsetWidth) : 0);
+    setDragTranslate(
+      delta < 0 ? Math.max(delta, -sidebarRef.current.offsetWidth) : 0
+    );
   };
 
   const handlePointerEnd = (event) => {
@@ -74,7 +76,7 @@ export default function AdminLayout() {
   return (
     <div className="min-h-screen bg-obsidian-deep text-on-surface">
       <div className="flex min-h-screen">
-        <aside className="hidden w-64 flex-shrink-0 border-r border-border-highlight bg-surface-container-low md:flex md:flex-col">
+        <aside className="hidden w-64 max-h-screen flex-shrink-0 border-r border-border-highlight bg-surface-container-low md:flex md:flex-col lg: sticky lg:inset-y-0 lg:left-0">
           <div className="border-b border-border-highlight px-6 py-8">
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
               Admin
@@ -102,13 +104,11 @@ export default function AdminLayout() {
             ))}
           </nav>
 
-          <div className="border-t border-border-highlight px-4 py-6">
+          <div className="border-t border-border-highlight px-4 py-10">
             <p className="truncate px-4 text-sm text-on-surface-variant">
               {user?.name || 'Admin'}
             </p>
-            <p className="truncate px-4 text-xs text-outline">
-              {user?.email}
-            </p>
+            <p className="truncate px-4 text-xs text-outline">{user?.email}</p>
             <button
               type="button"
               onClick={handleLogout}

@@ -89,11 +89,7 @@ export default function OrdersPage() {
         </div>
       </div>
 
-      <OrdersTable
-        orders={orders}
-        loading={loading}
-        showVisitDate
-      />
+      <OrdersTable orders={orders} loading={loading} showVisitDate />
 
       <div className="flex flex-col gap-4 rounded-2xl border border-border-highlight bg-surface-container-low px-4 py-4 md:flex-row md:items-center md:justify-between">
         <p className="text-sm text-on-surface-variant">

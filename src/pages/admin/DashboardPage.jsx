@@ -25,14 +25,14 @@ export default function DashboardPage() {
           Dashboard
         </h1>
         <p className="mt-2 text-sm text-on-surface-variant">
-          Monitor order activity and revenue at a glance.
+          Monitor order activity and revenue at a glance
         </p>
       </div>
 
       <StatsCards stats={stats} loading={statsLoading} />
 
       <div className="space-y-4 ">
-        <div className="mt-20 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="mt-20 flex flex-col gap-4 md:flex-row md:items-center md:justify-between lg:mt-12">
           <div>
             <h2 className="font-headline text-2xl font-semibold uppercase tracking-wide text-on-surface">
               Recent Orders
