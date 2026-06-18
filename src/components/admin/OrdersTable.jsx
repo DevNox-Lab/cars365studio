@@ -24,7 +24,66 @@ export default function OrdersTable({
 
   return (
     <div className="overflow-hidden rounded-2xl border border-border-highlight bg-surface-container-low">
-      <div className="overflow-x-auto">
+      <div className="space-y-4 p-4 md:hidden">
+        {orders.map((order) => (
+          <article
+            key={order._id}
+            className="rounded-3xl border border-border-highlight bg-surface-container p-4 shadow-sm"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-outline">
+                  {formatDate(order.createdAt)}
+                </p>
+                <h3 className="mt-2 text-lg font-semibold text-on-surface">
+                  {order.customerName}
+                </h3>
+                <p className="mt-1 text-sm text-on-surface-variant">
+                  {order.phoneNumber}
+                </p>
+              </div>
+              <p className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                {formatAED(order.services?.totalPrice)}
+              </p>
+            </div>
+
+            <div className="mt-4 grid gap-3 text-sm">
+              <div className="flex items-center justify-between rounded-2xl bg-surface-container px-3 py-3">
+                <span className="text-on-surface-variant">Vehicle</span>
+                <span className="font-medium text-on-surface">
+                  {order.vehicleInfo?.model || '—'}
+                </span>
+              </div>
+              {!compact && (
+                <div className="flex items-center justify-between rounded-2xl bg-surface-container px-3 py-3">
+                  <span className="text-on-surface-variant">Car type</span>
+                  <span className="font-medium text-on-surface">
+                    {order.vehicleInfo?.carType || '—'}
+                  </span>
+                </div>
+              )}
+              {showVisitDate && (
+                <div className="flex items-center justify-between rounded-2xl bg-surface-container px-3 py-3">
+                  <span className="text-on-surface-variant">Visit date</span>
+                  <span className="font-medium text-on-surface">
+                    {order.visitDate
+                      ? `${order.visitDate}${order.visitTime ? ` ${order.visitTime}` : ''}`
+                      : '—'}
+                  </span>
+                </div>
+              )}
+              {!compact && (
+                <div className="flex items-center justify-between rounded-2xl bg-surface-container px-3 py-3">
+                  <span className="text-on-surface-variant">Status</span>
+                  <span className="font-medium text-primary">New</span>
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="hidden overflow-x-auto md:block">
         <table className="min-w-full divide-y divide-border-highlight">
           <thead className="bg-surface-container">
             <tr>
@@ -129,7 +188,7 @@ export function StatsCards({ stats, loading }) {
   ];
 
   return (
-    <div className="grid gap-4 md:grid-cols-3">
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {cards.map((card) => (
         <div
           key={card.label}

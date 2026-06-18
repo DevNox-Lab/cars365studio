@@ -31,8 +31,8 @@ export default function DashboardPage() {
 
       <StatsCards stats={stats} loading={statsLoading} />
 
-      <div className="space-y-4">
-        <div className="flex items-center justify-between gap-4">
+      <div className="space-y-4 ">
+        <div className="mt-20 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-headline text-2xl font-semibold uppercase tracking-wide text-on-surface">
               Recent Orders
@@ -43,7 +43,7 @@ export default function DashboardPage() {
           </div>
           <Link
             to="/admin/orders"
-            className="rounded-xl border border-primary px-4 py-2 font-body text-sm text-primary transition-colors hover:bg-primary/10"
+            className="w-32 rounded-xl border border-primary px-4 py-2 text-center text-sm font-body text-primary transition-colors hover:bg-primary/10 md:w-auto"
           >
             View all orders
           </Link>
