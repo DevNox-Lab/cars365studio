@@ -1,5 +1,10 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
+// Log API configuration for debugging
+if (typeof window !== 'undefined') {
+  console.log('[API] Base URL:', API_BASE_URL);
+}
+
 const buildUrl = (path, params = {}) => {
   const url = new URL(`${API_BASE_URL}${path}`);
 
@@ -28,19 +33,25 @@ const parseResponse = async (response) => {
 };
 
 const handleFetchError = (error, context) => {
+  console.error(`[API Error] ${context}:`, error);
   if (error instanceof TypeError) {
     throw new Error(`Network error: ${context} - ${error.message}`);
   }
   throw error;
 };
 
+const fetchOptions = {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  credentials: 'include', // Important: Include credentials for CORS
+};
+
 export const loginRequest = async ({ email, password }) => {
   try {
     const response = await fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      ...fetchOptions,
       body: JSON.stringify({ email, password }),
     });
 
@@ -58,8 +69,9 @@ export const getMeRequest = async (token) => {
 
     const response = await fetch(`${API_BASE_URL}/auth/me`, {
       method: 'GET',
+      ...fetchOptions,
       headers: {
-        'Content-Type': 'application/json',
+        ...fetchOptions.headers,
         Authorization: `Bearer ${token}`,
       },
     });
@@ -78,8 +90,9 @@ export const fetchOrderStatsRequest = async (token) => {
 
     const response = await fetch(`${API_BASE_URL}/admin/stats`, {
       method: 'GET',
+      ...fetchOptions,
       headers: {
-        'Content-Type': 'application/json',
+        ...fetchOptions.headers,
         Authorization: `Bearer ${token}`,
       },
     });
@@ -100,8 +113,9 @@ export const fetchOrdersRequest = async (token, { page, limit, search }) => {
       buildUrl('/admin/orders', { page, limit, search }),
       {
         method: 'GET',
+        ...fetchOptions,
         headers: {
-          'Content-Type': 'application/json',
+          ...fetchOptions.headers,
           Authorization: `Bearer ${token}`,
         },
       }

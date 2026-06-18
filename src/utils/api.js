@@ -4,6 +4,11 @@
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
+// Log API configuration for debugging
+if (typeof window !== 'undefined') {
+  console.log('[Public API] Base URL:', API_BASE_URL);
+}
+
 /**
  * Create a new order and return the fetch URL
  * @param {Object} orderData - The order data to send to the backend
@@ -16,6 +21,7 @@ export const createOrderAPI = async (orderData) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include', // Important: Include credentials for CORS
       body: JSON.stringify(orderData),
     });
 
@@ -27,7 +33,7 @@ export const createOrderAPI = async (orderData) => {
 
     return data;
   } catch (error) {
-    console.error('Error creating order:', error);
+    console.error('[API Error] Error creating order:', error);
     throw error;
   }
 };
@@ -44,6 +50,7 @@ export const getOrderAPI = async (orderId) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include', // Important: Include credentials for CORS
     });
 
     const data = await response.json();
@@ -54,7 +61,7 @@ export const getOrderAPI = async (orderId) => {
 
     return data;
   } catch (error) {
-    console.error('Error fetching order:', error);
+    console.error('[API Error] Error fetching order:', error);
     throw error;
   }
 };
