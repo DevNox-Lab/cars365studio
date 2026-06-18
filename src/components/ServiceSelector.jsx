@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { usePackageBuilderContext } from '../context/PackageBuilderContext';
 import services from '../data/services';
 
@@ -7,8 +7,18 @@ function formatAED(amount) {
 }
 
 export default function ServiceSelector() {
-  const { selectedServiceIds, currentCar, toggleService } =
-    usePackageBuilderContext();
+  const {
+    selectedServiceIds,
+    currentCar,
+    toggleService,
+    serviceFiltersResetKey,
+  } = usePackageBuilderContext();
+
+  useEffect(() => {
+    // Clear local search and tag when reset key changes
+    setSearchQuery('');
+    setActiveTag('All');
+  }, [serviceFiltersResetKey]);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTag, setActiveTag] = useState('All');
 

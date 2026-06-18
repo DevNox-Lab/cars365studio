@@ -22,6 +22,7 @@ export function PackageBuilderProvider({ children }) {
   });
 
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [serviceFiltersResetKey, setServiceFiltersResetKey] = useState(0);
 
   // New form fields
   const [formData, setFormData] = useState(() => {
@@ -69,6 +70,10 @@ export function PackageBuilderProvider({ children }) {
   const updateFormData = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
+
+  function resetServiceFilters() {
+    setServiceFiltersResetKey((k) => k + 1);
+  }
 
   const currentCar = useMemo(
     () => (selectedCarId ? cars.find((c) => c.id === selectedCarId) : null),
@@ -198,6 +203,8 @@ export function PackageBuilderProvider({ children }) {
     toggleService,
     addService,
     removeService,
+    resetServiceFilters,
+    serviceFiltersResetKey,
     getWhatsAppUrl,
     isCartOpen,
     setIsCartOpen,

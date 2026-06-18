@@ -40,6 +40,7 @@ export default function PackageBuilder() {
     setIsCartOpen,
     setSelectedBrand,
     selectCar,
+    resetServiceFilters,
   } = usePackageBuilderContext();
 
   function handlePackageFormChange(field, value) {
@@ -114,6 +115,9 @@ export default function PackageBuilder() {
         // Reset selected brand and model (clear car selection)
         if (setSelectedBrand) setSelectedBrand('');
         if (selectCar) selectCar(null);
+
+        // Reset service selector search/filter UI
+        if (resetServiceFilters) resetServiceFilters();
 
         // Reset the build package form to empty defaults
         setPackageFormData({
