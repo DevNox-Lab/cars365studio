@@ -129,3 +129,24 @@ export const fetchOrdersRequest = async (token, { page, limit, search }) => {
     handleFetchError(error, 'fetch orders');
   }
 };
+
+export const logoutRequest = async (token) => {
+  try {
+    if (!token) {
+      throw new Error('No authentication token provided');
+    }
+
+    const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+      method: 'POST',
+      ...fetchOptions,
+      headers: {
+        ...fetchOptions.headers,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return parseResponse(response);
+  } catch (error) {
+    handleFetchError(error, 'logout');
+  }
+};

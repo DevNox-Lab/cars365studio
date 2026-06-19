@@ -32,7 +32,18 @@ export default function ProtectedRoute() {
     );
   }
 
-  if (!isAuthenticated || !token) {
+  if (!isAuthenticated) {
+    if (token) {
+      return (
+        <div className="flex min-h-screen items-center justify-center bg-obsidian-deep">
+          <div className="text-center">
+            <div className="mb-4 inline-block h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+            <p className="text-on-surface">Loading...</p>
+          </div>
+        </div>
+      );
+    }
+
     return <Navigate to="/admin/login" replace />;
   }
 

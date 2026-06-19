@@ -26,6 +26,10 @@ export const fetchOrderStats = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { token } = getState().auth;
+      if (!token) {
+        return rejectWithValue('please login first');
+      }
+
       const response = await fetchOrderStatsRequest(token);
       return response.data;
     } catch (error) {
@@ -39,6 +43,10 @@ export const fetchOrders = createAsyncThunk(
   async (overrides = {}, { getState, rejectWithValue }) => {
     try {
       const { token } = getState().auth;
+      if (!token) {
+        return rejectWithValue('please login first');
+      }
+
       const { page, limit, search } = getState().orders;
       const response = await fetchOrdersRequest(token, {
         page: overrides.page ?? page,

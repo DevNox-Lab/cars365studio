@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getMeRequest, loginRequest } from '../../utils/adminApi';
+import {
+  getMeRequest,
+  loginRequest,
+  logoutRequest,
+} from '../../utils/adminApi';
 
 const initialState = {
   user: null,
@@ -7,6 +11,7 @@ const initialState = {
   isAuthenticated: false,
   loading: false,
   checkAuthLoading: false,
+  logoutLoading: false,
   error: null,
 };
 
@@ -45,6 +50,24 @@ export const checkAuth = createAsyncThunk(
   }
 );
 
+export const logoutUserAsync = createAsyncThunk(
+  'auth/logoutUserAsync',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { token } = getState().auth;
+      if (!token) {
+        return rejectWithValue('No token found');
+      }
+
+      await logoutRequest(token);
+      return { success: true };
+    } catch (error) {
+      console.error('Backend logout error:', error.message);
+      return { success: true, backendError: error.message };
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -54,6 +77,7 @@ const authSlice = createSlice({
       state.token = null;
       state.isAuthenticated = false;
       state.loading = false;
+      state.logoutLoading = false;
       state.error = null;
     },
     clearError: (state) => {
@@ -97,6 +121,22 @@ const authSlice = createSlice({
         state.token = null;
         state.isAuthenticated = false;
         state.error = action.payload || 'Session expired';
+      })
+      .addCase(logoutUserAsync.pending, (state) => {
+        state.logoutLoading = true;
+      })
+      .addCase(logoutUserAsync.fulfilled, (state) => {
+        state.logoutLoading = false;
+        state.user = null;
+        state.token = null;
+        state.isAuthenticated = false;
+        state.error = null;
+      })
+      .addCase(logoutUserAsync.rejected, (state) => {
+        state.logoutLoading = false;
+        state.user = null;
+        state.token = null;
+        state.isAuthenticated = false;
       });
   },
 });

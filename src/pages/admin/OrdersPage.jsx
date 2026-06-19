@@ -12,11 +12,41 @@ export default function OrdersPage() {
   const dispatch = useAppDispatch();
   const { orders, page, limit, search, total, totalPages, loading } =
     useAppSelector((state) => state.orders);
+  const { isAuthenticated, checkAuthLoading } = useAppSelector(
+    (state) => state.auth
+  );
   const [searchInput, setSearchInput] = useState(search);
 
   useEffect(() => {
+    if (!isAuthenticated) return;
     dispatch(fetchOrders());
-  }, [dispatch, page, limit, search]);
+  }, [dispatch, page, limit, search, isAuthenticated]);
+
+  if (!isAuthenticated) {
+    if (checkAuthLoading) {
+      return (
+        <div className="flex min-h-screen items-center justify-center bg-obsidian-deep">
+          <div className="text-center">
+            <div className="mb-4 inline-block h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+            <p className="text-on-surface">Loading...</p>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-obsidian-deep px-4 text-center">
+        <div>
+          <p className="text-xl font-semibold text-on-surface">
+            Please login first
+          </p>
+          <p className="mt-2 text-sm text-on-surface-variant">
+            You must be logged in to view orders.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {

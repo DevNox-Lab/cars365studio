@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { logoutUser } from '../../store/slices/authSlice';
+import { logoutUserAsync } from '../../store/slices/authSlice';
+import { persistor } from '../../store/store';
 
 const navItems = [
   { label: 'Dashboard', to: '/admin/dashboard' },
@@ -12,7 +13,7 @@ export default function AdminLayout() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useAppSelector((state) => state.auth);
+  const { user, logoutLoading } = useAppSelector((state) => state.auth);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [dragging, setDragging] = useState(false);
   const [dragStartX, setDragStartX] = useState(0);
@@ -29,10 +30,22 @@ export default function AdminLayout() {
     }
   }, [sidebarOpen]);
 
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    setSidebarOpen(false);
-    navigate('/admin/login');
+  const handleLogout = async () => {
+    try {
+      // Call async logout thunk to invalidate token on backend
+      await dispatch(logoutUserAsync()).unwrap();
+    } catch (error) {
+      console.error('Logout error:', error);
+    } finally {
+      // Clear persisted auth state from storage so session fully ends
+      try {
+        persistor.purge();
+      } catch (e) {
+        console.error('Error purging persisted auth', e);
+      }
+      setSidebarOpen(false);
+      navigate('/admin/login');
+    }
   };
 
   const closeSidebar = () => {
@@ -112,9 +125,10 @@ export default function AdminLayout() {
             <button
               type="button"
               onClick={handleLogout}
-              className="mt-4 w-full rounded-xl border border-border-highlight px-4 py-3 font-body text-sm text-on-surface transition-colors hover:border-primary hover:text-primary"
+              disabled={logoutLoading}
+              className="mt-4 w-full rounded-xl border border-border-highlight px-4 py-3 font-body text-sm text-on-surface transition-colors hover:border-primary hover:text-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Logout
+              {logoutLoading ? 'Logging out...' : 'Logout'}
             </button>
           </div>
         </aside>
@@ -185,9 +199,10 @@ export default function AdminLayout() {
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="w-full rounded-xl border border-border-highlight px-4 py-3 font-body text-sm text-on-surface transition-colors hover:border-primary hover:text-primary"
+                  disabled={logoutLoading}
+                  className="w-full rounded-xl border border-border-highlight px-4 py-3 font-body text-sm text-on-surface transition-colors hover:border-primary hover:text-primary disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Logout
+                  {logoutLoading ? 'Logging out...' : 'Logout'}
                 </button>
               </div>
             </div>

@@ -9,11 +9,42 @@ export default function DashboardPage() {
   const { orders, stats, loading, statsLoading } = useAppSelector(
     (state) => state.orders
   );
+  const { isAuthenticated, checkAuthLoading } = useAppSelector(
+    (state) => state.auth
+  );
 
   useEffect(() => {
+    if (!isAuthenticated) return;
+
     dispatch(fetchOrderStats());
     dispatch(fetchOrders({ page: 1, limit: 5, previewOnly: true }));
-  }, [dispatch]);
+  }, [dispatch, isAuthenticated]);
+
+  if (!isAuthenticated) {
+    if (checkAuthLoading) {
+      return (
+        <div className="flex min-h-screen items-center justify-center bg-obsidian-deep">
+          <div className="text-center">
+            <div className="mb-4 inline-block h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+            <p className="text-on-surface">Loading...</p>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-obsidian-deep px-4 text-center">
+        <div>
+          <p className="text-xl font-semibold text-on-surface">
+            Please login first
+          </p>
+          <p className="mt-2 text-sm text-on-surface-variant">
+            You must be logged in to view dashboard data.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
