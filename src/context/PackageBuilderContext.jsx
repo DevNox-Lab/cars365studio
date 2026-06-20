@@ -6,17 +6,19 @@ const PackageBuilderContext = createContext();
 
 export const WHATSAPP_NUMBER = '971544541345';
 
-export function PackageBuilderProvider({ children }) {
-  // Initialize from localStorage
+export function PackageBuilderProvider({ children, persist = true }) {
   const [selectedCarId, setSelectedCarId] = useState(() => {
+    if (!persist) return null;
     return localStorage.getItem('selectedCarId') || null;
   });
 
   const [selectedBrand, setSelectedBrand] = useState(() => {
+    if (!persist) return '';
     return localStorage.getItem('selectedBrand') || '';
   });
 
   const [selectedServiceIds, setSelectedServiceIds] = useState(() => {
+    if (!persist) return new Set();
     const saved = localStorage.getItem('selectedServiceIds');
     return saved ? new Set(JSON.parse(saved)) : new Set();
   });
@@ -26,6 +28,25 @@ export function PackageBuilderProvider({ children }) {
 
   // New form fields
   const [formData, setFormData] = useState(() => {
+    if (!persist) {
+      return {
+        visitDate: '',
+        visitTime: '',
+        model: '',
+        carType: '',
+        year: '',
+        color: '#000000',
+        city: 'Dubai',
+        plateType: 'Private',
+        plateLetter: '',
+        plateNumber: '',
+        userName: '',
+        userNumber: '',
+        address: '',
+        notes: '',
+      };
+    }
+
     const saved = localStorage.getItem('formData');
     if (saved) return JSON.parse(saved);
 
@@ -47,25 +68,28 @@ export function PackageBuilderProvider({ children }) {
     };
   });
 
-  // Persist to localStorage
   useEffect(() => {
+    if (!persist) return;
     localStorage.setItem('selectedCarId', selectedCarId || '');
-  }, [selectedCarId]);
+  }, [selectedCarId, persist]);
 
   useEffect(() => {
+    if (!persist) return;
     localStorage.setItem('selectedBrand', selectedBrand || '');
-  }, [selectedBrand]);
+  }, [selectedBrand, persist]);
 
   useEffect(() => {
+    if (!persist) return;
     localStorage.setItem(
       'selectedServiceIds',
       JSON.stringify(Array.from(selectedServiceIds))
     );
-  }, [selectedServiceIds]);
+  }, [selectedServiceIds, persist]);
 
   useEffect(() => {
+    if (!persist) return;
     localStorage.setItem('formData', JSON.stringify(formData));
-  }, [formData]);
+  }, [formData, persist]);
 
   const updateFormData = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -166,6 +190,18 @@ export function PackageBuilderProvider({ children }) {
     });
   }
 
+  function initializeBuilder({
+    carId = null,
+    brand = '',
+    serviceIds = [],
+    formValues = {},
+  } = {}) {
+    setSelectedCarId(carId);
+    setSelectedBrand(brand);
+    setSelectedServiceIds(new Set(serviceIds));
+    setFormData((prev) => ({ ...prev, ...formValues }));
+  }
+
   function getWhatsAppUrl(overrideName, overridePhone) {
     const vehicleLabel = currentCar
       ? `${currentCar.manufacturer} ${currentCar.model}`
@@ -203,6 +239,7 @@ export function PackageBuilderProvider({ children }) {
     toggleService,
     addService,
     removeService,
+    initializeBuilder,
     resetServiceFilters,
     serviceFiltersResetKey,
     getWhatsAppUrl,

@@ -4,10 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { logoutUserAsync } from '../../store/slices/authSlice';
 import { persistor } from '../../store/store';
 
-const navItems = [
-  { label: 'Dashboard', to: '/admin/dashboard' },
-  { label: 'Orders', to: '/admin/orders' },
-];
+const navItems = [{ label: 'Dashboard', to: '/admin/dashboard' }];
 
 export default function AdminLayout() {
   const dispatch = useAppDispatch();

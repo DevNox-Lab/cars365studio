@@ -12,7 +12,6 @@ import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import LoginPage from './pages/admin/LoginPage';
 import DashboardPage from './pages/admin/DashboardPage';
-import OrdersPage from './pages/admin/OrdersPage';
 import ProtectedRoute from './components/admin/ProtectedRoute';
 import AdminLayout from './components/admin/AdminLayout';
 import { PackageBuilderProvider } from './context/PackageBuilderContext';
@@ -69,7 +68,6 @@ export default function App() {
             <Route element={<AdminLayout />}>
               <Route index element={<Navigate to="dashboard" replace />} />
               <Route path="dashboard" element={<DashboardPage />} />
-              <Route path="orders" element={<OrdersPage />} />
             </Route>
           </Route>
 
