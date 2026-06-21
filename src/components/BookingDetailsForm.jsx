@@ -84,7 +84,7 @@ const CAR_COLORS = [
   { name: 'Teal', hex: '#008080' },
 ];
 
-export default function BookingDetailsForm({ formData, onFormChange }) {
+export default function BookingDetailsForm({ formData, onFormChange, isAdmin = false }) {
   const contextData = usePackageBuilderContext();
   const actualFormData = formData || contextData?.formData;
   const actualUpdateFormData = onFormChange || contextData?.updateFormData;
@@ -126,7 +126,7 @@ export default function BookingDetailsForm({ formData, onFormChange }) {
             <label className={labelClass}>Select Date</label>
             <input
               type="date"
-              min={today}
+              {...(!isAdmin && { min: today })}
               value={actualFormData.visitDate}
               onChange={(e) =>
                 actualUpdateFormData('visitDate', e.target.value)

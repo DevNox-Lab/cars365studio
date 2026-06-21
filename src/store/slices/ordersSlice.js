@@ -173,6 +173,14 @@ const ordersSlice = createSlice({
       }
       state.page = 1;
     },
+    resetFilters: (state) => {
+      state.search = '';
+      state.status = 'all';
+      state.dateFrom = '';
+      state.dateTo = '';
+      state.frequency = 'all';
+      state.page = 1;
+    },
     clearOrdersError: (state) => {
       state.error = null;
     },
@@ -245,6 +253,7 @@ export const {
   setDateFrom,
   setDateTo,
   setFrequency,
+  resetFilters,
   clearOrdersError,
 } = ordersSlice.actions;
 

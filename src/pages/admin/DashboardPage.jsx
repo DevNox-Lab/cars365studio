@@ -13,6 +13,7 @@ import OrderFiltersBar from '../../components/admin/OrderFiltersBar';
 import DashboardOrdersTable from '../../components/admin/DashboardOrdersTable';
 import OrdersTableFooter from '../../components/admin/OrdersTableFooter';
 import AdminOrderFormModal from '../../components/admin/AdminOrderFormModal';
+import OrderDetailsModal from '../../components/admin/OrderDetailsModal';
 
 export default function DashboardPage() {
   const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ export default function DashboardPage() {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [editingOrder, setEditingOrder] = useState(null);
+  const [viewingOrder, setViewingOrder] = useState(null);
 
   useEffect(() => {
     if (!isAuthenticated) return;
@@ -65,6 +67,10 @@ export default function DashboardPage() {
   const handleEdit = (order) => {
     setEditingOrder(order);
     setModalOpen(true);
+  };
+
+  const handleView = (order) => {
+    setViewingOrder(order);
   };
 
   const handleDelete = async (order) => {
@@ -124,37 +130,31 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 border-b border-border-highlight pb-6 lg:flex-row lg:items-center lg:justify-between">
-        <div>
-          <p className="font-headline text-3xl font-bold uppercase tracking-[0.08em] text-primary">
-            365 Studio
-          </p>
-          <p className="mt-2 text-sm text-on-surface-variant">
-            Dashboard / Orders
-          </p>
-        </div>
+      {/* Header Section */}
+      <div className="border-b border-border-highlight pb-4 sm:pb-6">
+        {/* Top Row - Title and Actions */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          {/* Left Section - Title and Breadcrumb */}
+          <div className="min-w-0 flex-1">
+            <div className="flex items-baseline gap-2">
+              <h1 className="font-headline text-2xl font-bold uppercase tracking-[0.08em] text-primary sm:text-3xl">
+                CARS365Studio
+              </h1>
+            </div>
+            <p className="mt-1.5 text-xs uppercase tracking-wider text-on-surface-variant sm:mt-2 sm:text-sm">
+              Dashboard / <span className="text-on-surface font-medium">Orders</span>
+            </p>
+          </div>
 
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+          {/* Right Section - Button (Mobile & Desktop) */}
           <button
             type="button"
             onClick={handleCreate}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-primary bg-primary/10 px-5 py-3 font-headline text-sm font-semibold uppercase tracking-wider text-primary transition-colors hover:bg-primary/20"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-primary bg-primary px-4 py-2.5 font-headline text-xs font-bold uppercase tracking-wide text-primary-content transition-all hover:bg-primary/90 active:scale-95 sm:w-auto sm:px-6 sm:py-3"
           >
-            <span className="material-symbols-outlined text-base">add</span>
-            New Order
+            <span className="material-symbols-outlined text-lg">add</span>
+            <span>New Order</span>
           </button>
-
-          <div className="flex items-center gap-3 rounded-2xl border border-border-highlight bg-surface-container-low px-4 py-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 text-primary">
-              <span className="material-symbols-outlined">person</span>
-            </div>
-            <div>
-              <p className="text-sm font-medium text-on-surface">
-                {user?.name || 'Admin'}
-              </p>
-              <p className="text-xs text-on-surface-variant">Studio Admin</p>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -165,12 +165,20 @@ export default function DashboardPage() {
       <DashboardOrdersTable
         orders={orders}
         loading={loading}
+        onView={handleView}
         onEdit={handleEdit}
         onDelete={handleDelete}
         onStatusChange={handleStatusChange}
       />
 
       <OrdersTableFooter />
+
+      {/* Modals */}
+      <OrderDetailsModal
+        order={viewingOrder}
+        onClose={() => setViewingOrder(null)}
+        onEdit={handleEdit}
+      />
 
       <AdminOrderFormModal
         open={modalOpen}

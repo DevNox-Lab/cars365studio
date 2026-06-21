@@ -92,7 +92,7 @@ export default function AdminLayout() {
               Admin
             </p>
             <h1 className="mt-2 font-headline text-2xl font-bold uppercase tracking-wide text-on-surface">
-              Cars365
+              Cars365Studio
             </h1>
           </div>
 
