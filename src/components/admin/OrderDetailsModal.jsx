@@ -1,71 +1,7 @@
 import { formatAEDDecimal, formatDate } from '../../utils/formatters';
 import { ORDER_STATUSES, STATUS_STYLES } from '../../utils/orderHelpers';
 
-const CAR_COLORS = [
-  { name: 'White', hex: '#FFFFFF' },
-  { name: 'Arctic White', hex: '#F8F9FA' },
-  { name: 'Pearl White', hex: '#F5F5F0' },
-  { name: 'Ivory White', hex: '#FFF8E7' },
-  { name: 'Black', hex: '#1A1A1A' },
-  { name: 'Jet Black', hex: '#0D0D0D' },
-  { name: 'Obsidian Black', hex: '#111111' },
-  { name: 'Satin Black', hex: '#222222' },
-  { name: 'Silver', hex: '#C0C0C0' },
-  { name: 'Metallic Silver', hex: '#A8A9AD' },
-  { name: 'Titanium Silver', hex: '#9FA3A7' },
-  { name: 'Gray', hex: '#808080' },
-  { name: 'Dark Gray', hex: '#4A4A4A' },
-  { name: 'Gunmetal Grey', hex: '#5C5C5C' },
-  { name: 'Graphite Grey', hex: '#4A4A4A' },
-  { name: 'Nardo Grey', hex: '#8A8D8F' },
-  { name: 'Blue', hex: '#0057B8' },
-  { name: 'Light Blue', hex: '#6FA8DC' },
-  { name: 'Sky Blue', hex: '#4A90B8' },
-  { name: 'Miami Blue', hex: '#00AEEF' },
-  { name: 'Navy Blue', hex: '#1C2B4A' },
-  { name: 'Midnight Blue', hex: '#102542' },
-  { name: 'French Racing Blue', hex: '#003DA5' },
-  { name: 'China Blue', hex: '#5A7DAA' },
-  { name: 'Red', hex: '#D32F2F' },
-  { name: 'Racing Red', hex: '#C0392B' },
-  { name: 'Rosso Corsa', hex: '#D40000' },
-  { name: 'Maroon', hex: '#800000' },
-  { name: 'Burgundy', hex: '#6D1A2A' },
-  { name: 'Green', hex: '#2E7D32' },
-  { name: 'British Racing Green', hex: '#1A4A2E' },
-  { name: 'Emerald Green', hex: '#0F8A5F' },
-  { name: 'Olive Green', hex: '#556B2F' },
-  { name: 'Verde Mantis', hex: '#39FF14' },
-  { name: 'Yellow', hex: '#FBC02D' },
-  { name: 'Speed Yellow', hex: '#FFD100' },
-  { name: 'Giallo Modena', hex: '#FFD700' },
-  { name: 'Solar Yellow', hex: '#F7D117' },
-  { name: 'Orange', hex: '#F57C00' },
-  { name: 'Lava Orange', hex: '#F04E23' },
-  { name: 'Sunset Orange', hex: '#D4511E' },
-  { name: 'Papaya Orange', hex: '#FF6F00' },
-  { name: 'Gold', hex: '#C5A84F' },
-  { name: 'Champagne Gold', hex: '#C5A84F' },
-  { name: 'Rose Gold', hex: '#B8736A' },
-  { name: 'Brown', hex: '#795548' },
-  { name: 'Bronze', hex: '#8B5E3C' },
-  { name: 'Beige', hex: '#C8B89A' },
-  { name: 'Sand Beige', hex: '#C8B89A' },
-  { name: 'Cream Ivory', hex: '#E8DFC8' },
-  { name: 'Desert Sand', hex: '#C2B280' },
-  { name: 'Purple', hex: '#6A1B9A' },
-  { name: 'Amethyst Purple', hex: '#0D0D0D' },
-  { name: 'Cosmic Purple', hex: '#5A3D7A' },
-  { name: 'Pink', hex: '#E91E63' },
-  { name: 'Turquoise', hex: '#40E0D0' },
-  { name: 'Teal', hex: '#008080' },
-];
-
-const getColorName = (hex) =>
-  CAR_COLORS.find((color) => color.hex.toLowerCase() === hex?.toLowerCase())
-    ?.name ||
-  hex ||
-  '—';
+import { getColorName, CAR_COLORS } from '../../utils/getColors';
 
 export default function OrderDetailsModal({ order, onClose, onEdit }) {
   if (!order) return null;
@@ -73,10 +9,10 @@ export default function OrderDetailsModal({ order, onClose, onEdit }) {
   const style = STATUS_STYLES[order.status] || STATUS_STYLES.pending;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/50 p-4">
+    <div className="fixed inset-0 z-50 flex items-center  justify-center overflow-y-auto bg-black/50 p-4 ">
       <div className="w-full max-w-2xl rounded-2xl border border-border-highlight bg-surface-container-low shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-border-highlight bg-surface-container px-6 py-4 sm:px-8">
+        <div className="flex items-center rounded-2xl justify-between border-b border-border-highlight bg-surface-container px-6 py-4 sm:px-8">
           <div>
             <h2 className="font-headline text-xl font-bold text-on-surface sm:text-2xl">
               Order Details
@@ -269,7 +205,7 @@ export default function OrderDetailsModal({ order, onClose, onEdit }) {
         </div>
 
         {/* Footer */}
-        <div className="flex flex-col gap-3 border-t border-border-highlight bg-surface-container px-6 py-4 sm:flex-row sm:justify-end sm:px-8">
+        <div className="flex flex-col rounded-b-2xl gap-3 border-t border-border-highlight bg-surface-container px-6 py-4 sm:flex-row sm:justify-end sm:px-8">
           <button
             onClick={onClose}
             className="rounded-lg border border-border-highlight px-4 py-2.5 font-semibold text-on-surface transition-colors hover:bg-surface-container-high sm:order-2"

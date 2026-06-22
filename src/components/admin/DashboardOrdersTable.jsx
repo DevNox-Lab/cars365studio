@@ -6,6 +6,8 @@ import {
   getOrderIdentifier,
 } from '../../utils/orderHelpers';
 
+import { getColorName, CAR_COLORS } from '../../utils/getColors';
+
 function RowActionsMenu({ order, onView, onEdit, onDelete }) {
   const [open, setOpen] = useState(false);
   const [menuStyle, setMenuStyle] = useState({ top: 0, left: 0 });
@@ -170,7 +172,7 @@ export default function DashboardOrdersTable({
                       {order.vehicleInfo?.model || '—'}
                     </p>
                     <p className="mt-1 text-xs text-on-surface-variant">
-                      {order.vehicleInfo?.color || '—'}
+                      {getColorName(order.vehicleInfo?.color) || '—'}
                     </p>
                   </td>
 
@@ -258,7 +260,7 @@ export default function DashboardOrdersTable({
                       {order.vehicleInfo?.model || '—'}
                     </p>
                     <p className="text-xs text-on-surface-variant">
-                      {order.vehicleInfo?.color || '—'}
+                      {getColorName(order.vehicleInfo?.color) || '—'}
                     </p>
                   </div>
                   <p className="text-right text-sm font-semibold text-emerald-300">
