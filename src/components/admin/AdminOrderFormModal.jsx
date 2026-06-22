@@ -118,6 +118,14 @@ function AdminOrderFormBody({ order, onClose, onSubmit, saving }) {
         car.carType === order.vehicleInfo?.carType
     );
 
+    // Debug logging for car matching
+    if (!matchedCar) {
+      console.warn('[AdminOrderFormBody] Car not found for order:', {
+        model: order.vehicleInfo?.model,
+        carType: order.vehicleInfo?.carType,
+      });
+    }
+
     initializeBuilder({
       carId: matchedCar?.id || null,
       brand: matchedCar?.manufacturer || '',
@@ -128,7 +136,7 @@ function AdminOrderFormBody({ order, onClose, onSubmit, saving }) {
     setStatus(order.status || 'pending');
     setNotes(order.notes || '');
     setAddress(order.address || '');
-  }, [order, initializeBuilder]);
+  }, [order]);
 
   const validate = () => {
     const newErrors = {};

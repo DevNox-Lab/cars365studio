@@ -38,6 +38,7 @@ export default function DashboardPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingOrder, setEditingOrder] = useState(null);
   const [viewingOrder, setViewingOrder] = useState(null);
+  const [orderToDelete, setOrderToDelete] = useState(null);
 
   useEffect(() => {
     if (!isAuthenticated) return;
@@ -73,11 +74,18 @@ export default function DashboardPage() {
     setViewingOrder(order);
   };
 
-  const handleDelete = async (order) => {
-    if (!window.confirm(`Delete order ${order.orderNumber || order._id}?`)) {
-      return;
-    }
-    await dispatch(deleteOrder(order._id));
+  const handleDelete = (order) => {
+    setOrderToDelete(order);
+  };
+
+  const confirmDelete = async () => {
+    if (!orderToDelete) return;
+    await dispatch(deleteOrder(orderToDelete._id));
+    setOrderToDelete(null);
+  };
+
+  const cancelDelete = () => {
+    setOrderToDelete(null);
   };
 
   const handleStatusChange = (id, nextStatus) => {
@@ -142,7 +150,8 @@ export default function DashboardPage() {
               </h1>
             </div>
             <p className="mt-1.5 text-xs uppercase tracking-wider text-on-surface-variant sm:mt-2 sm:text-sm">
-              Dashboard / <span className="text-on-surface font-medium">Orders</span>
+              Dashboard /{' '}
+              <span className="text-on-surface font-medium">Orders</span>
             </p>
           </div>
 
@@ -150,7 +159,7 @@ export default function DashboardPage() {
           <button
             type="button"
             onClick={handleCreate}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-primary bg-primary px-4 py-2.5 font-headline text-xs font-bold uppercase tracking-wide text-primary-content transition-all hover:bg-primary/90 active:scale-95 sm:w-auto sm:px-6 sm:py-3"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-primary bg-yellow-500 px-4 py-2.5 font-headline text-xs font-bold uppercase tracking-wide text-white transition-all hover:bg-yellow-600 active:scale-95 sm:w-auto sm:px-6 sm:py-3"
           >
             <span className="material-symbols-outlined text-lg">add</span>
             <span>New Order</span>
@@ -158,7 +167,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <DashboardStats stats={stats} loading={statsLoading} />
+      <DashboardStats stats={stats} loading={statsLoading} orders={orders} />
 
       <OrderFiltersBar />
 
@@ -190,6 +199,38 @@ export default function DashboardPage() {
         onSubmit={handleSubmit}
         saving={saving}
       />
+
+      {orderToDelete && (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-4 py-6">
+          <div className="w-full max-w-lg rounded-3xl border border-border-highlight bg-surface-container-low p-6 shadow-2xl">
+            <div className="mb-6">
+              <h2 className="text-xl font-bold text-on-surface">
+                Are you sure you want to delete this Order?
+              </h2>
+              <p className="mt-3 text-sm text-on-surface-variant">
+                This action cannot be undone.
+              </p>
+            </div>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={cancelDelete}
+                className="rounded-xl border border-border-highlight px-4 py-3 text-sm font-medium text-on-surface transition-colors hover:bg-surface-container-high"
+              >
+                No
+              </button>
+              <button
+                type="button"
+                onClick={confirmDelete}
+                className="rounded-xl bg-red-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-500"
+              >
+                Yes
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

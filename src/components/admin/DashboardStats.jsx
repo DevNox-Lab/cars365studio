@@ -1,10 +1,33 @@
 import { formatAEDDecimal } from '../../utils/formatters';
 
-export default function DashboardStats({ stats, loading }) {
+export default function DashboardStats({ stats, loading, orders = [] }) {
+  const derivedTotalOrders = orders.length;
+  const derivedCompletedOrders = orders.filter(
+    (order) => order.status === 'complete'
+  ).length;
+  const derivedPendingOrders = orders.filter(
+    (order) => order.status === 'pending'
+  ).length;
+  const derivedPendingAmount = orders.reduce((sum, order) => {
+    if (order.status !== 'pending') return sum;
+    return sum + Number(order.services?.totalPrice || 0);
+  }, 0);
+
+  const totalOrders =
+    typeof stats.totalOrders === 'number'
+      ? stats.totalOrders
+      : derivedTotalOrders;
+  const completedOrders =
+    typeof stats.completedOrders === 'number'
+      ? stats.completedOrders
+      : derivedCompletedOrders;
+  const pendingOrders = derivedPendingOrders;
+  const pendingAmount = derivedPendingAmount;
+
   const cards = [
-    { label: 'Total Orders', value: stats.totalOrders, isCurrency: false },
-    { label: 'Completed Orders', value: stats.completedOrders, isCurrency: false },
-    { label: 'Pending Orders', value: stats.pendingOrders, isCurrency: false },
+    { label: 'Total Orders', value: totalOrders, isCurrency: false },
+    { label: 'Completed Orders', value: completedOrders, isCurrency: false },
+    { label: 'Pending Orders', value: pendingOrders, isCurrency: false },
     {
       label: 'Total Revenue',
       value: stats.totalRevenue,
@@ -13,7 +36,7 @@ export default function DashboardStats({ stats, loading }) {
     },
     {
       label: 'Pending Amount',
-      value: stats.pendingAmount,
+      value: pendingAmount,
       isCurrency: true,
     },
   ];
