@@ -13,6 +13,11 @@ export default function DashboardStats({ stats, loading, orders = [] }) {
     return sum + Number(order.services?.totalPrice || 0);
   }, 0);
 
+  const derivedTotalRevenue = orders.reduce((sum, order) => {
+    if (order.status !== 'complete') return sum;
+    return sum + Number(order.services?.totalPrice || 0);
+  }, 0);
+
   const totalOrders =
     typeof stats.totalOrders === 'number'
       ? stats.totalOrders
@@ -30,7 +35,7 @@ export default function DashboardStats({ stats, loading, orders = [] }) {
     { label: 'Pending Orders', value: pendingOrders, isCurrency: false },
     {
       label: 'Total Revenue',
-      value: stats.totalRevenue,
+      value: derivedTotalRevenue,
       isCurrency: true,
       highlight: true,
     },

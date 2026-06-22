@@ -1,15 +1,38 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { formatAEDDecimal, formatDate } from '../../utils/formatters';
-import { ORDER_STATUSES, STATUS_STYLES } from '../../utils/orderHelpers';
+import {
+  ORDER_STATUSES,
+  STATUS_STYLES,
+  getOrderIdentifier,
+} from '../../utils/orderHelpers';
 
 function RowActionsMenu({ order, onView, onEdit, onDelete }) {
   const [open, setOpen] = useState(false);
+  const [menuStyle, setMenuStyle] = useState({ top: 0, left: 0 });
+  const buttonRef = useRef(null);
+
+  const toggleMenu = () => {
+    if (!open && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      const estimatedMenuHeight = 140;
+      const menuRight = rect.right;
+      const menuLeft = Math.max(rect.right - 140, 10);
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const top =
+        spaceBelow < estimatedMenuHeight && rect.top > estimatedMenuHeight
+          ? rect.top - estimatedMenuHeight - 8
+          : rect.bottom + 8;
+      setMenuStyle({ top, left: menuLeft, width: 140 });
+    }
+    setOpen((value) => !value);
+  };
 
   return (
     <div className="relative">
       <button
+        ref={buttonRef}
         type="button"
-        onClick={() => setOpen((value) => !value)}
+        onClick={toggleMenu}
         className="rounded-lg p-2 text-on-surface-variant transition-colors hover:bg-surface-container hover:text-on-surface"
         aria-label="Order actions"
       >
@@ -23,7 +46,10 @@ function RowActionsMenu({ order, onView, onEdit, onDelete }) {
             onClick={() => setOpen(false)}
             aria-hidden="true"
           />
-          <div className="absolute right-0 z-20 mt-2 min-w-[140px] rounded-xl border border-border-highlight bg-surface-container-high py-2 shadow-xl">
+          <div
+            style={menuStyle}
+            className="fixed z-20 rounded-xl border border-border-highlight bg-surface-container-high py-2 shadow-xl"
+          >
             <button
               type="button"
               onClick={() => {
@@ -93,7 +119,7 @@ export default function DashboardOrdersTable({
           <thead>
             <tr className="border-b border-border-highlight bg-surface-container">
               {[
-                'Date / Order ID',
+                'Date / invoice No',
                 'Customer',
                 'Car',
                 'Status',
@@ -111,7 +137,8 @@ export default function DashboardOrdersTable({
           </thead>
           <tbody>
             {orders.map((order) => {
-              const style = STATUS_STYLES[order.status] || STATUS_STYLES.pending;
+              const style =
+                STATUS_STYLES[order.status] || STATUS_STYLES.pending;
 
               return (
                 <tr
@@ -123,7 +150,9 @@ export default function DashboardOrdersTable({
                       {formatDate(order.createdAt)}
                     </p>
                     <p className="mt-1 font-mono text-xs text-on-surface-variant">
-                      {order.orderNumber || `ORD-${order._id.slice(-4).toUpperCase()}`}
+                      {order.invoiceNumber ||
+                        order.orderNumber ||
+                        `ORD-${order._id.slice(-4).toUpperCase()}`}
                     </p>
                   </td>
 
@@ -196,7 +225,7 @@ export default function DashboardOrdersTable({
               <div className="mb-3 flex items-start justify-between">
                 <div className="flex-1">
                   <p className="font-mono text-xs text-on-surface-variant">
-                    {order.orderNumber || `ORD-${order._id.slice(-4).toUpperCase()}`}
+                    {getOrderIdentifier(order)}
                   </p>
                   <p className="mt-1 text-xs text-outline">
                     {formatDate(order.createdAt)}

@@ -82,7 +82,9 @@ export default function OrderDetailsModal({ order, onClose, onEdit }) {
               Order Details
             </h2>
             <p className="mt-1 font-mono text-xs text-on-surface-variant sm:text-sm">
-              {order.orderNumber || `ORD-${order._id.slice(-4).toUpperCase()}`}
+              {order.invoiceNumber ||
+                order.orderNumber ||
+                `ORD-${order._id.slice(-4).toUpperCase()}`}
             </p>
           </div>
           <button

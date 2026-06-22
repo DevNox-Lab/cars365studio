@@ -9,6 +9,8 @@ import ServiceSelector from '../ServiceSelector';
 import BookingDetailsForm from '../BookingDetailsForm';
 import {
   buildOrderPayload,
+  generateInvoiceNumber,
+  getOrderIdentifier,
   orderToFormState,
   ORDER_STATUSES,
 } from '../../utils/orderHelpers';
@@ -165,6 +167,7 @@ function AdminOrderFormBody({ order, onClose, onSubmit, saving }) {
       status,
       notes,
       address,
+      invoiceNumber: order?.invoiceNumber || generateInvoiceNumber(),
     });
 
     onSubmit(payload);
@@ -341,7 +344,7 @@ export default function AdminOrderFormModal({
             </p>
             <h2 className="font-headline text-xl font-bold uppercase tracking-wide text-on-surface sm:text-2xl">
               {isEditMode
-                ? order.orderNumber ||
+                ? getOrderIdentifier(order) ||
                   `Order ${order._id?.slice(-6).toUpperCase()}`
                 : 'Create New Order'}
             </h2>

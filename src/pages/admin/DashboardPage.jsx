@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   createOrder,
@@ -39,11 +39,18 @@ export default function DashboardPage() {
   const [editingOrder, setEditingOrder] = useState(null);
   const [viewingOrder, setViewingOrder] = useState(null);
   const [orderToDelete, setOrderToDelete] = useState(null);
+  const cancelButtonRef = useRef(null);
 
   useEffect(() => {
     if (!isAuthenticated) return;
     dispatch(fetchOrderStats());
   }, [dispatch, isAuthenticated]);
+
+  useEffect(() => {
+    if (orderToDelete) {
+      cancelButtonRef.current?.focus();
+    }
+  }, [orderToDelete]);
 
   useEffect(() => {
     if (!isAuthenticated) return;
@@ -98,6 +105,8 @@ export default function DashboardPage() {
         updateOrder({ id: editingOrder._id, orderData: payload })
       );
       if (updateOrder.fulfilled.match(result)) {
+        await dispatch(fetchOrderStats());
+        await dispatch(fetchOrders({ page: 1 }));
         setModalOpen(false);
         setEditingOrder(null);
       }
@@ -106,9 +115,28 @@ export default function DashboardPage() {
 
     const result = await dispatch(createOrder(payload));
     if (createOrder.fulfilled.match(result)) {
+      await dispatch(fetchOrderStats());
+      await dispatch(fetchOrders({ page: 1 }));
       setModalOpen(false);
     }
   };
+
+  const searchTerm = search?.trim().toLowerCase();
+  const displayedOrders = searchTerm
+    ? orders.filter((order) => {
+        const orderId =
+          order.invoiceNumber?.toLowerCase() ||
+          order.orderNumber?.toLowerCase() ||
+          '';
+        const customer = order.customerName?.toLowerCase() || '';
+        const phone = order.phoneNumber?.toLowerCase() || '';
+        return (
+          orderId.includes(searchTerm) ||
+          customer.includes(searchTerm) ||
+          phone.includes(searchTerm)
+        );
+      })
+    : orders;
 
   if (!isAuthenticated) {
     if (checkAuthLoading) {
@@ -172,7 +200,7 @@ export default function DashboardPage() {
       <OrderFiltersBar />
 
       <DashboardOrdersTable
-        orders={orders}
+        orders={displayedOrders}
         loading={loading}
         onView={handleView}
         onEdit={handleEdit}
@@ -214,6 +242,7 @@ export default function DashboardPage() {
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
               <button
+                ref={cancelButtonRef}
                 type="button"
                 onClick={cancelDelete}
                 className="rounded-xl border border-border-highlight px-4 py-3 text-sm font-medium text-on-surface transition-colors hover:bg-surface-container-high"

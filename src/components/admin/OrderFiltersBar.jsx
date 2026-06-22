@@ -143,7 +143,7 @@ export default function OrderFiltersBar() {
               type="search"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              placeholder="Search orders by name, phone, or order ID..."
+              placeholder="Search orders by invoice/ID (e.g. INV-1234-ABCD), name, or phone"
               className={`${inputClass} w-full pl-10 pr-10`}
             />
             {searchInput && (
@@ -176,8 +176,12 @@ export default function OrderFiltersBar() {
                 aria-label="Date from"
                 title="Start date"
               />
-              <span className="hidden text-on-surface-variant sm:inline">to</span>
-              <span className="inline text-on-surface-variant sm:hidden">—</span>
+              <span className="hidden text-on-surface-variant sm:inline">
+                to
+              </span>
+              <span className="inline text-on-surface-variant sm:hidden">
+                —
+              </span>
               <input
                 id="filter-date-to"
                 type="date"

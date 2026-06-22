@@ -83,8 +83,8 @@ export const createOrder = createAsyncThunk(
     try {
       const { token } = getState().auth;
       const response = await createAdminOrderRequest(token, orderData);
-      dispatch(fetchOrderStats());
-      dispatch(fetchOrders());
+      await dispatch(fetchOrderStats());
+      await dispatch(fetchOrders({ page: 1 }));
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message || 'Failed to create order');
@@ -98,8 +98,8 @@ export const updateOrder = createAsyncThunk(
     try {
       const { token } = getState().auth;
       const response = await updateAdminOrderRequest(token, id, orderData);
-      dispatch(fetchOrderStats());
-      dispatch(fetchOrders());
+      await dispatch(fetchOrderStats());
+      await dispatch(fetchOrders());
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message || 'Failed to update order');
@@ -240,7 +240,9 @@ const ordersSlice = createSlice({
         );
       })
       .addCase(deleteOrder.fulfilled, (state, action) => {
-        state.orders = state.orders.filter((order) => order._id !== action.payload);
+        state.orders = state.orders.filter(
+          (order) => order._id !== action.payload
+        );
       });
   },
 });

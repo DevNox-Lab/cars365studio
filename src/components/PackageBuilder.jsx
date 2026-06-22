@@ -8,6 +8,7 @@ import ServiceSelector from './ServiceSelector';
 import EstimateSidebar from './EstimateSidebar';
 import BookingDetailsForm from './BookingDetailsForm';
 import { createOrderAPI } from '../utils/api';
+import { generateInvoiceNumber } from '../utils/orderHelpers';
 
 function formatAED(amount) {
   return `AED ${Math.round(amount).toLocaleString('en-AE')}`;
@@ -63,8 +64,11 @@ export default function PackageBuilder() {
 
     setIsProcessing(true);
     try {
-      // Prepare order data with all form details
+      const invoiceNumber = generateInvoiceNumber();
+
+      // Prepare order data with all form details including invoice number
       const orderData = {
+        invoiceNumber,
         customerName: packageFormData.userName,
         phoneNumber: packageFormData.userNumber,
         visitDate: packageFormData.visitDate,

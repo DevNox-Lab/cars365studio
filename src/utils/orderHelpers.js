@@ -28,6 +28,17 @@ export const STATUS_STYLES = {
   },
 };
 
+export const generateInvoiceNumber = () => {
+  const timestamp = Date.now().toString().slice(-6).toUpperCase();
+  const randomPart = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `INV-${timestamp}-${randomPart}`;
+};
+
+export const getOrderIdentifier = (order) =>
+  order?.invoiceNumber ||
+  order?.orderNumber ||
+  `ORD-${order?._id?.slice(-4).toUpperCase()}`;
+
 export function buildOrderPayload({
   formData,
   currentCar,
@@ -37,8 +48,10 @@ export function buildOrderPayload({
   status = 'pending',
   notes = '',
   address = '',
+  invoiceNumber,
 }) {
   return {
+    invoiceNumber,
     customerName: formData.userName,
     phoneNumber: formData.userNumber,
     address: address || formData.address || '',
@@ -65,7 +78,8 @@ export function buildOrderPayload({
         serviceName: service.name,
         price: service.basePrice,
         multiplier: currentCar
-          ? (currentCar.pricing[service.id] || service.basePrice) / service.basePrice
+          ? (currentCar.pricing[service.id] || service.basePrice) /
+            service.basePrice
           : 1,
         finalPrice: service.calculatedPrice,
       })),

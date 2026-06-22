@@ -25,7 +25,8 @@ export const generateInvoicePDF = async (order) => {
       });
     };
 
-    const invoiceNumber = `INV-${order._id.slice(-6).toUpperCase()}`;
+    const invoiceNumber =
+      order.invoiceNumber || `INV-${order._id.slice(-6).toUpperCase()}`;
     const createdDate = formatDate(order.createdAt);
     const dueDate = calculateDueDate(order.createdAt);
     const total = order.services?.totalPrice || 0;
