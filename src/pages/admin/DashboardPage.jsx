@@ -1,3 +1,4 @@
+import { MdAdd } from 'react-icons/md';
 import { useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
@@ -189,7 +190,7 @@ export default function DashboardPage() {
             onClick={handleCreate}
             className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-primary bg-yellow-500 px-4 py-2.5 font-headline text-xs font-bold uppercase tracking-wide text-white transition-all hover:bg-yellow-600 active:scale-95 sm:w-auto sm:px-6 sm:py-3"
           >
-            <span className="material-symbols-outlined text-lg">add</span>
+            <MdAdd className="text-lg" />
             <span>New Order</span>
           </button>
         </div>
