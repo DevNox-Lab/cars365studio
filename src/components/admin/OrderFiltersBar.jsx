@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { MdFilterAltOff } from 'react-icons/md';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   resetFilters,
@@ -72,9 +73,7 @@ export default function OrderFiltersBar() {
       aria-label="Reset all filters"
       className={`inline-flex items-center gap-1.5 rounded-lg border border-border-highlight bg-surface-container px-3 py-2.5 text-xs font-semibold text-on-surface-variant transition-all hover:border-error/60 hover:bg-error/10 hover:text-error active:scale-95 ${extraClass}`}
     >
-      <span className="material-symbols-outlined text-base leading-none">
-        filter_alt_off
-      </span>
+      <MdFilterAltOff className="text-base" />
       <span className="hidden sm:inline">Reset</span>
       {liveActiveCount > 0 && (
         <span className="flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-content">
