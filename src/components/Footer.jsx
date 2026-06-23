@@ -37,9 +37,9 @@ export default function Footer() {
                 CARS365 STUDIO
               </span> */}
               <img
-                src="/images/Logo image/123.png"
+                src="/images/Logo image/cars365Studio_Logo_512px.png"
                 alt="CARS365 STUDIO logo"
-                className="h-22 w-40"
+                className="h-40 w-52"
               />
             </Link>
 

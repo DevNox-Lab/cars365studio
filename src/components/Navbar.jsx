@@ -57,11 +57,11 @@ export default function Navbar() {
             CARS365 STUDIO
           </span>
         </Link> */}
-        <div>
+        <div className="p-0 w-auto">
           <img
-            src="/images/Logo image/123.png"
+            src="/images/Logo image/cars365Studio_Logo_512px.png"
             alt="CARS365 STUDIO logo"
-            className="h-39 w-40"
+            className="h-40 w-52 pt-2 pl-0 ml-0"
           />
         </div>
 
