@@ -6,7 +6,9 @@ import { clearError, loginUser } from '../../store/slices/authSlice';
 export default function LoginPage() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { isAuthenticated, loading, error } = useAppSelector((state) => state.auth);
+  const { isAuthenticated, loading, error } = useAppSelector(
+    (state) => state.auth
+  );
 
   useEffect(() => {
     dispatch(clearError());
@@ -62,7 +64,7 @@ export default function LoginPage() {
               required
               autoComplete="email"
               className={inputClass}
-              placeholder="admin@cars365studio.com"
+              placeholder="Enter your email"
             />
           </div>
 
